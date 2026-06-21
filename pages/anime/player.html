@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-3d="academy">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>动画播放器 | 龙奕学院 LongYi Academy</title>
+<meta name="description" content="龙奕学院动画播放器 — 沉浸式观影体验 · 弹幕互动 · 4K画质 · 多轨道选择">
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../../assets/themes/academy/sky-academy.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="../../index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../anime.html">🏠 番剧首页</a>
+<a href="../../pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/player.html">▶ 播放器</a>
+<a href="../../pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="../../pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/mad.html">🎬 MAD创作</a>
+<a href="../../pages/anime/library.html">📚 动画图书馆</a>
+<a href="../../pages/anime/live.html">📡 直播</a>
+<a href="../../pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../social.html">🏠 社交首页</a>
+<a href="../../pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/create.html">✏️ 发布创作</a>
+<a href="../../pages/social/profile.html">👤 个人主页</a>
+<a href="../../pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/messages.html">💬 私信</a>
+<a href="../../pages/social/club.html">🏛️ 社团圈子</a>
+<a href="../../pages/social/bbs.html">📋 论坛BBS</a>
+<a href="../../pages/social/match.html">💕 同好匹配</a>
+<a href="../../pages/social/live-room.html">📡 虚拟直播</a>
+<a href="../../pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../shop.html">🏠 商城首页</a>
+<a href="../../pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/product.html">📦 商品详情</a>
+<a href="../../pages/shop/cart.html">🛒 购物车</a>
+<a href="../../pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/seller.html">🏪 卖家中心</a>
+<a href="../../pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../academy.html">🏠 书院首页</a>
+<a href="../../pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/course.html">📖 课程详情</a>
+<a href="../../pages/academy/player.html">▶ 课程播放</a>
+<a href="../../pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/creator.html">✏️ 创作中心</a>
+<a href="../../pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../creator.html">🏠 创作者首页</a>
+<a href="../../pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/upload.html">📤 发布作品</a>
+<a href="../../pages/creator/studio.html">🎬 创作工作室</a>
+<a href="../../pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/monetize.html">💰 变现中心</a>
+<a href="../../pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../digital-human.html">🏠 数字人首页</a>
+<a href="../../pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="../../pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="../../pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/market.html">🏪 市场</a>
+<a href="../../pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../metaverse.html">🏠 元宇宙首页</a>
+<a href="../../pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/land.html">🗺️ 土地</a>
+<a href="../../pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="../../pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/explore.html">🔮 探索</a>
+<a href="../../pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../pages/events/index.html">🏠 活动首页</a>
+<a href="../../pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/create.html">✏️ 发布活动</a>
+<a href="../../pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/live.html">📡 直播活动</a>
+<a href="../../pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="../../pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="../../pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+<div class="player-wrap" style="padding-top:20px">
+<div>
+  <!-- Video Container -->
+  <div class="video-container" id="videoContainer">
+    <iframe id="ytPlayer" src="https://www.youtube.com/embed/IJN5TEwHcM8?autoplay=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="danmaku-layer" id="dmLayer"></div>
+  </div>
+
+  <!-- Episode List -->
+  <div class="ep-list" id="epList"></div>
+
+  <!-- Controls -->
+  <div class="controls-bar">
+    <span style="font-weight:700;font-size:.9rem">⚡ 龙奕学院战记</span>
+    <span style="color:var(--text-dim);font-size:.8rem">第12话「觉醒之日」</span>
+    <div style="flex:1"></div>
+    <button class="quality-btn active" onclick="setQuality(this,'1080p')">1080P</button>
+    <button class="quality-btn" onclick="setQuality(this,'720p')">720P</button>
+    <label style="display:flex;align-items:center;gap:4px;font-size:.78rem;cursor:pointer">
+      <input type="checkbox" id="dmToggle" checked onchange="toggleDanmaku()"> 弹幕
+    </label>
+    <select class="quality-btn" id="speedSelect" onchange="setSpeed(this.value)" style="font-size:.72rem">
+      <option value="0.5">0.5x</option><option value="1" selected>1x</option><option value="1.25">1.25x</option><option value="1.5">1.5x</option><option value="2">2x</option>
+    </select>
+  </div>
+
+  <!-- Danmaku Input -->
+  <div class="dm-input-row">
+    <input type="text" id="dmInput" placeholder="💬 发送一条弹幕吧~" maxlength="60" onkeydown="if(event.key==='Enter')sendUserDanmaku()">
+    <button onclick="sendUserDanmaku()">发送</button>
+  </div>
+
+  <!-- Comments -->
+  <div class="comment-box">
+    <h3 style="font-size:1rem;margin-bottom:12px">💬 评论 (326)</h3>
+    <div class="comment-item"><div class="comment-avatar" style="background:linear-gradient(135deg,#ff6b9d,#f472b6)">🌸</div><div><strong>樱花飘落</strong> <span style="color:var(--text-dim);font-size:.72rem">2小时前</span><p style="margin-top:4px;font-size:.9rem">这一话的打斗作画太炸裂了！龙奕学院的觉醒场景直接看哭 😭</p><div style="display:flex;gap:12px;margin-top:6px;font-size:.75rem;color:var(--text-dim)"><span>👍 1.2k</span><span>💬 回复</span></div></div></div>
+    <div class="comment-item"><div class="comment-avatar" style="background:linear-gradient(135deg,#4da6ff,#7dc4ff)">⚔️</div><div><strong>剑心归零</strong> <span style="color:var(--text-dim);font-size:.72rem">3小时前</span><p style="margin-top:4px;font-size:.9rem">BGM进场的时机完美，制作组真的太用心了 🔥</p><div style="display:flex;gap:12px;margin-top:6px;font-size:.75rem;color:var(--text-dim)"><span>👍 892</span><span>💬 回复</span></div></div></div>
+    <div class="comment-item"><div class="comment-avatar" style="background:linear-gradient(135deg,#f97316,#fb923c)">🎨</div><div><strong>二次元萌新</strong> <span style="color:var(--text-dim);font-size:.72rem">5小时前</span><p style="margin-top:4px;font-size:.9rem">新OP的画面好棒！每一帧都能截图当壁纸 ✨</p><div style="display:flex;gap:12px;margin-top:6px;font-size:.75rem;color:var(--text-dim)"><span>👍 567</span><span>💬 回复</span></div></div></div>
+    <div class="comment-item"><div class="comment-avatar" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)">🌙</div><div><strong>月下独酌</strong> <span style="color:var(--text-dim);font-size:.72rem">6小时前</span><p style="margin-top:4px;font-size:.9rem">剧情节奏把握得越来越好，期待下一话！龙奕学院的设定真的太有深度了</p><div style="display:flex;gap:12px;margin-top:6px;font-size:.75rem;color:var(--text-dim)"><span>👍 423</span><span>💬 回复</span></div></div></div>
+  </div>
+</div>
+
+<aside>
+  <!-- Video Info -->
+  <div class="side-card">
+    <h3>📺 龙奕学院战记</h3>
+    <p style="font-size:.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:10px">在龙奕学院这座横跨多元宇宙的学园中，少年们觉醒力量、结交伙伴、挑战次元之巅。</p>
+    <div style="display:flex;flex-wrap:wrap;gap:4px">
+      <span class="anime-tag tag-action">热血</span><span class="anime-tag tag-fantasy">奇幻</span><span class="anime-tag tag-school">校园</span><span class="anime-tag tag-scifi">异世界</span>
+    </div>
+    <div style="margin-top:12px;font-size:.82rem;color:var(--text-dim)">
+      <div>⭐ 9.6 · 12.8万人在看</div>
+      <div>🎙️ 龙奕学院原创动画</div>
+      <div>📅 2025年7月新番</div>
+      <div>📺 全24话 · 每周六更新</div>
+    </div>
+  </div>
+
+  <!-- Recommended -->
+  <div class="side-card">
+    <h3>🔥 相关推荐</h3>
+    <a href="../anime/detail-1.html" class="rec-item">
+      <div class="rec-thumb" style="background:linear-gradient(135deg,#dd861322,#dd861344)">🧙️</div>
+      <div class="rec-info"><div class="rec-title">葬送的芙莉莲</div><div class="rec-meta">⭐ 9.8 · 奇幻/治愈</div></div>
+    </a>
+    <a href="../anime/detail-2.html" class="rec-item">
+      <div class="rec-thumb" style="background:linear-gradient(135deg,#ff444422,#ff444444)">⚔️</div>
+      <div class="rec-info"><div class="rec-title">咒术回战 第三季</div><div class="rec-meta">⭐ 9.5 · 热血/奇幻</div></div>
+    </a>
+    <a href="../anime/detail-4.html" class="rec-item">
+      <div class="rec-thumb" style="background:linear-gradient(135deg,#4a372822,#4a372844)">⚔️</div>
+      <div class="rec-info"><div class="rec-title">进击的巨人 终章</div><div class="rec-meta">⭐ 9.7 · 热血/黑暗</div></div>
+    </a>
+    <a href="../anime/detail-5.html" class="rec-item">
+      <div class="rec-thumb" style="background:linear-gradient(135deg,#06b6d422,#06b6d444)">🗡️</div>
+      <div class="rec-info"><div class="rec-title">鬼灭之刃 柱训练篇</div><div class="rec-meta">⭐ 9.2 · 和风/热血</div></div>
+    </a>
+    <a href="../anime/detail-3.html" class="rec-item">
+      <div class="rec-thumb" style="background:linear-gradient(135deg,#c084fc22,#c084fc44)">🌟</div>
+      <div class="rec-info"><div class="rec-title">我推的孩子 第二季</div><div class="rec-meta">⭐ 9.3 · 娱乐圈/悬疑</div></div>
+    </a>
+  </div>
+</aside>
+</div>
+
+<footer class="footer"><div class="container"><p>© 2024 龙奕学院 LongYi Academy · 广州龙奕无形科技文化有限公司 WoSTC</p><p style="font-size:.82rem;color:var(--text-dim);margin-top:.3rem;"><a href="../../pages/company/index.html" style="color:var(--text-dim);">关于我们</a> · <a href="../../pages/meta/privacy.html" style="color:var(--text-dim);">隐私政策</a> · <a href="../help/faq.html" style="color:var(--text-dim);">帮助中心</a></p></div></footer>
+
+<script src="../../assets/three-engine-v3.js"></script>
+
+    <script src="../../assets/bg-engine.js"></script>
+<script>
+// ===== Video Player =====
+let dmActive = true, dmInterval, currentEp = 12;
+
+// YouTube trailers for anime
+const ANIME_TRAILERS = {
+  frieren: 'IJN5TEwHcM8', // Frieren trailer
+  jjk: 'PKHQuK2GR3Q',    // Jujutsu Kaisen 
+};
+
+function setQuality(btn, q) {
+  document.querySelectorAll('.quality-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function toggleDanmaku() {
+  dmActive = document.getElementById('dmToggle').checked;
+  if (dmActive) startDanmaku(); else stopDanmaku();
+}
+
+function setSpeed(s) {
+  const iframe = document.getElementById('ytPlayer');
+  // YouTube speed change via postMessage
+  if (iframe && iframe.contentWindow) {
+    iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'setPlaybackRate',args:[parseFloat(s)]}), '*');
+  }
+}
+
+// Generate episode list
+function renderEpisodes() {
+  const epList = document.getElementById('epList');
+  let html = '';
+  for (let i = 1; i <= 24; i++) {
+    const active = i === currentEp ? ' active' : '';
+    html += '<div class="ep-item'+active+'" onclick="selectEp('+i+',this)">'+i+'</div>';
+  }
+  epList.innerHTML = html;
+}
+
+function selectEp(ep, el) {
+  currentEp = ep;
+  document.querySelectorAll('.ep-item').forEach(e => e.classList.remove('active'));
+  el.classList.add('active');
+  // Simulate episode change
+  const dmText = '第'+ep+'话加载中...切换成功！';
+  spawnCustomDanmaku(dmText, '#facc15');
+}
+
+// Danmaku system
+const dmTexts = [
+  '前方高能！！！','awsl🙏','名场面打卡','泪目了😭','经费在燃烧🔥',
+  '承包这个笑容','进度条撑住啊','老婆！','神作画','BGM好评',
+  '二刷走起','官方吐槽最为致命','这就是青春啊','战歌起！','帅炸了',
+  '每一帧都是壁纸','制作组真的太懂了','这战斗分镜绝了','学院最强战力！',
+  '教练我想学这个','龙奕学院yyds','我的青春回来了','次元壁突破！',
+  '看哭了','这才是动漫该有的样子'
+];
+const dmColorsArr = ['#fff','#ff6b9d','#4ecdc4','#ffe66d','#a78bfa','#f97316','#ff6b9d','#00d2d3'];
+
+function spawnDanmaku() {
+  if (!dmActive) return;
+  const el = document.createElement('div');
+  el.className = 'danmaku-item';
+  el.textContent = dmTexts[Math.floor(Math.random()*dmTexts.length)];
+  el.style.top = (3 + Math.random()*82) + '%';
+  el.style.color = dmColorsArr[Math.floor(Math.random()*dmColorsArr.length)];
+  el.style.fontSize = (.8 + Math.random()*.6) + 'rem';
+  el.style.animationDuration = (6 + Math.random()*5) + 's';
+  el.style.fontWeight = Math.random() > 0.3 ? '700' : '500';
+  document.getElementById('dmLayer').appendChild(el);
+  setTimeout(() => el.remove(), 12000);
+}
+
+function spawnCustomDanmaku(text, color) {
+  const el = document.createElement('div');
+  el.className = 'danmaku-item';
+  el.textContent = text;
+  el.style.top = (20 + Math.random()*60) + '%';
+  el.style.color = color || '#fff';
+  el.style.fontSize = '1.1rem';
+  el.style.fontWeight = '900';
+  el.style.animationDuration = '7s';
+  document.getElementById('dmLayer').appendChild(el);
+  setTimeout(() => el.remove(), 8000);
+}
+
+function startDanmaku() {
+  stopDanmaku();
+  dmInterval = setInterval(spawnDanmaku, 1500);
+}
+
+function stopDanmaku() { clearInterval(dmInterval); }
+
+function sendUserDanmaku() {
+  const input = document.getElementById('dmInput');
+  const text = input.value.trim();
+  if (!text) return;
+  spawnCustomDanmaku(text, '#ffe66d');
+  input.value = '';
+}
+
+// Danmaku density control
+let dmDensity = 1500;
+function setDensity(ms) { dmDensity = ms; stopDanmaku(); if(dmActive) startDanmaku(); }
+
+// Episode click handlers (delegation)
+document.getElementById('epList').addEventListener('click', function(e) {
+  if (e.target.classList.contains('ep-item')) {
+    const ep = parseInt(e.target.textContent);
+    if (!isNaN(ep)) selectEp(ep, e.target);
+  }
+});
+
+// Init
+renderEpisodes();
+startDanmaku();
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+  if (e.key === ' ' && e.target.tagName !== 'INPUT') {
+    e.preventDefault();
+    toggleDanmaku();
+  }
+  if (e.key === 'f' && e.target.tagName !== 'INPUT') {
+    const container = document.getElementById('videoContainer');
+    if (container) {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else container.requestFullscreen();
+    }
+  }
+});
+</script>
+<script src="../../assets/theme-toggle.js"></script>
+
+<script src="../../assets/effects-runtime.js"></script>
+    <script src="../assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

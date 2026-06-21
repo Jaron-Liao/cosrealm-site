@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-3d="cyber">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数字分身 · 虚拟替身 | 龙奕学院 LongYi Academy</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../../assets/themes/academy/lemon-academy.css">
+<link rel="stylesheet" href="../../assets/effects-layer.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="../../index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../anime.html">🏠 番剧首页</a>
+<a href="../../pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/player.html">▶ 播放器</a>
+<a href="../../pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="../../pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/mad.html">🎬 MAD创作</a>
+<a href="../../pages/anime/library.html">📚 动画图书馆</a>
+<a href="../../pages/anime/live.html">📡 直播</a>
+<a href="../../pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../social.html">🏠 社交首页</a>
+<a href="../../pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/create.html">✏️ 发布创作</a>
+<a href="../../pages/social/profile.html">👤 个人主页</a>
+<a href="../../pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/messages.html">💬 私信</a>
+<a href="../../pages/social/club.html">🏛️ 社团圈子</a>
+<a href="../../pages/social/bbs.html">📋 论坛BBS</a>
+<a href="../../pages/social/match.html">💕 同好匹配</a>
+<a href="../../pages/social/live-room.html">📡 虚拟直播</a>
+<a href="../../pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../shop.html">🏠 商城首页</a>
+<a href="../../pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/product.html">📦 商品详情</a>
+<a href="../../pages/shop/cart.html">🛒 购物车</a>
+<a href="../../pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/seller.html">🏪 卖家中心</a>
+<a href="../../pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../academy.html">🏠 书院首页</a>
+<a href="../../pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/course.html">📖 课程详情</a>
+<a href="../../pages/academy/player.html">▶ 课程播放</a>
+<a href="../../pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/creator.html">✏️ 创作中心</a>
+<a href="../../pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../creator.html">🏠 创作者首页</a>
+<a href="../../pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/upload.html">📤 发布作品</a>
+<a href="../../pages/creator/studio.html">🎬 创作工作室</a>
+<a href="../../pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/monetize.html">💰 变现中心</a>
+<a href="../../pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../digital-human.html">🏠 数字人首页</a>
+<a href="../../pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="../../pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="../../pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/market.html">🏪 市场</a>
+<a href="../../pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../metaverse.html">🏠 元宇宙首页</a>
+<a href="../../pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/land.html">🗺️ 土地</a>
+<a href="../../pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="../../pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/explore.html">🔮 探索</a>
+<a href="../../pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../pages/events/index.html">🏠 活动首页</a>
+<a href="../../pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/create.html">✏️ 发布活动</a>
+<a href="../../pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/live.html">📡 直播活动</a>
+<a href="../../pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="../../pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="../../pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+<div id="nav-placeholder"></div>
+<div class="page-container">
+  <div class="hero"><h1>🪞 数字分身 · 虚拟替身</h1><p>通过照片、视频或3D扫描，为真人创建高度还原的数字分身。用于元宇宙社交、远程会议、虚拟演出——你不再需要亲自到场。</p></div>
+  <div class="clone-layout">
+    <div class="clone-sidebar">
+      <div class="cs-card"><h3>📸 采集方式</h3><div class="clone-methods"><div class="cm-item active" onclick="selectMethod('photo',this)"><span class="cmi-icon">📸</span><div class="cmi-info"><div class="cmi-name">照片建模</div><div class="cmi-desc">3-5张不同角度照片</div></div></div><div class="cm-item" onclick="selectMethod('video',this)"><span class="cmi-icon">🎥</span><div class="cmi-info"><div class="cmi-name">视频建模</div><div class="cmi-desc">10秒自拍旋转视频</div></div></div><div class="cm-item" onclick="selectMethod('scan',this)"><span class="cmi-icon">📐</span><div class="cmi-info"><div class="cmi-name">3D扫描</div><div class="cmi-desc">LiDAR/结构光扫描</div></div></div></div></div>
+      <div class="cs-card"><h3>📤 上传素材</h3><div class="upload-area" onclick="alert('📤 上传素材\n\n支持格式: JPG/PNG/MP4/MOV/OBJ\n单文件最大: 500MB\n\n(演示模式)')"><div class="ua-icon">📁</div><div style="font-size:.85rem;font-weight:600">点击或拖拽上传</div><div style="font-size:.72rem;color:var(--text-dim)">照片/视频/3D扫描</div></div></div>
+      <button class="btn-primary" style="width:100%;padding:14px;background:linear-gradient(135deg,#f59e0b,#ec4899);border:none;border-radius:14px;color:#fff;font-weight:700;cursor:pointer;font-size:1rem" onclick="startCloning()">✨ 开始生成数字分身</button>
+    </div>
+    <div class="clone-preview" id="clonePreview">
+      <div style="font-size:5rem">🪞</div>
+      <div style="color:var(--text-secondary)">选择采集方式并上传素材开始</div>
+      <div class="clone-progress" id="cloneProgress" style="display:none">
+        <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-dim)"><span>生成进度</span><span id="progressPct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+      <div class="clone-steps" id="cloneSteps" style="display:none"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px"><h2 style="font-size:1.3rem;margin-bottom:14px">🎯 应用场景</h2></div>
+  <div class="cases-grid">
+    <div class="case-card"><div class="cc-icon">🌐</div><div class="cc-title">元宇宙社交</div><div class="cc-desc">用自己的数字分身在龙墟世界中交友、参加活动、探索虚拟城市。表情和动作实时同步。</div></div>
+    <div class="case-card"><div class="cc-icon">💼</div><div class="cc-title">远程办公</div><div class="cc-desc">数字分身代替视频会议——更生动、更省带宽、支持VR/AR沉浸式协作。</div></div>
+    <div class="case-card"><div class="cc-icon">🎤</div><div class="cc-title">虚拟演出</div><div class="cc-desc">用你的数字分身在虚拟舞台上表演。动作捕捉驱动，AI实时渲染，全球粉丝同步观看。</div></div>
+    <div class="case-card"><div class="cc-icon">🎓</div><div class="cc-title">在线教育</div><div class="cc-desc">教师的数字分身可以同时给多个班级上课，提供个性化辅导和互动问答。</div></div>
+    <div class="case-card"><div class="cc-icon">🏪</div><div class="cc-title">虚拟导购</div><div class="cc-desc">品牌代言人的数字分身为顾客提供24/7的虚拟导购服务，支持多语言和个性化推荐。</div></div>
+    <div class="case-card"><div class="cc-icon">🩺</div><div class="cc-title">数字孪生</div><div class="cc-desc">医疗健康领域——创建患者的数字孪生体，用于手术模拟、康复训练和远程会诊。</div></div>
+  </div>
+</div>
+
+<script src="../../assets/particles.js"></script>
+<script src="../../assets/three-engine-v3.js"></script>
+<script src="../../assets/effects-runtime.js"></script>
+
+    <script src="../../assets/bg-engine.js"></script>
+<script src="../../assets/theme-toggle.js"></script>
+
+    <script src="../assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>
+<script>
+function selectMethod(m,btn){document.querySelectorAll('.cm-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function startCloning(){const steps=[{t:'照片特征提取',d:80},{t:'3D网格重建',d:40},{t:'纹理映射烘焙',d:30},{t:'骨骼自动绑定',d:25},{t:'BlendShape生成',d:20},{t:'质量优化',d:15}];document.getElementById('cloneProgress').style.display='block';document.getElementById('cloneSteps').style.display='flex';const stepsEl=document.getElementById('cloneSteps');steps.forEach(s=>{const d=document.createElement('div');d.className='clone-step';d.innerHTML='<span class="cstep-dot"></span><span>'+s.t+'</span>';stepsEl.appendChild(d)});let totalTime=0;steps.forEach((s,i)=>{totalTime+=s.d;setTimeout(()=>{const pct=Math.round((totalTime/210)*100);document.getElementById('progressPct').textContent=pct+'%';document.getElementById('progressFill').style.width=pct+'%';stepsEl.children[i].classList.remove('active');stepsEl.children[i].classList.add('done');if(i<steps.length-1)stepsEl.children[i+1].classList.add('active');if(i===steps.length-1){setTimeout(()=>{document.querySelector('.clone-preview').innerHTML='<div style="font-size:5rem">✅</div><div style="font-weight:700;color:#22c55e;font-size:1.1rem">数字分身创建成功！</div><div style="color:var(--text-secondary)">模型ID: DC-'+Date.now().toString(36).toUpperCase()+'</div><div style="margin-top:10px"><button class="btn-primary" style="padding:10px 24px;background:var(--accent);border:none;border-radius:10px;color:#fff;cursor:pointer" onclick="alert('📤 导出数字分身\n\n格式: VRM / GLB / FBX\n包含: 全身模型+骨骼+52 BlendShape+8K贴图\n\n可用于: VRChat, 龙墟元宇宙, Unreal, Unity')">📤 导出模型</button></div>'},500)}},s.d*10)});stepsEl.children[0].classList.add('active')}
+</script>

@@ -1,0 +1,113 @@
+/* ====== 龙奕学院 Dark Mode Overrides ====== */
+/* 配合 theme-toggle.js，当 html.theme-dark 时自动生效 */
+
+/* === 基础变量覆盖（暗色通用） === */
+.theme-dark {
+  --bg-primary: #0a0a1a;
+  --bg-secondary: #12122a;
+  --bg-card: rgba(20,20,45,0.85);
+  --bg-card-hover: rgba(30,30,60,0.9);
+  --text: #e0e0f0;
+  --text-secondary: #a0a0c0;
+  --text-muted: #666690;
+  --border: rgba(255,255,255,0.08);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+  --nav-bg: rgba(10,10,26,0.92);
+  --gradient-hero: linear-gradient(135deg,#6366f1,#8b5cf6);
+  --gradient-card: linear-gradient(145deg, rgba(99,102,241,0.08), rgba(139,92,246,0.06));
+  --accent-glow: 0 0 25px rgba(99,102,241,0.25);
+}
+
+/* 暗色导航栏 */
+.theme-dark .nav-bar {
+  background: var(--nav-bg);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.theme-dark .nav-dropdown-menu {
+  background: rgba(15,15,35,0.98);
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+/* 暗色卡片 */
+.theme-dark .card, .theme-dark .card-anime, .theme-dark .card-kawaii,
+.theme-dark .stat-card {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text);
+}
+.theme-dark .card:hover, .theme-dark .card-anime:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(99,102,241,0.1);
+}
+
+/* Hero 区域 */
+.theme-dark .hero-section {
+  background: linear-gradient(160deg, #0a0a2e 0%, #1a1a3e 40%, #0d0d25 100%);
+}
+.theme-dark .hero-title {
+  background: linear-gradient(135deg, #c4b5fd, #818cf8, #f0abfc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 表单元素暗色 */
+.theme-dark input, .theme-dark textarea, .theme-dark select {
+  background: rgba(20,20,45,0.8);
+  color: var(--text);
+  border-color: rgba(255,255,255,0.12);
+}
+.theme-dark input:focus, .theme-dark textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+.theme-dark input::placeholder { color: var(--text-muted); }
+
+/* 按钮 */
+.theme-dark .btn-primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(99,102,241,0.3);
+}
+.theme-dark .btn-secondary {
+  background: rgba(255,255,255,0.08);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* 滚动条 */
+.theme-dark ::-webkit-scrollbar { width: 6px; }
+.theme-dark ::-webkit-scrollbar-track { background: transparent; }
+.theme-dark ::-webkit-scrollbar-thumb { 
+  background: rgba(99,102,241,0.3); border-radius: 3px; 
+}
+
+/* 页脚 */
+.theme-dark footer {
+  background: #06061a;
+  border-top-color: rgba(255,255,255,0.06);
+}
+
+/* 侧边栏 */
+.theme-dark .social-sidebar nav a, .theme-dark aside a {
+  color: var(--text-secondary);
+}
+.theme-dark .social-sidebar nav a:hover, .theme-dark aside a.active {
+  color: #8b5cf6;
+  background: rgba(139,92,246,0.1);
+}
+
+/* 特效层适配 */
+.theme-dark .effects-canvas { opacity: 0.6; }
+.theme-dark .cursor-glow { opacity: 0.4; }
+
+/* 平滑过渡 */
+.theme-dark *, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.25s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.theme-dark .nav-bar, .theme-dark .hero-section,
+.theme-dark .cursor-glow, .theme-dark .click-burst,
+.theme-dark .effects-canvas { transition: none; }

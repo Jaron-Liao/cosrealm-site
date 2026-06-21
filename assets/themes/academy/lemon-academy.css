@@ -1,0 +1,27 @@
+/* ====== 龙奕学院 — 柠檬学院 Lemon Academy ====== */
+:root {
+  --bg-primary: #fffef0;
+  --bg-card: rgba(255,255,255,0.92);
+  --bg-overlay: rgba(255,254,240,0.85);
+  --text: #403a10;
+  --text-secondary: #706820;
+  --text-muted: #b0a840;
+  --accent: #eab308;
+  --accent2: #facc15;
+  --accent-glow: rgba(234,179,8,0.4);
+  --border: rgba(234,179,8,0.2);
+  --shadow: 0 4px 20px rgba(234,179,8,0.15);
+  --shadow-lg: 0 8px 40px rgba(234,179,8,0.2);
+  --card-radius: 18px;
+  --btn-radius: 25px;
+  --font-display: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --font-body: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --particle-color-1: #eab308;
+  --particle-color-2: #fde047;
+  --particle-color-3: #fef9c3;
+  --gradient-hero: linear-gradient(135deg, #eab308 0%, #facc15 30%, #fde047 60%, #fef9c3 100%);
+  --gradient-card: linear-gradient(145deg, rgba(234,179,8,0.08) 0%, rgba(250,204,21,0.04) 100%);
+  --gradient-btn: linear-gradient(135deg, #eab308, #facc15);
+  --nav-bg: rgba(255,255,255,0.88);
+  --card-hover-scale: 1.03;
+}

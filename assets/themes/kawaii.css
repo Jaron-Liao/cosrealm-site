@@ -1,0 +1,42 @@
+/* ====== Kawaii 粉樱可爱 ====== */
+:root {
+  --bg-primary: #fff5f7;
+  --bg-secondary: #ffe0e8;
+  --bg-card: rgba(255,255,255,0.9);
+  --text-primary: #4a2040;
+  --text-secondary: #886678;
+  --accent-1: #ff6b9d;
+  --accent-2: #ffb3c6;
+  --accent-3: #ff85a2;
+  --gradient-hero: linear-gradient(180deg, #ffe0ec 0%, #fff5f7 50%, #f0e6ff 100%);
+  --gradient-accent: linear-gradient(135deg, #ff6b9d, #ffb3c6);
+  --gradient-btn: linear-gradient(135deg, #ff6b9d, #ff4081);
+  --border-color: rgba(255,107,157,0.3);
+  --border-glow: 0 0 20px rgba(255,107,157,0.3);
+  --shadow-card: 0 8px 32px rgba(255,107,157,0.12);
+  --shadow-glow: 0 0 30px rgba(255,179,198,0.4);
+  --font-display: 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', sans-serif;
+  --nav-bg: rgba(255,245,247,0.95);
+  --card-radius: 20px;
+  --particle-color-1: #ffb3c6;
+  --particle-color-2: #ff85a2;
+  --particle-color-3: #ff6b9d;
+}
+
+body { 
+  background: var(--bg-primary); 
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffb3c6' opacity='0.3'/%3E%3C/svg%3E");
+}
+
+.nav { background: var(--nav-bg); border-bottom: 1px solid var(--border-color); backdrop-filter: blur(10px); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); transition: transform 0.3s; }
+.card:hover { transform: translateY(-4px) scale(1.02); }
+.btn-primary { background: var(--gradient-btn); border: none; color: #fff; padding: 12px 28px; border-radius: 25px; cursor: pointer; font-weight: 700; transition: all 0.3s; border-radius: 30px; }
+.btn-primary:hover { box-shadow: var(--border-glow); transform: translateY(-2px); }
+.glow-text { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-title { font-size: 2.2rem; font-weight: 800; text-align: center; color: var(--accent-1); }
+.floating-hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }

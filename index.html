@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙墟 CosRealm · 量子元宇宙</title>
+<meta name="description" content="龙墟 CosRealm — 九大书院联动的二次元量子元宇宙社区">
+
+<!-- ===== 全部内联CSS ===== -->
+<style>
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #050510; color: #e0e0e0; overflow-x: hidden; line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+/* === 导航栏 v8 === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 52px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  border: none; background: transparent; white-space: nowrap; transition: all 0.2s;
+  user-select: none; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+.lyn-dd-menu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn {
+  from{opacity:0;transform:translateX(-50%) translateY(-6px)}
+  to{opacity:1;transform:translateX(-50%) translateY(0)}
+}
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 11px; border-radius: 8px; font-size: 0.78rem; color: #ccc; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 52px; }
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+@media(max-width:880px){
+  .lyn-menu{display:none;position:fixed;top:52px;left:0;right:0;flex-direction:column;background:rgba(10,10,26,0.995);border-bottom:1px solid rgba(255,107,53,0.2);padding:10px;gap:2px;z-index:99998;max-height:calc(100vh-52px);overflow-y:auto}
+  .lyn-menu.lyn-open{display:flex}
+  .lyn-dd-menu{position:static;transform:none;display:none!important;box-shadow:none;border:none;background:rgba(255,255,255,0.03);margin-top:0;padding-left:14px;border-radius:0}
+  .lyn-dd.lyn-open>.lyn-dd-menu{display:block!important}
+  .lyn-ham{display:block}
+}
+@media(min-width:881px){.lyn-ham{display:none}}
+
+/* === 背景Canvas === */
+#bgCanvas {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0; pointer-events: none;
+}
+
+/* === Hero 区域 === */
+.hero-section {
+  position: relative; z-index: 2;
+  min-height: 92vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 60px 20px 40px;
+}
+.hero-scanline {
+  position: absolute; width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffc8, transparent);
+  box-shadow: 0 0 20px #00ffc8, 0 0 60px rgba(0,255,200,0.3);
+  animation: scanMove 4s linear infinite; left: 0; z-index: 3;
+}
+@keyframes scanMove {
+  0% { top: -2px; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; }
+}
+.hero-logo {
+  font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 900;
+  letter-spacing: 0.08em; line-height: 1.1;
+  background: linear-gradient(135deg, #00ffc8, #ff6b35, #a855f7, #00ffc8);
+  background-size: 300% 300%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+  filter: drop-shadow(0 0 40px rgba(0,255,200,0.3));
+  margin-bottom: 0.5rem;
+}
+@keyframes gradientShift { 0% {background-position:0% 50%} 50% {background-position:100% 50%} 100% {background-position:0% 50%} }
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgba(0,255,200,0.75); letter-spacing: 0.3em;
+  text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 300;
+}
+.hero-desc {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: rgba(220,220,230,0.7); max-width: 600px; margin: 0 auto 2rem; line-height: 1.8;
+}
+
+/* 统计数字 */
+.hero-stats {
+  display: flex; gap: 36px; justify-content: center; margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  display: block; font-size: 2rem; font-weight: 800;
+  color: #FF6B35; line-height: 1.2;
+}
+.stat-lbl { font-size: 0.82rem; color: #888; letter-spacing: 0.1em; }
+
+/* CTA按钮 */
+.hero-cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 13px 32px; border-radius: 12px; font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.05em; cursor: pointer; transition: all 0.25s; border: none;
+}
+.cta-primary {
+  background: linear-gradient(135deg, #FF6B35, #ff8c42);
+  color: #fff; box-shadow: 0 4px 24px rgba(255,107,53,0.35);
+}
+.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,107,53,0.5); color: #fff; }
+.cta-secondary {
+  background: transparent; color: #ccc;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.cta-secondary:hover { border-color: #FF6B35; color: #FF6B35; transform: translateY(-2px); }
+
+/* === 九大书院卡片区域 === */
+.academies-section {
+  position: relative; z-index: 2;
+  padding: 80px 20px 60px;
+  max-width: 1300px; margin: 0 auto;
+}
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800;
+  color: #fff; margin-bottom: 10px;
+}
+.section-header h2 span { color: #FF6B35; }
+.section-header p { color: #888; font-size: 1rem; }
+
+/* 卡片网格 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px; padding: 0 10px;
+}
+
+/* 单张书院卡片 */
+.card {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  background: rgba(14,14,35,0.65);
+  border: 1px solid rgba(255,107,53,0.15);
+  border-radius: 18px;
+  padding: 32px 24px 28px;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.card::before {
+  content: '';
+  position: absolute; inset: 0; opacity: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255,107,53,0.12) 0%, transparent 70%);
+  transition: opacity 0.35s; pointer-events: none;
+}
+.card:hover::before { opacity: 1; }
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(255,107,53,0.45);
+  box-shadow: 0 16px 48px rgba(255,107,53,0.12), 0 0 30px rgba(168,85,247,0.06);
+}
+.card-icon { font-size: 2.8rem; margin-bottom: 12px; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); transition: transform 0.3s; }
+.card:hover .card-icon { transform: scale(1.15) rotate(5deg); }
+.card-title {
+  font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 4px;
+}
+.card-sub {
+  font-size: 0.72rem; color: #666; letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 10px; font-weight: 500;
+}
+.card-desc {
+  font-size: 0.84rem; color: #aaa; line-height: 1.6; margin-bottom: 14px; min-height: 44px;
+}
+.card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.card-tag {
+  padding: 3px 10px; border-radius: 20px; font-size: 0.73rem;
+  background: rgba(255,107,53,0.1); color: #ff9a56; border: 1px solid rgba(255,107,53,0.15);
+}
+
+/* 特性横幅 */
+.features-bar {
+  position: relative; z-index: 2;
+  display: flex; justify-content: center; gap: 48px;
+  padding: 32px 20px; flex-wrap: wrap;
+  background: rgba(10,10,26,0.6); border-top: 1px solid rgba(255,107,53,0.08);
+  border-bottom: 1px solid rgba(255,107,53,0.08);
+}
+.feat { display: flex; align-items: center; gap: 8px; }
+.feat-icon { font-size: 1.5rem; }
+.feat-label { font-size: 0.85rem; color: #999; font-weight: 500; letter-spacing: 0.05em; }
+
+/* 页脚 */
+.site-footer {
+  position: relative; z-index: 2; text-align: center;
+  padding: 32px 20px; color: #555; font-size: 0.82rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.site-footer a { color: rgba(0,255,200,0.45); }
+.site-footer a:hover { color: #00ffc8; }
+</style>
+</head>
+
+<body data-theme="dark">
+
+<!-- 背景 Canvas -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- 导航栏 -->
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="index.html" class="lyn-brand"><span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span></a>
+<button class="lyn-ham" onclick="document.getElementById('lyMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lyMenu">
+
+<div class="lyn-dd"><button class="lyn-dd-btn">📺 番剧 ▾</button><div class="lyn-dd-menu">
+<a href="anime.html">🏠 番剧首页</a><a href="pages/anime/index.html">番剧大厅</a><div class="lyn-sep"></div>
+<a href="pages/anime/player.html">▶ 播放器</a><a href="pages/anime/bangumi.html">📅 新番时间表</a><a href="pages/anime/ranking.html">🏆 排行榜</a><div class="lyn-sep"></div>
+<a href="pages/anime/mad.html">🎬 MAD创作</a><a href="pages/anime/library.html">📚 动画图书馆</a><a href="pages/anime/live.html">📡 直播</a><a href="pages/anime/upload.html">📤 投稿上传</a></div></div>
+
+<div class="lyn-dd"><button class="lyn-dd-btn">💬 羁绊 ▾</button><div class="lyn-dd-menu">
+<a href="social.html">🏠 社交首页</a><a href="pages/social/feed.html">📰 社区动态</a><div class="lyn-sep"></div>
+<a href="pages/social/create.html">✏️ 发布创作</a><a href="pages/social/profile.html">👤 个人主页</a><a href="pages/social/gallery.html">🖼️ Cos画廊</a><div class="lyn-sep"></div>
+<a href="pages/social/messages.html">💬 私信</a><a href="pages/social/club.html">🏛️ 社团圈子</a><a href="pages/social/bbs.html">📋 论坛BBS</a><a href="pages/social/match.html">💕 同好匹配</a><a href="pages/social/live-room.html">📡 虚拟直播</a><a href="pages/social/ai-identify.html">🔍 AI识图</a></div></div>
+
+<div class="lyn-dd"><button class="lyn-dd-btn">🛒 商贸 ▾</button><div class="lyn-dd-menu">
+<a href="shop.html">🏠 商城首页</a><a href="pages/shop/index.html">商品大厅</a><div class="lyn-sep"></div>
+<a href="pages/shop/product.html">📦 商品详情</a><a href="pages/shop/cart.html">🛒 购物车</a><a href="pages/shop/checkout.html">💳 结算</a><div class="lyn-sep"></div>
+<a href="pages/shop/seller.html">🏪 卖家中心</a><a href="pages/shop/order.html">📋 我的订单</a></div></div>
+
+<div class="lyn-dd"><button class="lyn-dd-btn">🏛️ 书院 ▾</button><div class="lyn-dd-menu">
+<a href="academy.html">🏠 书院首页</a><a href="pages/academy/index.html">全部课程</a><div class="lyn-sep"></div>
+<a href="pages/academy/course.html">📖 课程详情</a><a href="pages/academy/player.html">▶ 课程播放</a><a href="pages/academy/exercise.html">📝 练习</a><div class="lyn-sep"></div>
+<a href="pages/academy/creator.html">✏️ 创作中心</a><a href="pages/academy/dashboard.html">📊 学习仪表盘</a></div></div>
+
+<div class="lyn-dd"><button class="lyn-dd-btn">🎨 创作者 ▾</button><div class="lyn-dd-menu">
+<a href="creator.html">🏠 创作者首页</a><a href="pages/creator/index.html">作品大厅</a><div class="lyn-sep"></div>
+<a href="pages/creator/upload.html">📤 发布作品</a><a href="pages/creator/studio.html">🎬 创作工作室</a><a href="pages/creator/collaborate.html">🤝 协同创作</a><div class="lyn-sep"></div>
+<a href="pages/creator/monetize.html">💰 变现中心</a><a href="pages/creator/analytics.html">📊 数据分析</a></div></div>
+
+<div class="lyn-dd"><button class="lyn-dd-btn">🤖 数字人 ▾</button><div class="lyn-dd-menu">
+<a href="digital-human.html">🏠 数字人首页</a><a href="pages/digital-human/index.html">全息大厅</a><div class="lyn-sep"></div>
+<a href="pages/digital-human/create.html">✨ 创造数字人</a><a href="pages/digital-human/wardrobe.html">👗 衣橱</a><a href="pages/digital-human/interact.html">💬 交互</a><div class="lyn-sep"></div>
+<a href="pages/digital-human/market.html">🏪 市场</a><a href="pages/digital-human/ai.html">🧠 AI核心</a></div></div>
+
+<div class="lyn-dd"><button class="lyn-dd-btn">🌐 元宇宙 ▾</button><div class="lyn-dd-menu">
+<a href="metaverse.html">🏠 元宇宙首页</a><a href="pages/metaverse/index.html">世界大厅</a><div class="lyn-sep"></div>
+<a href="pages/metaverse/land.html">🗺️ 土地</a><a href="pages/metaverse/avatar.html">🧑 虚拟形象</a><a href="pages/metaverse/nft.html">🖼️ NFT画廊</a><div class="lyn-sep"></div>
+<a href="pages/metaverse/explore.html">🔮 探索</a><a href="pages/metaverse/asset.html">📦 资产</a></div></div>
+
+<div class="lyn-dd"><button class="lyn-dd-btn">🎉 活动 ▾</button><div class="lyn-dd-menu">
+<a href="pages/events/index.html">🏠 活动首页</a><a href="pages/events/detail.html">📋 活动详情</a><div class="lyn-sep"></div>
+<a href="pages/events/create.html">✏️ 发布活动</a><a href="pages/events/signup.html">📝 报名</a><div class="lyn-sep"></div>
+<a href="pages/events/live.html">📡 直播活动</a><a href="pages/events/plugin.html">🔌 插件</a></div></div>
+
+</div><!-- /menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /inner -->
+</nav></div>
+
+<div class="lyn-spacer"></div>
+
+<!-- ========== HERO ========== -->
+<section class="hero-section">
+  <div class="hero-scanline"></div>
+  <h1 class="hero-logo">龙墟 COSREALM</h1>
+  <p class="hero-subtitle">量子元宇宙 · 九大书院</p>
+  <p class="hero-desc">
+    二次元文化与量子科技深度融合的元宇宙社区平台<br>
+    九大书院跨域联动 · 沉浸式虚拟生态体验
+  </p>
+  <div class="hero-stats">
+    <div class="stat-item"><span class="stat-num">9</span><span class="stat-lbl">书院</span></div>
+    <div class="stat-item"><span class="stat-num">189</span><span class="stat-lbl">页面</span></div>
+    <div class="stat-item"><span class="stat-num">2.8M</span><span class="stat-lbl">用户</span></div>
+  </div>
+  <div class="hero-cta-row">
+    <a href="anime.html" class="cta-btn cta-primary">🚀 进入元宇宙</a>
+    <a href="pages/auth/register.html" class="cta-btn cta-secondary">注册账号</a>
+  </div>
+</section>
+
+<!-- ========== 九大书院 ========== -->
+<section class="academies-section">
+  <div class="section-header">
+    <h2>九大书院 · <span>量子联动</span></h2>
+    <p>点击任意书院卡片，即刻进入对应领域</p>
+  </div>
+  <div class="card-grid">
+
+    <!-- 番剧 -->
+    <a href="anime.html" class="card">
+      <span class="card-icon">🎬</span>
+      <div class="card-title">番剧学院</div>
+      <div class="card-sub">ANIME ACADEMY</div>
+      <div class="card-desc">番剧库 · 在线播放 · 弹幕互动 · 排行推荐 · 直播联动</div>
+      <div class="card-tags">
+        <span class="card-tag">番剧库</span><span class="card-tag">播放器</span><span class="card-tag">排行榜</span>
+      </div>
+    </a>
+
+    <!-- 羁绊 -->
+    <a href="social.html" class="card">
+      <span class="card-icon">💫</span>
+      <div class="card-title">羁绊学院</div>
+      <div class="card-sub">SOCIAL ACADEMY</div>
+      <div class="card-desc">动态社交 · 私信聊天 · 论坛BBS · 社团圈子 · 匹配交友</div>
+      <div class="card-tags">
+        <span class="card-tag">动态</span><span class="card-tag">论坛</span><span class="card-tag">社团</span>
+      </div>
+    </a>
+
+    <!-- 商贸 -->
+    <a href="shop.html" class="card">
+      <span class="card-icon">🛒</span>
+      <div class="card-title">商贸学院</div>
+      <div class="card-sub">SHOP ACADEMY</div>
+      <div class="card-desc">Cos服商城 · 闪购限时 · 积分兑换 · 二手交易 · 服装租赁</div>
+      <div class="card-tags">
+        <span class="card-tag">商城</span><span class="card-tag">闪购</span><span class="card-tag">积分</span>
+      </div>
+    </a>
+
+    <!-- 元宇宙 -->
+    <a href="metaverse.html" class="card">
+      <span class="card-icon">🌌</span>
+      <div class="card-title">虚空学院</div>
+      <div class="card-sub">METAVERSE ACADEMY</div>
+      <div class="card-desc">虚拟世界 · 形象装扮 · 世界构建 · 社交广场 · 战斗竞技</div>
+      <div class="card-tags">
+        <span class="card-tag">虚拟世界</span><span class="card-tag">形象</span><span class="card-tag">构建</span>
+      </div>
+    </a>
+
+    <!-- 创作者 -->
+    <a href="creator.html" class="card">
+      <span class="card-icon">🎨</span>
+      <div class="card-title">创作学院</div>
+      <div class="card-sub">CREATOR ACADEMY</div>
+      <div class="card-desc">创作中心 · 工坊工具 · 粉丝互动 · 收益管理 · AI辅助</div>
+      <div class="card-tags">
+        <span class="card-tag">创作</span><span class="card-tag">工坊</span><span class="card-tag">收益</span>
+      </div>
+    </a>
+
+    <!-- 数字人 -->
+    <a href="digital-human.html" class="card">
+      <span class="card-icon">🤖</span>
+      <div class="card-title">幻影学院</div>
+      <div class="card-sub">DIGITAL HUMAN ACADEMY</div>
+      <div class="card-desc">数字人展厅 · 换装工坊 · LLM互动 · AI对话 · 动作动画</div>
+      <div class="card-tags">
+        <span class="card-tag">数字人</span><span class="card-tag">换装</span><span class="card-tag">LLM</span>
+      </div>
+    </a>
+
+    <!-- 书院 -->
+    <a href="academy.html" class="card">
+      <span class="card-icon">🎓</span>
+      <div class="card-title">研修学院</div>
+      <div class="card-sub">STUDY ACADEMY</div>
+      <div class="card-desc">系统课程 · 直播课堂 · 学习路径 · 导师系统 · 认证考试</div>
+      <div class="card-tags">
+        <span class="card-tag">课程</span><span class="card-tag">直播</span><span class="card-tag">认证</span>
+      </div>
+    </a>
+
+    <!-- 活动 -->
+    <a href="events.html" class="card">
+      <span class="card-icon">🎉</span>
+      <div class="card-title">祭典学院</div>
+      <div class="card-sub">EVENTS ACADEMY</div>
+      <div class="card-desc">活动日历 · 漫展发布会 · 赛事竞技 · 节日庆典 · 烟花大会</div>
+      <div class="card-tags">
+        <span class="card-tag">活动</span><span class="card-tag">漫展</span><span class="card-tag">赛事</span>
+      </div>
+    </a>
+
+    <!-- Wiki -->
+    <a href="wiki.html" class="card">
+      <span class="card-icon">📚</span>
+      <div class="card-title">百科书院</div>
+      <div class="card-sub">WIKI ACADEMY</div>
+      <div class="card-desc">百科首页 · 角色大全 · 声优百科 · 制作公司 · 年表术语</div>
+      <div class="card-tags">
+        <span class="card-tag">百科</span><span class="card-tag">角色</span><span class="card-tag">声优</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ========== 特性横幅 ========== -->
+<section class="features-bar">
+  <div class="feat"><span class="feat-icon">⚛️</span><span class="feat-label">量子引擎</span></div>
+  <div class="feat"><span class="feat-icon">🔮</span><span class="feat-label">全息渲染</span></div>
+  <div class="feat"><span class="feat-icon">🌐</span><span class="feat-label">元宇宙跨域</span></div>
+  <div class="feat"><span class="feat-icon">🤖</span><span class="feat-label">LLM驱动</span></div>
+  <div class="feat"><span class="feat-icon">🎭</span><span class="feat-label">数字人</span></div>
+</section>
+
+<!-- ========== 页脚 ========== -->
+<footer class="site-footer">
+  <p>&copy; 2026 广州龙奕无形科技文化有限公司 · 龙墟 CosRealm</p>
+  <p style="margin-top:8px">
+    <a href="#">关于我们</a> · <a href="#">使用指南</a> · <a href="#">隐私政策</a>
+  </p>
+</footer>
+
+<!-- ===== 量子背景引擎 (纯Canvas2D, 零依赖) ===== -->
+<script id="qbg-engine">
+(function(){
+  var c = document.getElementById('bgCanvas');
+  var ctx = c.getContext('2d');
+  var W = 0, H = 0, particles = [], mouse = {x:-999,y:-999};
+  var COLORS = ['#00ffc8','#ff6b35','#a855f7','#38bdf8','#f472b6'];
+  function resize() { W = c.width = innerWidth; H = c.height = innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+
+  // 创建粒子网络
+  for(var i=0;i<120;i++){
+    particles.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      vx: (Math.random()-0.5)*0.6,
+      vy: (Math.random()-0.5)*0.6,
+      r: Math.random()*2+1,
+      color: COLORS[Math.floor(Math.random()*COLORS.length)],
+      alpha: Math.random()*0.6+0.2
+    });
+  }
+
+  window.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;});
+
+  function draw(){
+    // 渐变背景
+    var grad = ctx.createRadialGradient(W*0.5,H*0.3,0,W*0.5,H*0.5,Math.max(W,H));
+    grad.addColorStop(0,'#0a0a1e');
+    grad.addColorStop(1,'#030308');
+    ctx.fillStyle = grad; ctx.fillRect(0,0,W,H);
+
+    // 绘制连线
+    ctx.lineWidth = 0.5;
+    for(var i=0;i<particles.length;i++){
+      for(var j=i+1;j<particles.length;j++){
+        var dx = particles[i].x-particles[j].x, dy = particles[i].y-particles[j].y;
+        var dist = dx*dx+dy*dy;
+        if(dist<16000){
+          ctx.globalAlpha = (1-dist/16000)*0.15;
+          ctx.strokeStyle = particles[i].color;
+          ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();
+        }
+      }
+    }
+
+    // 绘制粒子
+    particles.forEach(function(p){
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
+
+      // 鼠标排斥
+      var mdx=p.x-mouse.x,mdy=p.y-mouse.y,mDist=Math.sqrt(mdx*mdx+mdy*mdy);
+      if(mDist<150&&mDist>0){p.vx+=mdx/mDist*0.03;p.vy+=mdy/mDist*0.03;}
+
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+
+      // 光晕
+      ctx.globalAlpha = p.alpha*0.15;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r*6,0,Math.PI*2);
+      ctx.fill();
+    });
+
+    // 扫描线效果
+    var t = Date.now()*0.001;
+    var sy = ((t*80)%H);
+    var sGrad = ctx.createLinearGradient(0,sy-2,0,sy+2);
+    sGrad.addColorStop(0,'transparent');
+    sGrad.addColorStop(0.5,'rgba(0,255,200,0.08)');
+    sGrad.addColorStop(1,'transparent');
+    ctx.globalAlpha=1; ctx.fillStyle=sGrad; ctx.fillRect(0,sy-2,W,4);
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+<!-- 移动端导航交互 -->
+<script>
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){if(d!==dd)d.classList.remove('lyn-open');});
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){d.classList.remove('lyn-open');});
+  });
+})();
+</script>
+
+</body>
+</html>

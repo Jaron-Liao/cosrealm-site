@@ -1,0 +1,27 @@
+/* ====== 龙奕学院 — 橙暖学院 Sunset Academy ====== */
+:root {
+  --bg-primary: #fff8f0;
+  --bg-card: rgba(255,255,255,0.92);
+  --bg-overlay: rgba(255,248,240,0.85);
+  --text: #4a3020;
+  --text-secondary: #8a6050;
+  --text-muted: #c09070;
+  --accent: #f97316;
+  --accent2: #fb923c;
+  --accent-glow: rgba(249,115,22,0.4);
+  --border: rgba(249,115,22,0.2);
+  --shadow: 0 4px 20px rgba(249,115,22,0.15);
+  --shadow-lg: 0 8px 40px rgba(249,115,22,0.2);
+  --card-radius: 18px;
+  --btn-radius: 25px;
+  --font-display: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --font-body: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --particle-color-1: #f97316;
+  --particle-color-2: #fdba74;
+  --particle-color-3: #fed7aa;
+  --gradient-hero: linear-gradient(135deg, #f97316 0%, #fb923c 30%, #fdba74 60%, #fed7aa 100%);
+  --gradient-card: linear-gradient(145deg, rgba(249,115,22,0.08) 0%, rgba(251,146,60,0.04) 100%);
+  --gradient-btn: linear-gradient(135deg, #f97316, #fb923c);
+  --nav-bg: rgba(255,255,255,0.88);
+  --card-hover-scale: 1.03;
+}

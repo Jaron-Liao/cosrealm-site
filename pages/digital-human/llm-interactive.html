@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-3d="galaxy" data-bg="nebula">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI数字人互动空间 — 龙奕学院 LongYi Academy</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../../assets/themes/academy/lavender-academy.css">
+<link rel="stylesheet" href="../../assets/themes/dark-mode.css">
+<link rel="stylesheet" href="../../assets/effects-layer.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="../../index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../anime.html">🏠 番剧首页</a>
+<a href="../../pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/player.html">▶ 播放器</a>
+<a href="../../pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="../../pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/mad.html">🎬 MAD创作</a>
+<a href="../../pages/anime/library.html">📚 动画图书馆</a>
+<a href="../../pages/anime/live.html">📡 直播</a>
+<a href="../../pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../social.html">🏠 社交首页</a>
+<a href="../../pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/create.html">✏️ 发布创作</a>
+<a href="../../pages/social/profile.html">👤 个人主页</a>
+<a href="../../pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/messages.html">💬 私信</a>
+<a href="../../pages/social/club.html">🏛️ 社团圈子</a>
+<a href="../../pages/social/bbs.html">📋 论坛BBS</a>
+<a href="../../pages/social/match.html">💕 同好匹配</a>
+<a href="../../pages/social/live-room.html">📡 虚拟直播</a>
+<a href="../../pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../shop.html">🏠 商城首页</a>
+<a href="../../pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/product.html">📦 商品详情</a>
+<a href="../../pages/shop/cart.html">🛒 购物车</a>
+<a href="../../pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/seller.html">🏪 卖家中心</a>
+<a href="../../pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../academy.html">🏠 书院首页</a>
+<a href="../../pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/course.html">📖 课程详情</a>
+<a href="../../pages/academy/player.html">▶ 课程播放</a>
+<a href="../../pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/creator.html">✏️ 创作中心</a>
+<a href="../../pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../creator.html">🏠 创作者首页</a>
+<a href="../../pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/upload.html">📤 发布作品</a>
+<a href="../../pages/creator/studio.html">🎬 创作工作室</a>
+<a href="../../pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/monetize.html">💰 变现中心</a>
+<a href="../../pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../digital-human.html">🏠 数字人首页</a>
+<a href="../../pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="../../pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="../../pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/market.html">🏪 市场</a>
+<a href="../../pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../metaverse.html">🏠 元宇宙首页</a>
+<a href="../../pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/land.html">🗺️ 土地</a>
+<a href="../../pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="../../pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/explore.html">🔮 探索</a>
+<a href="../../pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../pages/events/index.html">🏠 活动首页</a>
+<a href="../../pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/create.html">✏️ 发布活动</a>
+<a href="../../pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/live.html">📡 直播活动</a>
+<a href="../../pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="../../pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="../../pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+
+<!-- 角色选择区 -->
+<div style="max-width:1500px;margin:0 auto;padding:16px 20px 0;">
+  <div class="role-cards" id="roleCards"></div>
+</div>
+
+<div class="llm-layout">
+  <!-- 左侧：数字人舞台 -->
+  <div class="llm-stage">
+    <div class="stage-area" id="stageArea">
+      <div class="avatar-display" id="avatarDisplay">
+        <div class="avatar-face" id="avatarFace">🧝‍♀️</div>
+        <div style="margin-top:10px;font-size:0.9rem;" id="avatarMood">思考中...</div>
+      </div>
+    </div>
+    
+    <div class="status-bar">
+      <div class="status-item"><span class="dot-online"></span><span>LLM 引擎在线</span></div>
+      <div class="status-item">🧠 模型: <strong style="color:#a5b4fc;">LongYi-Chat v2.0</strong></div>
+      <div class="status-item">⚡ 响应: < 800ms</div>
+      <div class="status-item">🔄 上下文: <span id="contextCount">0</span> 轮</div>
+    </div>
+
+    <!-- 能力面板 -->
+    <div class="ability-panel" id="abilityPanel">
+      <div class="ability-title">📊 当前角色能力图谱</div>
+      <div class="ability-bars" id="abilityBars"></div>
+    </div>
+
+    <!-- 快捷回复 -->
+    <div class="quick-replies" id="quickReplies"></div>
+
+    <!-- TTS 控制 -->
+    <div class="tts-panel">
+      <button class="tts-btn" id="ttsToggle" onclick="toggleTTS()">🔊 开启语音</button>
+      <span style="font-size:0.82rem;color:#888;">语速:</span>
+      <input type="range" class="tts-slider" min="0.5" max="2" step="0.1" value="1" id="ttsSpeed" oninput="updateTtsSpeed(this.value)">
+      <span class="tts-speed-label" id="ttsSpeedLabel">1.0x</span>
+      <button class="tts-btn" onclick="changeVoice()">🎭 切换声音</button>
+    </div>
+  </div>
+
+  <!-- 右侧：对话区 -->
+  <div class="llm-chat">
+    <div class="chat-header">
+      <div class="chat-avatar-small" id="chatAvatar">🧝‍♀️</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name" id="chatName">艾莉亚 · 星语者</div>
+        <div class="chat-header-status">● AI驱动 · 实时响应</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput" placeholder="输入消息... (Enter发送，Shift+Enter换行)" rows="1" onkeydown="handleKey(event)"></textarea>
+      <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/three-engine.js"></script>
+
+    <script src="../../assets/bg-engine.js"></script>
+<script src="../../assets/theme-toggle.js"></script>
+<script src="../../assets/effects-runtime.js"></script>
+
+<script>
+// ====== AI 角色数据库 ======
+const ROLES = [
+  {
+    id:'elia',name:'艾莉亚·星语者',type:'奇幻向导',avatar:'🧝‍♀️',
+    desc:'来自星渊世界的精灵族学者，精通上古语言和星象魔法。性格温和但偶尔会一本正经地胡说八道。',
+    personality:'温柔、知性、略带神秘感、偶尔调皮',
+    abilities:{知识:95,共情:88,创意:82,逻辑:78,幽默:65},
+    greetings:['你好呀，旅行者~ 我是艾莉亚，有什么想聊的吗？','✨ 欢迎来到星渊！今天想探索什么话题？','哦~ 你来了呀！我正在研究新的星座配置呢~'],
+    quickReplies:['介绍一下你自己','讲一个奇幻故事','推荐一些番剧','今天运势如何','帮我做决定'],
+    responses:{
+      default:[
+        '嗯...这个问题很有趣呢~让我想想...',
+        '从星渊的角度来看，我觉得可以这样理解...',
+        '啊！这个让我想起了在星渊图书馆看到的一段记载~',
+        '旅行者，你的问题触及了很深的领域呢...不过我喜欢！',
+        '哈哈，你这么问的话...我有种预感我们会成为好朋友的！',
+      ]
+    }
+  },
+  {
+    id:'kuro',name:'黑曜·影刃',type:'赛博忍者',avatar:'🥷',
+    desc:'2077年新东京的独立情报贩子，擅长网络渗透和信息分析。外表冷酷但意外地会关心人。',
+    personality:'冷静、毒舌、内心温柔、技术宅',
+    abilities:{知识:82,共情:60,创意:70,logic:95,humor:72},
+    greetings:['...你找我？说吧，计时开始。','又是新人？行吧，我给你三分钟。','哼。既然来了就别浪费时间。'],
+    quickReplies:['帮我分析一下网络安全','推荐赛博朋克作品','你为什么这么酷','教我编程技巧','最近有什么情报'],
+    responses:{
+      default:[
+        '...这种事情还要我说？自己查去。...好吧，其实是这样——',
+        '啧。你的思路有问题。正确做法应该是这样...',
+        '呵。有意思。我从没从这个角度想过。',
+        '（推眼镜）听好了，我只说一次。', 
+        '...算了，看在你还算认真的份上，告诉你也无妨。',
+      ]
+    }
+  },
+  {
+    id:'miku',name:'初未来·歌姬',type:'虚拟偶像',avatar:'🎤',
+    desc:'龙奕学院原创虚拟歌手，拥有跨越八度的音域和治愈系的歌声。梦想是在龙墟世界最大的舞台上演唱。',
+    personality:'元气、纯真、热爱音乐、有点天然呆',
+    abilities:{knowledge:70,empathy:92,creativity:98,logic:55,humor:80},
+    greetings:['嗨嗨~！我是初未来！一起来唱歌吧~♪','大家好呀！今天也要元气满满哦！💖','啦啦啦~♪ 你来啦！等你好久了！'],
+    quickReplies:['唱一首歌吧','你的梦想是什么','安慰一下我','聊聊音乐','推荐一首歌'],
+    responses:{
+      default:[
+        '诶？！这个...嗯...让我用歌声回答你吧~♪',
+        '哇！你说的这个好有趣！我也想知道！',
+        '嘿嘿~我的直觉告诉我答案是这个！',
+        '♪~ 让我想想...啊！想到了！',
+        '呜...这个有点难倒我了...但是我会努力的！',
+      ]
+    }
+  },
+  {
+    id:'sensei',name:'老师·万事屋',type:'全能导师',avatar:'👨‍🏫',
+    desc:'龙奕研修学院的资深导师，从Cos制作技巧到人生哲理无所不知。说话喜欢引用名言但经常记错。',
+    personality:'博学、啰嗦、热心、偶尔健忘',
+    abilities:{knowledge:98,empathy:85,creativity:75,logic:90,humor:68},
+    greetings:['啊，来了来了！今天想学什么？','年轻人，求知若渴是好事！来来来，坐下说。','正如古人云——呃，那句怎么说来着...反正欢迎！'],
+    quickReplies:['Cos制作入门','如何提升创作','学习建议','职业规划','讲个冷笑话'],
+    responses:{
+      default:[
+        '好问题！这让我想起当年我在...等等，跑题了。答案是——',
+        '咳咳，作为导师，我要认真回答你这个问题。',
+        '嗯...根据我的经验来看，大概有这么几种可能...',
+        '哈哈！这个问题好啊！说明你在思考，我很欣慰！',
+        '让老师我想想...啊，对了！关键在于...',
+      ]
+    }
+  },
+  {
+    id:'neco',name:'猫又·捣蛋鬼',type:'吉祥物',avatar:'🐱',
+    desc:'龙奕学院的神秘生物，外形像猫但又不太像。喜欢恶作剧但从不真正伤害任何人。据说知道很多秘密。',
+    personality:'调皮、神秘、贪吃、傲娇',
+    abilities:{knowledge:60,empathy:75,creativity:90,logic:50,humor:95},
+    greetings:['喵？你谁啊...算了不管了，给吃的就行。','喵~！又来一个两脚兽！喵哈哈！','（盯）...你身上有零食的味道。'],
+    quickReplies:['你知道什么秘密','给我变个魔术','你最喜欢什么','讲个笑话','跟我玩'],
+    responses:{
+      default:[
+        '喵哈哈哈！这个简单！本喵什么不知道~',
+        '唔...告诉你可以，但你得先请我喝奶茶！',
+        '喵？（歪头）你认真的？好吧好吧~',
+        '嘿嘿嘿...秘密嘛~ 🤫',
+        '喵呜...这个嘛...（转圈圈）...啊想起来了！',
+      ]
+    }
+  }
+];
+
+// ====== 状态 ======
+let currentRole = ROLES[0];
+let chatHistory = [];
+let contextCount = 0;
+let ttsEnabled = false;
+let ttsSpeed = 1;
+let voiceIndex = 0;
+const VOICES = ['温柔女声','清澈男声','元气少女','低沉大叔','机械合成'];
+
+// ====== 初始化 ======
+function init(){
+  renderRoleCards();
+  selectRole(ROLES[0].id);
+  // 入场消息延迟发送
+  setTimeout(()=>{
+    const greet = currentRole.greetings[Math.floor(Math.random()*currentRole.greetings.length)];
+    addBotMessage(greet);
+  }, 800);
+}
+
+// ====== 渲染角色卡片 ======
+function renderRoleCards(){
+  document.getElementById('roleCards').innerHTML = ROLES.map(r => `
+    <div class="role-card ${r.id===currentRole.id?'active':''}" onclick="selectRole('${r.id}')">
+      <div class="role-avatar">${r.avatar}</div>
+      <div class="role-name">${r.name.split('·')[0]}</div>
+      <div class="role-type">${r.type}</div>
+    </div>
+  `).join('');
+}
+
+// ====== 选择角色 ======
+function selectRole(id){
+  currentRole = ROLES.find(r=>r.id===id)||ROLES[0];
+  renderRoleCards();
+  // Update UI
+  document.getElementById('avatarFace').textContent=currentRole.avatar;
+  document.getElementById('chatAvatar').textContent=currentRole.avatar;
+  document.getElementById('chatName').textContent=currentRole.name;
+  document.getElementById('avatarMood').textContent=currentRole.personality.split('、')[0]+'中...';
+  // Abilities
+  const abNames={knowledge:'知识',empathy:'共情',creativity:'创意',logic:'逻辑',humor:'幽默'};
+  let abHtml='';
+  for(const [key,label] of Object.entries(abNames)){
+    const val=currentRole.abilities[key]||50;
+    abHtml+=`<div class="ability-row">
+      <span class="ability-label">${label}</span>
+      <div class="ability-bar"><div class="ability-fill" style="width:${val}%"></div></div>
+      <span class="ability-value">${val}</span>
+    </div>`;
+  }
+  document.getElementById('abilityBars').innerHTML=abHtml;
+  // Quick replies
+  document.getElementById('quickReplies').innerHTML=(currentRole.quickReplies||[]).map(q=>
+    `<span class="quick-reply" onclick="sendQuick('${q}')">${q}</span>`
+  ).join('');
+  // Reset chat
+  document.getElementById('chatMessages').innerHTML='';
+  chatHistory=[];
+  contextCount=0;
+  document.getElementById('contextCount').textContent='0';
+  // Greeting
+  setTimeout(()=>{
+    const g=currentRole.greetings[Math.floor(Math.random()*currentRole.greetings.length)];
+    addBotMessage(g);
+  },400);
+}
+
+// ====== 消息系统 ======
+function addBotMessage(text){
+  const msgs=document.getElementById('chatMessages');
+  const div=document.createElement('div');
+  div.className='msg msg-bot';
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+  chatHistory.push({role:'bot',content:text});contextCount++;
+  document.getElementById('contextCount').textContent=contextCount;
+  // TTS
+  if(ttsEnabled)speakText(text);
+}
+function addUserMessage(text){
+  const msgs=document.getElementById('chatMessages');
+  const div=document.createElement('div');
+  div.className='msg msg-user';
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+  chatHistory.push({role:'user',content:text});
+}
+function showTyping(){
+  const msgs=document.getElementById('chatMessages');
+  const div=document.createElement('div');
+  div.className='typing-indicator';div.id='typingIndicator';
+  div.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){
+  const el=document.getElementById('typingIndicator');
+  if(el)el.remove();
+}
+
+// ====== 发送消息 ======
+function sendMessage(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  input.value='';
+  addUserMessage(text);
+  // Simulate LLM response
+  showTyping();
+  updateAvatarMood('thinking');
+  const delay=600+Math.random()*1200;
+  setTimeout(()=>{
+    hideTyping();
+    const reply=generateReply(text);
+    addBotMessage(reply);
+    updateAvatarMood('happy');
+  },delay);
+}
+function sendQuick(text){
+  document.getElementById('chatInput').value=text;
+  sendMessage();
+}
+function handleKey(e){
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}
+}
+
+// ====== LLM 回复模拟（实际接入时替换为真实API调用）=====
+function generateReply(userMsg){
+  const responses=currentRole.responses.default;
+  // 简单关键词匹配
+  const lower=userMsg.toLowerCase();
+  if(lower.includes('你好')||lower.includes('hi')||lower.includes('嗨'))
+    return currentRole.greetings[Math.floor(Math.random()*currentRole.greetings.length)];
+  if(lower.includes('名字')||lower.includes('是谁')||lower.includes('介绍'))
+    return `我是${currentRole.name}，一个${currentRole.type}。${currentRole.desc.substring(0,30)}...想了解更多就来问我吧~`;
+  if(lower.includes('喜欢')||lower.includes('爱好'))
+    return `${currentRole.personality.split('、')[Math.floor(Math.random()*currentRole.personality.split('、').length)]}是我的特点之一！至于具体的嘛...你猜猜？`;
+  if(lower.includes('帮助')||lower.includes('帮忙'))
+    return '当然可以！说说你需要什么帮助，我尽力而为~ 💪';
+  if(lower.includes('谢谢'))
+    return '不客气！能帮到你我也很开心~ 😊';
+  if(lower.includes('再见')||lower.includes('拜拜'))
+    return '好的，下次再来找我玩哦！我会想你的~ ✨';
+  // Default contextual response
+  const base=responses[Math.floor(Math.random()*responses.length)];
+  // Add some context awareness
+  const extras=[
+    `顺便说一下，关于"${userMsg.substring(0,10)}${userMsg.length>10?'...':''}"——`,
+    `说到这个，`,
+    ``,
+    `嗯...结合你刚才说的，`,
+  ];
+  const extra=extras[Math.floor(Math.random()*extras.length)];
+  return extra+base;
+}
+
+// ====== Avatar Mood ======
+function updateAvatarMood(mood){
+  const el=document.getElementById('avatarMood');
+  const moods={thinking:'🤔 思考中...',happy:'😊 开心',sad:'😢',surprised:'😮',angry:'😤',sleepy:'😴'};
+  el.textContent=moods[mood]||mood;
+}
+
+// ====== TTS 系统 ======
+function toggleTTS(){
+  ttsEnabled=!ttsEnabled;
+  document.getElementById('ttsToggle').textContent=ttsEnabled?'🔊 关闭语音':'🔊 开启语音';
+  document.getElementById('ttsToggle').style.background=ttsEnabled?'rgba(34,197,94,0.2)':'';
+  if(ttsEnabled&&!window.speechSynthesis)speakText('语音合成系统已启动！');
+}
+function speakText(text){
+  if(!('speechSynthesis'in window))return;
+  const utt=new SpeechSynthesisUtterance(text.slice(0,200));
+  utt.lang='zh-CN';
+  utt.rate=ttsSpeed;
+  utt.pitch=voiceIndex===2?1.3:voiceIndex===4?0.8:1;
+  window.speechSynthesis.speak(utt);
+}
+function updateTtsSpeed(v){
+  ttsSpeed=parseFloat(v);
+  document.getElementById('ttsSpeedLabel').textContent=v+'x';
+}
+function changeVoice(){
+  voiceIndex=(voiceIndex+1)%VOICES.length;
+  alert(`当前声音: ${VOICES[voiceIndex]}`);
+}
+
+// Init
+init();
+</script>
+    <script src="../assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

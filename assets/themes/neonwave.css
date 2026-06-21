@@ -1,0 +1,32 @@
+/* ====== Neonwave 电音青粉 ====== */
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: rgba(22,27,34,0.9);
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --accent-1: #00ff88;
+  --accent-2: #ff00aa;
+  --accent-3: #00aaff;
+  --gradient-hero: linear-gradient(180deg, #0d1117 0%, #1a0a20 50%, #0a1620 100%);
+  --gradient-accent: linear-gradient(135deg, #00ff88, #00aaff);
+  --gradient-btn: linear-gradient(135deg, #ff00aa, #00aaff);
+  --border-color: rgba(0,255,136,0.2);
+  --border-glow: 0 0 25px rgba(0,255,136,0.4);
+  --shadow-card: 0 8px 32px rgba(0,255,136,0.08);
+  --shadow-glow: 0 0 40px rgba(255,0,170,0.3);
+  --font-display: 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', sans-serif;
+  --nav-bg: rgba(13,17,23,0.97);
+  --card-radius: 12px;
+  --particle-color-1: #00ff88;
+  --particle-color-2: #ff00aa;
+  --particle-color-3: #00aaff;
+}
+body { background: var(--bg-primary); color: var(--text-primary); }
+.nav { background: var(--nav-bg); border-bottom: 2px solid var(--border-color); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); }
+.btn-primary { background: var(--gradient-btn); border: none; color: #fff; padding: 12px 28px; border-radius: 4px; cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+.btn-primary:hover { box-shadow: var(--border-glow); }
+.glow-text { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }

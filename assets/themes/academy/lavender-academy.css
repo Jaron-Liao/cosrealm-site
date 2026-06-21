@@ -1,0 +1,27 @@
+/* ====== 龙奕学院 — 紫薰学院 Lavender Academy ====== */
+:root {
+  --bg-primary: #f8f5ff;
+  --bg-card: rgba(255,255,255,0.92);
+  --bg-overlay: rgba(248,245,255,0.85);
+  --text: #302050;
+  --text-secondary: #605080;
+  --text-muted: #9080b8;
+  --accent: #8b5cf6;
+  --accent2: #a78bfa;
+  --accent-glow: rgba(139,92,246,0.4);
+  --border: rgba(139,92,246,0.2);
+  --shadow: 0 4px 20px rgba(139,92,246,0.15);
+  --shadow-lg: 0 8px 40px rgba(139,92,246,0.2);
+  --card-radius: 18px;
+  --btn-radius: 25px;
+  --font-display: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --font-body: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --particle-color-1: #8b5cf6;
+  --particle-color-2: #c4b5fd;
+  --particle-color-3: #e0d6ff;
+  --gradient-hero: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 30%, #c4b5fd 60%, #e0d6ff 100%);
+  --gradient-card: linear-gradient(145deg, rgba(139,92,246,0.08) 0%, rgba(167,139,250,0.04) 100%);
+  --gradient-btn: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  --nav-bg: rgba(255,255,255,0.88);
+  --card-hover-scale: 1.03;
+}

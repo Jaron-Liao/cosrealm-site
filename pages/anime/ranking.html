@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-3d="galaxy">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>番剧排行 — 龙奕学院</title>
+<link rel="stylesheet" href="../../assets/style.css"><link rel="stylesheet" href="../../assets/themes/academy/sunset-academy.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="../../index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../anime.html">🏠 番剧首页</a>
+<a href="../../pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/player.html">▶ 播放器</a>
+<a href="../../pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="../../pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/mad.html">🎬 MAD创作</a>
+<a href="../../pages/anime/library.html">📚 动画图书馆</a>
+<a href="../../pages/anime/live.html">📡 直播</a>
+<a href="../../pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../social.html">🏠 社交首页</a>
+<a href="../../pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/create.html">✏️ 发布创作</a>
+<a href="../../pages/social/profile.html">👤 个人主页</a>
+<a href="../../pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/messages.html">💬 私信</a>
+<a href="../../pages/social/club.html">🏛️ 社团圈子</a>
+<a href="../../pages/social/bbs.html">📋 论坛BBS</a>
+<a href="../../pages/social/match.html">💕 同好匹配</a>
+<a href="../../pages/social/live-room.html">📡 虚拟直播</a>
+<a href="../../pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../shop.html">🏠 商城首页</a>
+<a href="../../pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/product.html">📦 商品详情</a>
+<a href="../../pages/shop/cart.html">🛒 购物车</a>
+<a href="../../pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/seller.html">🏪 卖家中心</a>
+<a href="../../pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../academy.html">🏠 书院首页</a>
+<a href="../../pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/course.html">📖 课程详情</a>
+<a href="../../pages/academy/player.html">▶ 课程播放</a>
+<a href="../../pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/creator.html">✏️ 创作中心</a>
+<a href="../../pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../creator.html">🏠 创作者首页</a>
+<a href="../../pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/upload.html">📤 发布作品</a>
+<a href="../../pages/creator/studio.html">🎬 创作工作室</a>
+<a href="../../pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/monetize.html">💰 变现中心</a>
+<a href="../../pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../digital-human.html">🏠 数字人首页</a>
+<a href="../../pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="../../pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="../../pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/market.html">🏪 市场</a>
+<a href="../../pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../metaverse.html">🏠 元宇宙首页</a>
+<a href="../../pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/land.html">🗺️ 土地</a>
+<a href="../../pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="../../pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/explore.html">🔮 探索</a>
+<a href="../../pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../pages/events/index.html">🏠 活动首页</a>
+<a href="../../pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/create.html">✏️ 发布活动</a>
+<a href="../../pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/live.html">📡 直播活动</a>
+<a href="../../pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="../../pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="../../pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+<div class="page-wrap">
+<div class="page-hero"><span class="hero-emoji">🏆</span><h1>番剧排行</h1><p>发现全网最高评价的动画作品</p></div>
+
+<div class="section">
+<div class="stats-hero">
+  <div class="stat-card"><div class="stat-value">12,847</div><div class="stat-label">📚 收录番剧</div></div>
+  <div class="stat-card"><div class="stat-value">386,421</div><div class="stat-label">📺 总集数</div></div>
+  <div class="stat-card"><div class="stat-value">3.2万</div><div class="stat-label">👥 活跃追番</div></div>
+  <div class="stat-card"><div class="stat-value">9.15</div><div class="stat-label">⭐ 平均评分</div></div>
+</div>
+
+<div class="tabs mb-3"><button class="tab active" onclick="switchRankTab(this)">🏅 总榜</button><button class="tab" onclick="switchRankTab(this)">🆕 新番</button><button class="tab" onclick="switchRankTab(this)">🎬 剧场版</button><button class="tab" onclick="switchRankTab(this)">🇨🇳 国创</button></div>
+
+<div class="table-wrap">
+<table class="rank-table">
+<thead><tr><th style="width:40px;">#</th><th style="width:50px;"></th><th>作品</th><th>评分</th><th>趋势</th><th>类型</th></tr></thead>
+<tbody id="rankBody"></tbody></table>
+</div>
+
+<div class="card mt-4"><div class="section-title">⭐ 我的评分</div><p class="text-muted mb-2">为你喜欢的作品打分，影响总榜排名！</p>
+<div id="myRating" class="star-rating"></div><p id="ratingText" class="text-muted mt-1">点击星星评分</p></div>
+</div>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-brand">&copy;2026 <strong>龙奕学院 LongYi Academy</strong> — 广州龙奕无形科技文化有限公司</div><div class="footer-links"><a href="../../pages/meta/about.html">关于我们</a><a href="../../pages/meta/privacy.html">隐私政策</a><a href="../../pages/help/faq.html">帮助中心</a></div></div></footer>
+</div>
+<script src="../../assets/three-engine-v3.js"></script>
+    <script src="../../assets/bg-engine.js"></script>
+<script>
+const rankData=[
+  {num:1,title:'龙奕学院战记',score:'9.8',trend:'↑',tags:['热血','奇幻'],color:'linear-gradient(135deg,#4da6ff,#818cf8)',emoji:'🐉'},
+  {num:2,title:'魔法少女☆星辰',score:'9.7',trend:'↑',tags:['魔法','原创'],color:'linear-gradient(135deg,#ff6b9d,#c084fc)',emoji:'⭐'},
+  {num:3,title:'星之声',score:'9.7',trend:'→',tags:['科幻','音乐'],color:'linear-gradient(135deg,#8b5cf6,#a78bfa)',emoji:'🎵'},
+  {num:4,title:'喵喵日记',score:'9.6',trend:'↑',tags:['治愈','日常'],color:'linear-gradient(135deg,#eab308,#fde047)',emoji:'🐱'},
+  {num:5,title:'樱花庄的日常',score:'9.6',trend:'↓',tags:['日常','恋爱'],color:'linear-gradient(135deg,#ff8fab,#f9a8d4)',emoji:'🌸'},
+  {num:6,title:'异世界冒险谭',score:'9.5',trend:'↑',tags:['异世界','冒险'],color:'linear-gradient(135deg,#34d399,#6ee7b7)',emoji:'🗺️'},
+  {num:7,title:'龙之谷传奇',score:'9.5',trend:'→',tags:['奇幻','冒险'],color:'linear-gradient(135deg,#f97316,#ef4444)',emoji:'🐲'},
+  {num:8,title:'剑与魔法学院',score:'9.4',trend:'↑',tags:['奇幻','学院'],color:'linear-gradient(135deg,#f472b6,#f9a8d4)',emoji:'⚔️'},
+  {num:9,title:'Cos学园物语',score:'9.3',trend:'↓',tags:['日常','搞笑'],color:'linear-gradient(135deg,#f97316,#fbbf24)',emoji:'🎭'},
+  {num:10,title:'机甲战纪',score:'9.3',trend:'↑',tags:['机甲','科幻'],color:'linear-gradient(135deg,#6366f1,#818cf8)',emoji:'🤖'},
+  {num:11,title:'时空旅人',score:'9.2',trend:'→',tags:['科幻','悬疑'],color:'linear-gradient(135deg,#60a5fa,#a5b4fc)',emoji:'⏳'},
+  {num:12,title:'虚拟歌姬计划',score:'9.1',trend:'↓',tags:['音乐','偶像'],color:'linear-gradient(135deg,#ff6b9d,#f472b6)',emoji:'🎤'},
+  {num:13,title:'夜幕骑士',score:'9.0',trend:'↑',tags:['动作','黑暗'],color:'linear-gradient(135deg,#1e1b4b,#312e81)',emoji:'🌙'},
+  {num:14,title:'精灵花园',score:'8.9',trend:'→',tags:['治愈','奇幻'],color:'linear-gradient(135deg,#34d399,#a7f3d0)',emoji:'🧚'},
+  {num:15,title:'赛博猎人',score:'8.9',trend:'↑',tags:['赛博朋克','动作'],color:'linear-gradient(135deg,#4ecdc4,#2dd4bf)',emoji:'🏹'},
+  {num:16,title:'海洋之歌',score:'8.8',trend:'→',tags:['文艺','音乐'],color:'linear-gradient(135deg,#0ea5e9,#38bdf8)',emoji:'🌊'},
+  {num:17,title:'古剑传说',score:'8.8',trend:'↓',tags:['仙侠','古风'],color:'linear-gradient(135deg,#b45309,#d97706)',emoji:'🗡️'},
+  {num:18,title:'甜点大师',score:'8.7',trend:'↑',tags:['美食','日常'],color:'linear-gradient(135deg,#fbbf24,#f59e0b)',emoji:'🍰'},
+  {num:19,title:'机械之心',score:'8.7',trend:'→',tags:['科幻','哲学'],color:'linear-gradient(135deg,#94a3b8,#64748b)',emoji:'⚙️'},
+  {num:20,title:'花火物语',score:'8.6',trend:'↑',tags:['青春','文艺'],color:'linear-gradient(135deg,#f472b6,#ec4899)',emoji:'🎆'}
+];
+const medals={1:'🥇',2:'🥈',3:'🥉'};
+function renderRank(){
+  document.getElementById('rankBody').innerHTML=rankData.map(r=>`
+    <tr class="anim-fade-up" style="animation-delay:${r.num*0.03}s;opacity:0;">
+      <td class="rank-num">${medals[r.num]||r.num}</td>
+      <td><div class="rank-cover" style="background:${r.color};">${r.emoji}</div></td>
+      <td><span class="rank-title">${r.title}</span><div style="margin-top:2px;">${r.tags.map(t=>`<span class="tag tag-pink">${t}</span>`).join(' ')}</div></td>
+      <td class="rank-score">⭐ ${r.score}</td>
+      <td class="rank-trend" style="color:${r.trend==='↑'?'#34d399':r.trend==='↓'?'#ef4444':'#999'}">${r.trend}</td>
+      <td><button class="btn btn-sm btn-ghost">详情</button></td>
+    </tr>
+  `).join('');
+}
+function switchRankTab(btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');}
+let myRating=0;
+const stars=document.getElementById('myRating');
+for(let i=1;i<=10;i++){const s=document.createElement('span');s.textContent='☆';s.dataset.val=i;s.addEventListener('click',()=>{myRating=i;updateStars();document.getElementById('ratingText').textContent=`你评了 ${i/2} 分 ✨`;});s.addEventListener('mouseenter',()=>{for(let j=1;j<=10;j++)stars.children[j-1].textContent=j<=i?'★':'☆';});s.addEventListener('mouseleave',updateStars);stars.appendChild(s);}
+function updateStars(){for(let i=0;i<10;i++){stars.children[i].textContent=i<myRating?'★':'☆';stars.children[i].classList.toggle('active',i<myRating);}}
+renderRank();
+</script>
+<script src="../../assets/theme-toggle.js"></script>
+
+<script src="../../assets/effects-runtime.js"></script>
+    <script src="../assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

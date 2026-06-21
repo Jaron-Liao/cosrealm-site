@@ -1,0 +1,27 @@
+/* ====== 龙奕学院 — 樱粉学院 Sakura Academy ====== */
+:root {
+  --bg-primary: #fff5f7;
+  --bg-card: rgba(255,255,255,0.92);
+  --bg-overlay: rgba(255,240,245,0.85);
+  --text: #4a3040;
+  --text-secondary: #8a6a7a;
+  --text-muted: #b8a0aa;
+  --accent: #ff6b9d;
+  --accent2: #ff8fab;
+  --accent-glow: rgba(255,107,157,0.4);
+  --border: rgba(255,107,157,0.2);
+  --shadow: 0 4px 20px rgba(255,107,157,0.15);
+  --shadow-lg: 0 8px 40px rgba(255,107,157,0.2);
+  --card-radius: 18px;
+  --btn-radius: 25px;
+  --font-display: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --font-body: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --particle-color-1: #ff6b9d;
+  --particle-color-2: #ffb3c6;
+  --particle-color-3: #ffe0e8;
+  --gradient-hero: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 30%, #ffb3c6 60%, #ffe0e8 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255,107,157,0.08) 0%, rgba(255,143,171,0.04) 100%);
+  --gradient-btn: linear-gradient(135deg, #ff6b9d, #ff8fab);
+  --nav-bg: rgba(255,255,255,0.88);
+  --card-hover-scale: 1.03;
+}

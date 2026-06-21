@@ -1,0 +1,39 @@
+/* ====== Cyberpunk 赛博霓虹 ====== */
+:root {
+  --bg-primary: #0a0a1a;
+  --bg-secondary: #12122a;
+  --bg-card: rgba(18,18,42,0.85);
+  --text-primary: #e0e0ff;
+  --text-secondary: #8888cc;
+  --accent-1: #ff00ff;
+  --accent-2: #00ffff;
+  --accent-3: #ff6600;
+  --gradient-hero: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%);
+  --gradient-accent: linear-gradient(135deg, #ff00ff, #00ffff);
+  --gradient-btn: linear-gradient(135deg, #ff00ff, #6600ff);
+  --border-color: rgba(255,0,255,0.3);
+  --border-glow: 0 0 15px rgba(255,0,255,0.4);
+  --shadow-card: 0 4px 30px rgba(255,0,255,0.15);
+  --shadow-glow: 0 0 40px rgba(0,255,255,0.3);
+  --font-display: 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', sans-serif;
+  --nav-bg: rgba(10,10,26,0.95);
+  --card-radius: 16px;
+  --particle-color-1: #ff00ff;
+  --particle-color-2: #00ffff;
+  --particle-color-3: #ff6600;
+}
+
+body { 
+  background: var(--gradient-hero); 
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.nav { background: var(--nav-bg); border-bottom: 1px solid var(--border-color); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); }
+.btn-primary { background: var(--gradient-btn); border: none; color: #fff; padding: 12px 28px; border-radius: 25px; cursor: pointer; font-weight: 700; transition: all 0.3s; }
+.btn-primary:hover { box-shadow: var(--border-glow); transform: translateY(-2px); }
+.glow-text { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-title { font-size: 2.5rem; font-weight: 900; text-align: center; margin-bottom: 0.5rem; }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }

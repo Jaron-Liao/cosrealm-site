@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-3d="academy" data-bg="nebula">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数字人换装工坊 — 龙奕学院 LongYi Academy</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../../assets/themes/academy/starlight-academy.css">
+<link rel="stylesheet" href="../../assets/themes/dark-mode.css">
+<link rel="stylesheet" href="../../assets/effects-layer.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="../../index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../anime.html">🏠 番剧首页</a>
+<a href="../../pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/player.html">▶ 播放器</a>
+<a href="../../pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="../../pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/mad.html">🎬 MAD创作</a>
+<a href="../../pages/anime/library.html">📚 动画图书馆</a>
+<a href="../../pages/anime/live.html">📡 直播</a>
+<a href="../../pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../social.html">🏠 社交首页</a>
+<a href="../../pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/create.html">✏️ 发布创作</a>
+<a href="../../pages/social/profile.html">👤 个人主页</a>
+<a href="../../pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/messages.html">💬 私信</a>
+<a href="../../pages/social/club.html">🏛️ 社团圈子</a>
+<a href="../../pages/social/bbs.html">📋 论坛BBS</a>
+<a href="../../pages/social/match.html">💕 同好匹配</a>
+<a href="../../pages/social/live-room.html">📡 虚拟直播</a>
+<a href="../../pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../shop.html">🏠 商城首页</a>
+<a href="../../pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/product.html">📦 商品详情</a>
+<a href="../../pages/shop/cart.html">🛒 购物车</a>
+<a href="../../pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/seller.html">🏪 卖家中心</a>
+<a href="../../pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../academy.html">🏠 书院首页</a>
+<a href="../../pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/course.html">📖 课程详情</a>
+<a href="../../pages/academy/player.html">▶ 课程播放</a>
+<a href="../../pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/creator.html">✏️ 创作中心</a>
+<a href="../../pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../creator.html">🏠 创作者首页</a>
+<a href="../../pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/upload.html">📤 发布作品</a>
+<a href="../../pages/creator/studio.html">🎬 创作工作室</a>
+<a href="../../pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/monetize.html">💰 变现中心</a>
+<a href="../../pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../digital-human.html">🏠 数字人首页</a>
+<a href="../../pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="../../pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="../../pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/market.html">🏪 市场</a>
+<a href="../../pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../metaverse.html">🏠 元宇宙首页</a>
+<a href="../../pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/land.html">🗺️ 土地</a>
+<a href="../../pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="../../pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/explore.html">🔮 探索</a>
+<a href="../../pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../pages/events/index.html">🏠 活动首页</a>
+<a href="../../pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/create.html">✏️ 发布活动</a>
+<a href="../../pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/live.html">📡 直播活动</a>
+<a href="../../pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="../../pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="../../pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+
+<div class="avatar-stage" id="avatarStage">
+  <div class="avatar-canvas-wrapper">
+    <div class="avatar-placeholder" id="avatarPlaceholder">
+      <div class="avatar-silhouette">🧑‍🎤</div>
+      <span>拖拽旋转 · 滚轮缩放 · 点击试穿</span>
+    </div>
+  </div>
+  <div class="stage-controls">
+    <button class="stage-btn" onclick="rotateAvatar(-1)">↺ 左旋</button>
+    <button class="stage-btn" onclick="resetPose()">⊙ 正面</button>
+    <button class="stage-btn" onclick="rotateAvatar(1)">右旋 ↻</button>
+    <button class="stage-btn" onclick="toggleAnimation()">✨ 动作</button>
+    <button class="stage-btn" onclick="snapshot()">📸 截图</button>
+  </div>
+  <div class="rotate-hint">🖱️ 拖拽旋转视角</div>
+</div>
+
+<div class="dressup-layout">
+  <!-- 左侧主区域 -->
+  <div class="dressup-main">
+    <!-- 分类标签 -->
+    <div class="category-tabs" id="categoryTabs">
+      <div class="cat-tab active" data-cat="hair">💇 发型</div>
+      <div class="cat-tab" data-cat="face">😊 面部</div>
+      <div class="cat-tab" data-cat="top">👕 上装</div>
+      <div class="cat-tab" data-cat="bottom">👖 下装</div>
+      <div class="cat-tab" data-cat="shoes">👟 鞋履</div>
+      <div class="cat-tab" data-cat="acc">🎀 配饰</div>
+      <div class="cat-tab" data-cat="prop">⚔️ 道具</div>
+      <div class="cat-tab" data-cat="effect">✨ 特效</div>
+      <div class="cat-tab" data-cat="bg">🎭 背景</div>
+    </div>
+
+    <!-- 商品列表 -->
+    <div class="items-grid" id="itemsGrid"></div>
+  </div>
+
+  <!-- 右侧面板 -->
+  <div class="dressup-sidebar">
+    <!-- 当前穿搭 -->
+    <div class="outfit-panel">
+      <div class="panel-title">👔 当前穿搭</div>
+      <div class="current-outfit" id="currentOutfit">
+        <div class="outfit-slot" onclick="selectCategory('hair')"><div class="slot-icon">💇</div><div class="slot-name slot-empty">选择发型...</div></div>
+        <div class="outfit-slot" onclick="selectCategory('top')"><div class="slot-icon">👕</div><div class="slot-name slot-empty">选择上装...</div></div>
+        <div class="outfit-slot" onclick="selectCategory('bottom')"><div class="slot-icon">👖</div><div class="slot-name slot-empty">选择下装...</div></div>
+        <div class="outfit-slot" onclick="selectCategory('shoes')"><div class="slot-icon">👟</div><div class="slot-name slot-empty">选择鞋履...</div></div>
+        <div class="outfit-slot" onclick="selectCategory('acc')"><div class="slot-icon">🎀</div><div class="slot-name slot-empty">选择配饰...</div></div>
+        <div class="outfit-slot" onclick="selectCategory('prop')"><div class="slot-icon">⚔️</div><div class="slot-name slot-empty">选择道具...</div></div>
+      </div>
+    </div>
+
+    <!-- 预设搭配 -->
+    <div class="outfit-panel">
+      <div class="panel-title">🌟 推荐搭配</div>
+      <div class="presets-grid" id="presetsGrid"></div>
+    </div>
+
+    <!-- 统计 -->
+    <div class="outfit-panel">
+      <div class="panel-title">📊 穿搭统计</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span style="color:#a0a0c0;">已穿戴部件</span><span style="color:#22c55e;font-weight:700;" id="equippedCount">0/6</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span style="color:#a0a0c0;">总价值</span><span style="color:#f472b6;font-weight:700;" id="totalValue">¥0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span style="color:#a0a0c0;">风格评分</span><span style="color:#fbbf24;font-weight:700;" id="styleScore">--</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 商品详情弹窗 -->
+<div class="product-modal-overlay" id="productModal" onclick="if(event.target===this)closeModal()">
+  <div class="product-modal" id="productModalContent"></div>
+</div>
+
+<script src="../../assets/three-engine.js"></script>
+
+    <script src="../../assets/bg-engine.js"></script>
+<script src="../../assets/theme-toggle.js"></script>
+<script src="../../assets/effects-runtime.js"></script>
+
+<script>
+// ====== 数据 ======
+const ITEMS_DB = {
+  hair:[
+    {id:'h1',name:'樱粉双马尾',price:128,icon:'🎀',thumb:'#FFB7C5',badge:'hot',desc:'经典二次元双马尾造型，樱花粉色渐变发丝，自带微光粒子特效。适合甜美系角色扮演。',tags:['甜美','日常','热门']},
+    {id:'h2',name:'银白长直发',price:158,icon:'🤍',thumb:'#E8E8F0',badge:'new',desc:'流光银白色长直发，每根发丝都有细腻光泽。高冷御姐风必备。',tags:['高冷','华丽','新上架']},
+    {id:'h3',name:'星空渐变挑染',price:198,icon:'🌌',thumb:'#4B0082',badge:'',desc:'深紫到星空蓝的渐变挑染，内嵌细小星光粒子。夜晚模式下发光效果更佳。',tags:['奇幻','赛博','限量']},
+    {id:'h4',name:'猫耳短发',price:88,icon:'🐱',thumb:'#FFA07A',badge:'hot',desc:'带猫耳装饰的蓬松短发，耳朵可动。萌系角色首选。',tags:['可爱','萌系','热销']},
+    {id:'h5',name:'机械义体发箍',price:268,icon:'⚙️',thumb:'#708090',badge:'limited',desc:'赛博朋克风格机械义体发箍，内置LED灯条。科技感拉满。',tags:['赛博','科幻','限定']},
+    {id:'h6',name:'古风步摇发冠',price:218,icon:'🏮',thumb:'#DC143C',badge:'new',desc:'汉服风格步摇发冠，红金配色，镶嵌宝石流苏。古风Cos必备。',tags:['古风','华丽','新品']},
+    {id:'h7',name:'火焰渐变刺猬头',price:138,icon:'🔥',thumb:'#FF4500',badge:'',desc:'橙红渐变刺猬头，热血少年漫主角同款。充满能量感。',tags:['热血','运动']},
+    {id:'h8',name:'冰晶公主卷',price:178,icon:'❄️',thumb:'#87CEEB',badge:'limited',desc:'淡蓝色大波浪卷发，带有冰晶质感。冰雪女王气质。',tags:['优雅','魔法','限定']},
+  ],
+  top:[
+    {id:'t1',name:'学院JK制服',price:168,icon:'👔',thumb:'#2C3E50',badge:'hot',desc:'经典水手领JK制服，藏青色百褶裙套装。多色可选，支持刺绣定制。',tags:['学院','日常','热销']},
+    {id:'t2',name:'机甲战斗装甲',price:398,icon:'🤖',thumb:'#4A4A6A',badge:'new',desc:'全覆式机甲战斗装甲，LED呼吸灯效，可拆卸肩甲和护腕。硬核玩家首选。',tags:['机甲','科幻','新品']},
+    {id:'t3',name:'洛丽塔洋装',price:288,icon:'👗',thumb:'#FFB6C1',badge:'hot',desc:'多层蕾丝边洛丽塔裙装，蝴蝶结配饰，蓬蓬裙设计。甜系天花板。',tags:['甜美','洛丽塔','爆款']},
+    {id:'t4',name:'汉服交领襦裙',price:238,icon:'🏯',thumb:'#FFFFFF',badge:'',desc:'传统交领襦裙，绣花面料，宽袖飘逸。多朝代款式可选。',tags:['古风','传统文化']},
+    {id:'t5',name:'电竞队服夹克',price:198,icon:'🎮',thumb:'#1E90FF',badge:'new',desc:'专业电竞队服外套，透气面料，可自定义队标和ID刺绣。',tags:['电竞','潮流']},
+    {id:'t6',name:'魔法少女斗篷',price:258,icon:'🪄',thumb:'#9370DB',badge:'limited',desc:'星空图案魔法斗篷，内衬星光绸缎，披风边缘有流光特效。',tags:['魔法','奇幻','限定']},
+    {id:'t7',name:'女仆咖啡厅围裙',price:128,icon:'☕',thumb:'#FFF0F5',badge:'hot',desc:'黑白女仆装围裙套装，含头饰和围裙。漫展打工神器。',tags:['可爱','女仆','热销']},
+    {id:'t8',name:'武士道羽织',price:208,icon:'⚔️',thumb:'#222',badge:'',desc:'日式传统羽织外套，龙纹刺绣背面图案。浪人剑客风。',标签:['武士','和风']},
+  ],
+  bottom:[
+    {id:'b1',name:'百褶短裙(黑)',price:88,icon:'🖤',thumb:'#1a1a1a',badge:'hot',desc:'经典黑色百褶短裙，防走光内衬，A字版型。JK制服绝配。',tags:['制服','日常']},
+    {id:'b2',name:'机甲战术裤',price:188,icon:'🔫',thumb:'#333',badge:'new',desc:'多功能口袋战术裤，耐磨面料，膝盖处可加装护具。',tags:['机甲','战术']},
+    {id:'b3',name:'蕾丝蓬蓬裙',price:148,icon:'🩰',thumb:'#FFE4E1',badge:'',desc:'多层蕾丝蓬蓬裙，纱质外层，内衬安全裤。洛丽塔搭配必备。',tags:['甜美','洛丽塔']},
+    {id:'b4',name:'古装马面裙',price:168,icon:'🐉',thumb:'#8B0000',badge:'hot',desc:'明代马面裙，织金面料，前后裙门设计。国风复兴必备单品。',tags:['古风','国潮']},
+    {id:'b5',name:'荧光运动短裤',price:68,icon:'🏃',thumb:'#00FF00',badge:'',desc:'反光材质运动短裤，夜跑安全。活力满满的运动风。',tags:['运动','机能']},
+    {id:'b6',name:'赛博霓虹腿环',price:118,icon:'💜',thumb:'#8A2BE2',badge:'limited',desc:'LED发光腿环，多种闪烁模式，蓝牙APP可控颜色节奏。',tags:['赛博','限定']},
+  ],
+  shoes:[
+    {id:'s1',name:'圆头皮鞋(黑)',price:128,icon:'👞',thumb:'#111',badge:'hot',desc:'JK制服标配圆头皮鞋，真皮材质，舒适耐穿。',tags:['制服','日常']},
+    {id:'s2',name:'机甲动力靴',price:298,icon:'🦿',thumb:'#444',badge:'new',desc:'重型机甲动力靴，内置减震系统和LED推进器灯光。',tags:['机甲','科幻']},
+    {id:'s3',name:'水晶高跟鞋',price:168,icon:'👠',thumb:'#E0FFFF',badge:'',desc:'透明水晶材质高跟鞋，内嵌RGB灯光。公主风必备。',tags:['优雅','梦幻']},
+    {id:'s4',name:'木屐(桧木)',price:88,icon:'🩴',thumb:'#DEB887',badge:'',desc:'传统日式木屐，桧木材质，齿部防滑处理。和风搭配点睛之笔。',tags:['和风','传统']},
+    {id:'s5',name:'发光运动鞋',price:198,icon:'👟',thumb:'#FF1493',badge:'limited',desc:'LED智能运动鞋，手机App控色，支持音乐律动模式。',tags:['潮流','限定']},
+    {id:'s6',name:'魔法制服鞋',price:148,icon:'🪄',thumb:'#4B0082',badge:'hot',desc:'魔法少女标配尖头制服鞋，鞋扣为星星形状，带微光效果。',tags:['魔法','可爱']},
+  ],
+  acc:[
+    {id:'a1',name:'猫耳发箍',price:38,icon:'🐱',thumb:'#FFB6C1',badge:'hot',desc:'毛绒猫耳发箍，柔软亲肤，多种颜色可选。萌系入门级配件。',tags:['可爱','入门']},
+    {id:'a2',name:'VR眼镜道具',price:258,icon:'🥽',thumb:'#00CED1',badge:'new',desc:'赛博朋克风格VR眼镜道具，可显示自定义HUD动画。',tags:['赛博','科技']},
+    {id:'a3',name:'魔法法杖',price:188,icon:'🪄',thumb:'#FFD700',badge:'hot',desc:'LED发光法杖顶端，多色切换，底部电池仓。魔法少女标配武器。',tags:['魔法','道具']},
+    {id:'a4',name:'武士刀(未开刃)',price:228,icon='⚔️',thumb:'#C0C0C0',badge:'',desc:'合金材质仿制武士刀，安全无锋，展会可用。刀身刻字可选。',tags:['武士','道具']},
+    {id:'a5',name:'天使翅膀背包',price:168,icon:'👼',thumb:'#FFFACD',badge:'limited',desc:'可展开的羽毛翅膀背包，轻量化设计，展翅宽度1.2米。',tags:['天使','限定']},
+    {id:'a6',name:'机械臂义肢',price:328,icon:'🦾',thumb:'#708090',badge:'new',desc:'可穿戴式机械臂义肢外观道具，关节可动，手指可弯曲抓握。',tags:['赛博','机甲']},
+    {id:'a7',name:'兔耳头饰',price:48,icon:'🐰',thumb:'#FFC0CB',badge:'hot',desc:'毛绒兔耳头饰，可竖起或耷拉两种形态。百搭萌系配件。',tags:['可爱','萌系']},
+    {id:'a8',name:'全息项圈',price:98,icon:'💠',thumb:'#00FFFF',badge:'limited',desc:'LED全息投影项圈，可显示自定义文字和图案。赛博风点睛之笔。',tags:['赛博','限定']},
+  ],
+  prop:[
+    {id:'p1',name:'光剑道具',price:198,icon:'🗡️',thumb:'#00BFFF',badge:'hot',desc:'声光联动光剑道具，挥动时有碰撞音效和闪光。多色光刃可选。',tags:['科幻','武器']},
+    {id:'p2',name:'魔法书(精装)',price:128,icon:'📕',thumb:'#4A0E4E',badge:'',desc:'复古魔法书外观道具，内页可写内容，封面烫金符文。',tags:['魔法','道具']},
+    {id:'p3',name:'枪械模型(玩具)',price:268,icon:'🔫',thumb:'#2F2F2F',badge:'new',desc:'1:1比例枪械外观模型（绝对安全），金属质感涂装，后坐力振动模拟。',标签:['军事','模型']},
+    {id:'p4',name:'盾牌(动漫款)',price:158,icon:'🛡️',thumb:'#CD853F',badge:'',desc:'动漫风格手持盾牌，轻量泡沫芯+PVC表面，展会拍照利器。',tags:['战士','道具']},
+    {id:'p5',name:'精灵球道具',price:68,icon='🔮',thumb:'#FF0000',badge:'hot',desc:'可开合精灵球道具，内有LED灯光效果。训练师必备。',tags:['精灵','可爱']},
+    {id:'p6',name:'吉他(道具版)',price:188,icon:'🎸',thumb:'#DAA520',badge:'',desc:'乐队演出用道具吉他，可调音（仅外观），多种配色可选。',标签:['乐队','乐器']},
+  ],
+  effect:[
+    {id:'e1',name:'樱花飘落特效',price:28,icon:'🌸',thumb:'#FFB7C5',badge:'hot',desc:'数字人周围樱花花瓣持续飘落粒子特效，浪漫氛围感拉满。',tags:['浪漫','自然']},
+    {id:'e2',name:'火焰光环',price:38,icon:'🔥',thumb:'#FF4500',badge:'',desc:'脚下燃烧的火焰光环效果，热血战斗场景专用。',tags:['战斗','热血']},
+    {id:'e3',name:'星空斗篷光效',price:48,icon:'🌌',thumb:'#4B0082',badge:'limited',desc:'斗篷上的星空流转效果，仿佛把银河披在身上。',tags:['奇幻','限定']},
+    {id:'e4',name:'闪电链特效',price:35,icon:'⚡',thumb:'#00FFFF',badge:'new',desc:'指尖释放的闪电链粒子效果，施法动作完美配合。',tags:['魔法','新品']},
+    {id:'e5',name:'爱心气泡',price:18,icon:'💕',thumb:'#FF69B4',badge:'hot',desc:'周围冒出的漂浮心形气泡，甜蜜互动氛围。',tags:['可爱','社交']},
+    {id:'e6',name:'数据流光环',price:42,icon:'💜',thumb:'#8A2BE2',badge:'',desc:'赛博风格的数据流环绕光环，黑客帝国既视感。',tags:['赛博','科技']},
+  ],
+  bg:[
+    {id:'bg1',name:'樱花大道',price:18,icon:'🌸',thumb:'#FFDDE1',badge:'hot',desc:'春日樱花纷飞的街道背景，柔和暖色调。',tags:['春季','浪漫']},
+    {id:'bg2',name:'赛博都市夜景',price:28,icon:'🌃',thumb:'#0A0A20',badge:'new',desc:'霓虹灯闪烁的未来都市夜景，高楼林立。',tags:['赛博','城市']},
+    {id:'bg3',name:'魔法学园教室',price:18,icon:'🏫',thumb:'#FFF8DC',badge:'',desc:'阳光洒入的学园教室内景，黑板和课桌。',tags:['校园','日常']},
+    {id:'bg4',name:'虚空战场',price:28,icon:'💫',thumb:'#1A0A2E',badge:'',desc:'破碎的大地与紫色天空，史诗战斗场景。',tags:['战斗','史诗']},
+    {id:'bg5',name:'星际飞船舱内',price:22,icon:'🚀',thumb:'#2A2A3A',badge:'limited',desc:'科幻风格飞船内部，舷窗外可见星辰。',tags:['科幻','限定']},
+    {id:'bg6',name:'和风神社鸟居',price:18,icon:'⛩️',thumb:'#FFEBEE',badge:'hot',desc:'红色鸟居与石灯笼的传统神社场景。',标签:['和风','日本']},
+  ]
+};
+
+const PRESETS = [
+  {name:'JK学院风',icon:'🎓',items:{hair:'h1',top:'t1',bottom:'b1',shoes:'s1',acc:'a1'}},
+  {name:'机甲战士',icon:'🤖',items:{hair:'h5',top:'t2',bottom:'b2',shoes:'s2',acc:'a6',prop:'p1'}},
+  {name:'洛莉塔甜心',icon:'🍰',items:{hair:'h1',top:'t3',bottom:'b3',shoes:'s3',acc:'a5'}},
+  {name:'古风侠客',icon:'🏯',items:{hair:'h6',top:'t8',bottom:'b4',shoes:'s4',prop:'p4'}},
+  {name:'魔法少女',icon:'✨',items:{hair:'h3',top:'t6',bottom:'b3',shoes:'s6',acc:'a3',effect:'e3'}},
+  {name:'赛博忍者',icon:'🥷',items:{hair:'h5',top:'t2',bottom:'b5',shoes:'s5',acc:'a2',prop:'p1',bg:'bg2'}},
+];
+
+// ====== 状态 ======
+let currentCat = 'hair';
+let equipped = {}; // category -> item
+let rotation = 0;
+
+// ====== 渲染商品网格 ======
+function renderItems(cat){
+  const grid = document.getElementById('itemsGrid');
+  const items = ITEMS_DB[cat] || [];
+  grid.innerHTML = items.map(item => `
+    <div class="item-card ${equipped[cat]?.id===item.id?'equipped':''}" 
+         onclick="selectItem('${cat}','${item.id}')"
+         ondblclick="showProductDetail('${cat}','${item.id}')">
+      <div class="item-thumb" style="background:${item.thumb};">${item.icon}</div>
+      <div class="item-info">
+        <div class="item-name">${item.name}</div>
+        <div class="item-price">¥${item.price}</div>
+      </div>
+      ${item.badge?`<span class="item-badge badge-${item.badge}">${item.badge==='hot'?'🔥HOT':item.badge==='new'?'NEW':item.badge==='limited'?'限定':''}</span>`:''}
+    </div>
+  `).join('');
+}
+
+// ====== 选择商品 ======
+function selectItem(cat, itemId){
+  const items = ITEMS_DB[cat] || [];
+  const item = items.find(i => i.id === itemId);
+  if(!item)return;
+  equipped[cat] = item;
+  renderItems(cat);
+  updateOutfitPanel();
+  updateStats();
+  updateAvatarVisual();
+  // 视觉反馈
+  showToast(`已装备 ${item.name}`);
+}
+
+// ====== 更新穿搭面板 ======
+function updateOutfitPanel(){
+  const slots = {
+    hair:{icon:'💇',label:'发型'},
+    top:{icon:'👕',label:'上装'},
+    bottom:{icon:'👖',label:'下装'},
+    shoes:{icon:'👟',label:'鞋履'},
+    acc:{icon:'🎀',label:'配饰'},
+    prop:{icon:'⚔️',label:'道具'}
+  };
+  let html = '';
+  for(const [key,{icon,label}] of Object.entries(slots)){
+    const eq = equipped[key];
+    html += `<div class="outfit-slot" onclick="selectCategory('${key}')">
+      <div class="slot-icon">${icon}</div>
+      <div class="slot-name">${eq ? eq.name+' ¥'+eq.price : '<span class="slot-empty">选择'+label+'...</span>'}</div>
+    </div>`;
+  }
+  document.getElementById('currentOutfit').innerHTML = html;
+}
+
+// ====== 更新统计 ======
+function updateStats(){
+  const count = Object.keys(equipped).length;
+  const total = Object.values(equipped).reduce((sum,item)=>sum+(item?.price||0),0);
+  document.getElementById('equippedCount').textContent = `${count}/6`;
+  document.getElementById('totalValue').textContent = `¥${total}`;
+  // 简单风格评分算法
+  let score = '--';
+  if(count >= 3){
+    score = Math.min(99, 50 + count*5 + Math.floor(total/50));
+    if(equipped.hair&&equipped.top&&equipped.shoes)score+=10;
+    if(Object.keys(equipped).length>=5)score+=5;
+  }
+  document.getElementById('styleScore').textContent = score==='--'?score:score+'/99';
+}
+
+// ====== 更新数字人视觉效果 ======
+function updateAvatarVisual(){
+  const ph = document.getElementById('avatarPlaceholder');
+  // 根据已装备物品组合emoji表示
+  let look = '🧑‍🎤';
+  if(equipped.top){
+    const t = equipped.top.id;
+    if(t.includes('t2')||t.includes('t8'))look='🤖';
+    else if(t.includes('t3'))look='👸';
+    else if(t.includes('t6'))look='🧙‍♀️';
+    else if(t.includes('t1'))look='🎓';
+    else if(t.includes('t4'))look='👘';
+    else if(t.includes('t7'))look='🍽️';
+  }
+  ph.querySelector('.avatar-silhouette').textContent = look;
+}
+
+// ====== 分类切换 ======
+function selectCategory(cat){
+  currentCat = cat;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+  renderItems(cat);
+}
+
+// ====== 预设搭配渲染 ======
+function renderPresets(){
+  document.getElementById('presetsGrid').innerHTML = PRESETS.map(p => `
+    <div class="preset-card" onclick="applyPreset('${p.name}')" title="${p.name}">
+      <div class="preset-icon">${p.icon}</div>
+      <div class="preset-name">${p.name}</div>
+    </div>
+  `).join('');
+}
+
+function applyPreset(name){
+  const preset = PRESETS.find(p => p.name === name);
+  if(!preset)return;
+  equipped = {};
+  for(const [cat,id] of Object.entries(preset.items)){
+    const allItems = ITEMS_DB[cat] || [];
+    const item = allItems.find(i => i.id === id);
+    if(item)equipped[cat]=item;
+  }
+  renderItems(currentCat);
+  updateOutfitPanel();
+  updateStats();
+  updateAvatarVisual();
+  showToast(`已应用「${name}」搭配`);
+}
+
+// ====== 商品详情弹窗 ======
+function showProductDetail(cat, itemId){
+  const items = ITEMS_DB[cat] || [];
+  const item = items.find(i => i.id === itemId);
+  if(!item)return;
+  const modal = document.getElementById('productModal');
+  const content = document.getElementById('productModalContent');
+  content.innerHTML = `
+    <div class="modal-image" style="background:${item.thumb};">${item.icon}</div>
+    <div class="modal-body">
+      <div class="modal-title">${item.icon} ${item.name}</div>
+      <div class="modal-desc">${item.desc}</div>
+      <div class="modal-meta">${(item.tags||[]).map(t=>`<span class="meta-tag">#${t}</span>`).join('')}</div>
+      <div class="modal-price-row">
+        <span class="modal-price">¥${item.price}</span>
+        <span style="color:#a0a0c0;font-size:0.85rem;">已有 ${Math.floor(Math.random()*900)+100} 人购买</span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-tryon" onclick="selectItem('${cat}','${itemId}');closeModal()">👗 试穿此件</button>
+        <button class="btn-buy" onclick="alert('跳转到商城购买页面...')">🛒 立即购买</button>
+      </div>
+    </div>`;
+  modal.classList.add('show');
+}
+
+function closeModal(){document.getElementById('productModal').classList.remove('show');}
+
+// ====== 舞台控制 ======
+function rotateAvatar(dir){
+  rotation += dir * 15;
+  const el = document.querySelector('.avatar-silhouette');
+  if(el)el.style.transform=`rotate(${rotation}deg)`;
+}
+function resetPose(){rotation=0;const el=document.querySelector('.avatar-silhouette');if(el)el.style.transform='';}
+let animState=0;const animPoses=['wave','dance','idle','jump'];
+function toggleAnimation(){
+  animState=(animState+1)%animPoses.length;
+  showToast(`动作: ${['挥手','跳舞','待机','跳跃'][animState]}`);
+}
+function snapshot(){
+  showToast('📸 截图已保存到相册！');
+}
+
+// ====== Toast提示 ======
+function showToast(msg){
+  const el = document.createElement('div');
+  el.style.cssText = `position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:9999;
+    padding:10px 24px;border-radius:12px;background:rgba(99,102,241,0.95);color:#fff;
+    font-size:0.9rem;font-weight:600;box-shadow:0 8px 30px rgba(99,102,241,0.3);
+    animation:fadeInUp 0.3s ease;`;
+  el.textContent=msg;
+  document.body.appendChild(el);
+  setTimeout(()=>{el.style.opacity='0';setTimeout(()=>el.remove(),300);},2000);
+}
+
+// ====== Tab事件绑定 ======
+document.querySelectorAll('.cat-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>selectCategory(tab.dataset.cat));
+});
+
+// ====== 初始化 ======
+renderItems('hair');
+renderPresets();
+updateStats();
+
+// CSS animation
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fadeInUp{from{opacity:0;transform:translateX(-50%) translateY(-10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+`;
+document.head.appendChild(style);
+</script>
+    <script src="../assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研修学院 | 龙奕学院 LongYi Academy</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/themes/academy/sky-academy.css">
+<link rel="stylesheet" href="assets/themes/dark-mode.css">
+<link rel="stylesheet" href="assets/effects-layer.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="anime.html">🏠 番剧首页</a>
+<a href="pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/anime/player.html">▶ 播放器</a>
+<a href="pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="pages/anime/mad.html">🎬 MAD创作</a>
+<a href="pages/anime/library.html">📚 动画图书馆</a>
+<a href="pages/anime/live.html">📡 直播</a>
+<a href="pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="social.html">🏠 社交首页</a>
+<a href="pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="pages/social/create.html">✏️ 发布创作</a>
+<a href="pages/social/profile.html">👤 个人主页</a>
+<a href="pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="pages/social/messages.html">💬 私信</a>
+<a href="pages/social/club.html">🏛️ 社团圈子</a>
+<a href="pages/social/bbs.html">📋 论坛BBS</a>
+<a href="pages/social/match.html">💕 同好匹配</a>
+<a href="pages/social/live-room.html">📡 虚拟直播</a>
+<a href="pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="shop.html">🏠 商城首页</a>
+<a href="pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/shop/product.html">📦 商品详情</a>
+<a href="pages/shop/cart.html">🛒 购物车</a>
+<a href="pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="pages/shop/seller.html">🏪 卖家中心</a>
+<a href="pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="academy.html">🏠 书院首页</a>
+<a href="pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="pages/academy/course.html">📖 课程详情</a>
+<a href="pages/academy/player.html">▶ 课程播放</a>
+<a href="pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="pages/academy/creator.html">✏️ 创作中心</a>
+<a href="pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="creator.html">🏠 创作者首页</a>
+<a href="pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/creator/upload.html">📤 发布作品</a>
+<a href="pages/creator/studio.html">🎬 创作工作室</a>
+<a href="pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="pages/creator/monetize.html">💰 变现中心</a>
+<a href="pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="digital-human.html">🏠 数字人首页</a>
+<a href="pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="pages/digital-human/market.html">🏪 市场</a>
+<a href="pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="metaverse.html">🏠 元宇宙首页</a>
+<a href="pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/metaverse/land.html">🗺️ 土地</a>
+<a href="pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="pages/metaverse/explore.html">🔮 探索</a>
+<a href="pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="pages/events/index.html">🏠 活动首页</a>
+<a href="pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="pages/events/create.html">✏️ 发布活动</a>
+<a href="pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="pages/events/live.html">📡 直播活动</a>
+<a href="pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+<div id="nav-placeholder"></div>
+<div class="page-wrap">
+  <div class="hero-section academy-hero">
+    <h1>研修学院</h1>
+    <p class="hero-sub">从零基础到专业Coser的系统化学习路径。AI驱动个性化推荐，覆盖化妆、道具、摄影、后期等全流程，千万Coser的成长基地。</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hs-val" id="courseCount">2,847</span><span class="hs-lbl">精品课程</span></div>
+      <div class="hero-stat"><span class="hs-val" id="studentCount">89.6万</span><span class="hs-lbl">在学学员</span></div>
+      <div class="hero-stat"><span class="hs-val">98.2%</span><span class="hs-lbl">好评率</span></div>
+      <div class="hero-stat"><span class="hs-val">1,247</span><span class="hs-lbl">导师入驻</span></div>
+    </div>
+    <div class="learning-path">
+      <a href="pages/academy/courses.html" class="path-step"><div class="num">1</div><div class="label">了解Cosplay</div><div class="sub">基础知识入门</div></a>
+      <span class="path-arrow">→</span>
+      <a href="pages/academy/courses.html" class="path-step"><div class="num">2</div><div class="label">选择角色</div><div class="sub">AI智能推荐</div></a>
+      <span class="path-arrow">→</span>
+      <a href="pages/academy/courses.html" class="path-step"><div class="num">3</div><div class="label">服装道具</div><div class="sub">采购与制作</div></a>
+      <span class="path-arrow">→</span>
+      <a href="pages/academy/courses.html" class="path-step"><div class="num">4</div><div class="label">化妆造型</div><div class="sub">技巧入门</div></a>
+      <span class="path-arrow">→</span>
+      <a href="pages/academy/courses.html" class="path-step"><div class="num">5</div><div class="label">拍摄后期</div><div class="sub">出片全流程</div></a>
+      <span class="path-arrow">→</span>
+      <a href="pages/academy/courses.html" class="path-step"><div class="num">6</div><div class="label">发布分享</div><div class="sub">社区互动</div></a>
+    </div>
+  </div>
+
+  <div class="feat-banner" onclick="location.href='pages/academy/path.html'">
+    <div class="fb-overlay">
+      <span class="fb-tag">🌟 推荐学习路径</span>
+      <div class="fb-title">AI智能学习规划 — 你的专属Cos成长之路</div>
+      <div class="fb-desc">上传你的照片和目标，AI分析你的体型、肤色、预算和偏好，生成个性化学习计划。从选角到出片，AI全程陪伴。</div>
+    </div>
+  </div>
+
+  <div class="quick-row">
+    <a href="pages/academy/courses.html" class="qcard"><span class="qi">📚</span><div class="qt">课程中心</div><div class="qd">系统化学习路径</div></a>
+    <a href="pages/academy/videos.html" class="qcard"><span class="qi">🎬</span><div class="qt">视频教程</div><div class="qd">免费高清教学</div></a>
+    <a href="pages/academy/challenge.html" class="qcard"><span class="qi">🎯</span><div class="qt">挑战任务</div><div class="qd">实战检验技能</div></a>
+    <a href="pages/academy/ranking.html" class="qcard"><span class="qi">🏆</span><div class="qt">学霸排行</div><div class="qd">学习PK竞技</div></a>
+  </div>
+
+  <div class="sec-header"><span class="sh-icon">📺</span><h2>直播课堂 · 即将开讲</h2><a href="pages/academy/live-class.html" class="sh-more">全部课程 →</a></div>
+  <div class="live-class-strip" id="liveStrip"></div>
+
+  <div class="sec-header"><span class="sh-icon">📚</span><h2>系统化教程</h2><a href="pages/academy/courses.html" class="sh-more">课程中心 →</a></div>
+  <div class="tutorial-grid" id="tutorialGrid"></div>
+
+  <div class="sec-header"><span class="sh-icon">🛠️</span><h2>新手必备装备</h2><a href="pages/academy/library.html" class="sh-more">装备库 →</a></div>
+  <div class="gear-section"><div class="gear-grid" id="gearGrid"></div></div>
+
+  <div class="sec-header"><span class="sh-icon">🎓</span><h2>优秀学员作品展</h2><a href="pages/academy/ranking.html" class="sh-more">排行榜 →</a></div>
+  <div class="student-showcase" id="studentShow"></div>
+
+  <div class="sec-header"><span class="sh-icon">🏅</span><h2>证书认证</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 30px 20px">
+    <a href="pages/academy/cert.html" class="gcard" style="text-align:center"><span class="gi">🥇</span><div class="gn">初级Coser认证</div><div class="gd">完成6门基础课程+1次实战考核</div></a>
+    <a href="pages/academy/cert.html" class="gcard" style="text-align:center"><span class="gi">🥈</span><div class="gn">中级Coser认证</div><div class="gd">完成12门进阶课程+3次作品评审</div></a>
+    <a href="pages/academy/cert.html" class="gcard" style="text-align:center"><span class="gi">🥉</span><div class="gn">高级Coser认证</div><div class="gd">完成18门高级课程+社区贡献评审</div></a>
+  </div>
+
+  <div class="sec-header"><span class="sh-icon">❓</span><h2>新手常见问题</h2></div>
+  <div class="faq-section" id="faqSection"></div>
+</div>
+
+<script>
+!function(){
+var tutorials=[{t:"Cosplay入门完全指南",d:"什么是Cosplay？如何选择第一个角色？从零开始系统了解Cosplay文化、圈内术语和基础流程。",l:"beginner",i:"📖",m:["📚 12课时","⏱️ 2小时","👥 3.2万人"]},
+{t:"AI智能角色推荐与选择",d:"根据你的体型、肤色、预算和喜好，AI推荐最适合新手的入门角色。匹配率高达92%，降低翻车风险。",l:"beginner",i:"🎯",m:["📚 6课时","⏱️ 1小时","👥 4.8万人"]},
+{t:"Cosplay化妆基础入门",d:"底妆、眼妆、修容、唇妆四大板块。包含原神/星穹铁道等热门角色的妆容分解教程。",l:"beginner",i:"💄",m:["📚 15课时","⏱️ 3小时","👥 6.1万人"]},
+{t:"Cos服装选购与尺寸指南",d:"如何测量身体尺寸？各平台服装质量对比、性价比分析。淘宝/拼多多/定制工作室选购技巧。",l:"beginner",i:"👘",m:["📚 8课时","⏱️ 1.5小时","👥 5.4万人"]},
+{t:"Cosplay摄影与后期处理",d:"手机也能出大片！构图技巧、光线运用、LR+PS后期调色修图全流程。",l:"intermediate",i:"📷",m:["📚 20课时","⏱️ 4小时","👥 3.8万人"]},
+{t:"道具制作与3D打印入门",d:"EVA泡沫板、热塑材料、3D打印三种主流技术详解。包含雷电将军薙刀等实战案例。",l:"advanced",i:"🔧",m:["📚 18课时","⏱️ 4小时","👥 2.1万人"]},
+{t:"假发造型基础与进阶",d:"从基础梳理到复杂造型，真人假发与化纤假发的区别及护理技巧。",l:"intermediate",i:"💇",m:["📚 10课时","⏱️ 2小时","👥 3.5万人"]},
+{t:"特效化妆与伤妆制作",d:"液态乳胶、明胶、硅胶——三种材料在特效化妆中的应用。科幻/奇幻/伤妆全覆盖。",l:"advanced",i:"🎭",m:["📚 14课时","⏱️ 3小时","👥 1.8万人"]}];
+
+document.getElementById('tutorialGrid').innerHTML=tutorials.map(function(t,i){return'<a href="pages/academy/courses.html" class="tcard"><span class="diff '+t.l+'">'+(t.l==='beginner'?'入门':t.l==='intermediate'?'进阶':'高级')+'</span><span class="ti">'+t.i+'</span><div class="tt">'+t.t+'</div><div class="td">'+t.d+'</div><div class="tm">'+t.m.map(function(x){return'<span>'+x+'</span>'}).join('')+'</div></a>'}).join('');
+
+var gear=[{i:"💄",n:"化妆入门套装",d:"新手友好，包含底妆、眼影、修容等基础产品，附赠教程视频",t:["粉底液","眼影盘","修容棒","定妆喷雾"]},
+{i:"📸",n:"摄影入门设备",d:"手机也能拍！环形补光灯+手机三脚架+反光板，总预算300元以内",t:["补光灯","三脚架","反光板"]},
+{i:"🧵",n:"服装护理工具",d:"假发护理液、服装熨烫、防皱喷雾——保持服装最佳状态的必备品",t:["假发护理","蒸汽熨斗","防皱喷雾"]},
+{i:"🎒",n:"漫展出征包",d:"化妆包、针线包、备用丝袜、创可贴、充电宝——漫展现场应急必备",t:["应急包","针线包","充电宝"]}];
+
+document.getElementById('gearGrid').innerHTML=gear.map(function(g){return'<a href="pages/academy/library.html" class="gcard"><span class="gi">'+g.i+'</span><div class="gn">'+g.n+'</div><div class="gd">'+g.d+'</div><div class="gtags">'+g.t.map(function(x){return'<span class="gtag">'+x+'</span>'}).join('')+'</div></a>'}).join('');
+
+var students=[{n:"小樱Cos",r:"入门3个月",s:"从零到出片！",bg:"linear-gradient(135deg,#ff4081,#ff80ab)",i:"🌸"},
+{n:"摄影新手小王",r:"入门1个月",s:"手机也能拍大片",bg:"linear-gradient(135deg,#37474f,#607d8b)",i:"📷"},
+{n:"道具学徒阿强",r:"入门6个月",s:"第一把EVA剑",bg:"linear-gradient(135deg,#ff6f00,#ffa000)",i:"🗡️"},
+{n:"化妆爱好者",r:"入门2个月",s:"还原雷电将军妆容",bg:"linear-gradient(135deg,#4a148c,#7b1fa2)",i:"💄"},
+{n:"cos新手小美",r:"入门4个月",s:"完成阿尼亚cos",bg:"linear-gradient(135deg,#1b5e20,#43a047)",i:"🥜"}];
+
+document.getElementById('studentShow').innerHTML=students.map(function(s){return'<a href="pages/academy/ranking.html" class="scard"><div class="sc-thumb" style="background:'+s.bg+'">'+s.i+'</div><div class="sc-info"><div class="sc-name">'+s.n+'</div><div class="sc-meta">'+s.r+' · '+s.s+'</div></div></a>'}).join('');
+
+var live=[{t:"雷电将军cos妆容教学",d:"今晚20:00",bg:"#ef4444",i:"💄",n:"妆娘小雨"},
+{t:"EVA道具刀制作直播",d:"明晚19:30",bg:"#f97316",i:"🔧",n:"道具大师K"},
+{t:"摄影布光实战",d:"周三14:00",bg:"#6366f1",i:"📸",n:"摄影师A"},
+{t:"假发造型入门",d:"周四20:00",bg:"#ec4899",i:"💇",n:"发型师CC"},
+{t:"3D打印道具全流程",d:"周六15:00",bg:"#8b5cf6",i:"🖨️",n:"3D打印工坊"}];
+
+document.getElementById('liveStrip').innerHTML=live.map(function(l){return'<a href="pages/academy/live-class.html" class="lc-item"><span class="lci">'+l.i+'</span><div class="lct">'+l.t+'</div><div class="lcm">'+l.d+'</div><span class="lcbadge" style="background:'+l.bg+';color:#fff">'+l.n+'</span></a>'}).join('');
+
+var faqs=[{q:"Cosplay需要花很多钱吗？",a:"不一定！入门级Cosplay预算可以从300元起步。选择简单角色、购买二手服装、自己动手做道具都是省钱的好方法。龙奕学院商城专门有新手专区，提供高性价比Cos服装。"},
+{q:"完全0基础，第一个角色选什么？",a:"建议选择服装结构简单、妆容要求不高的角色。推荐：阿尼亚（间谍过家家）、旅行者（原神）、现代风格角色。使用龙奕学院AI推荐功能匹配最佳角色。"},
+{q:"男生可以Cos女性角色吗？",a:"当然可以！跨性别Cosplay（Crossplay）是Cosplay文化中非常普遍和受尊重的形式。关键在于妆容技巧和服装合身度。学院有专门的Crossplay化妆教程。"},
+{q:"Cos服装在哪里买最靠谱？",a:"首选龙奕学院自营商城（品质保证+退换无忧），其次是淘宝认证的Cos服装店，定制服装建议选口碑好的工作室。商城所有商品都有Coser真实评价和实拍图。"},
+{q:"学到什么程度可以参加比赛？",a:"没有硬性门槛！学院每月举办新人挑战赛，专门为零基础学员设计。完成6门基础课程后，就可以参加初级认证考核。比赛更看重创意和进步，不只是技术。"}];
+
+document.getElementById('faqSection').innerHTML=faqs.map(function(f,i){return'<div class="faq-item'+(i===0?' open':'')+'"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">'+f.q+'<span class="arrow">▼</span></div><div class="faq-a">'+f.a+'</div></div>'}).join('');
+}();
+</script>
+
+
+    <script src="assets/theme-toggle.js"></script>
+
+<script src="assets/effects-runtime.js"></script>
+    <script src="./assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+/* ====== Matrix 矩阵觉醒 ====== */
+:root {
+  --bg-primary: #000a00;
+  --bg-secondary: #001400;
+  --bg-card: rgba(0,20,0,0.9);
+  --text-primary: #00ff41;
+  --text-secondary: #00cc33;
+  --accent-1: #00ff41;
+  --accent-2: #00cc00;
+  --accent-3: #00ff88;
+  --gradient-hero: linear-gradient(180deg, #000a00 0%, #001400 50%, #000a00 100%);
+  --gradient-accent: linear-gradient(135deg, #00ff41, #00cc00);
+  --gradient-btn: linear-gradient(135deg, #00ff41, #009900);
+  --border-color: rgba(0,255,65,0.3);
+  --border-glow: 0 0 20px rgba(0,255,65,0.4);
+  --shadow-card: 0 8px 32px rgba(0,255,65,0.08);
+  --shadow-glow: 0 0 30px rgba(0,255,65,0.3);
+  --font-display: 'Courier New', monospace;
+  --font-body: 'Courier New', monospace;
+  --nav-bg: rgba(0,10,0,0.98);
+  --card-radius: 4px;
+  --particle-color-1: #00ff41;
+  --particle-color-2: #00cc00;
+  --particle-color-3: #00ff88;
+}
+body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); }
+.nav { background: var(--nav-bg); border-bottom: 1px solid var(--border-color); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); }
+.btn-primary { background: transparent; border: 1px solid var(--accent-1); color: var(--accent-1); padding: 10px 24px; border-radius: 4px; cursor: pointer; font-weight: 700; font-family: var(--font-body); }
+.btn-primary:hover { background: var(--accent-1); color: #000a00; box-shadow: var(--border-glow); }
+.glow-text { color: var(--accent-1); text-shadow: 0 0 10px rgba(0,255,65,0.5); }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }

@@ -1,0 +1,17 @@
+# Windows reserved filenames
+pages/events/con.html
+
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

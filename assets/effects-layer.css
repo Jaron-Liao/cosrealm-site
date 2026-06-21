@@ -1,0 +1,646 @@
+/* ================================================================
+   龙奕学院 · 特效层 v4.0 — Effects Layer
+   酷炫视觉：全息、赛博HUD、粒子光晕、文字故障、3D卡片翻转、
+   霓虹描边、波纹扩散、水晶质感、穿梭粒子、视差滚动
+   ================================================================ */
+
+/* ===== CSS Variables for effects ===== */
+:root {
+  --effect-speed: 0.4s;
+  --glow-color: rgba(99, 102, 241, 0.6);
+  --hologram-color: rgba(139, 92, 246, 0.4);
+  --neon-pink: #ff6b9d;
+  --neon-cyan: #22d3ee;
+  --neon-purple: #a78bfa;
+  --particle-size: 4px;
+}
+
+/* ===== 粒子画布 (全局背景) ===== */
+#fx-particle-canvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+
+/* ===== 鼠标光晕跟随 ===== */
+.cursor-glow {
+  position: fixed; width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+  opacity: 0.15;
+}
+
+/* ===== 全息投影效果 (Hologram) ===== */
+.hologram {
+  position: relative;
+}
+.hologram::before {
+  content: ''; position: absolute; inset: -2px; border-radius: inherit;
+  background: linear-gradient(45deg, transparent 30%, var(--neon-cyan) 50%, var(--neon-pink) 70%, transparent);
+  background-size: 300% 300%;
+  animation: hologramScan 3s linear infinite;
+  opacity: 0.3; z-index: -1;
+  filter: blur(1px);
+}
+.hologram::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(34,211,238,0.03) 3px, rgba(34,211,238,0.03) 4px);
+  pointer-events: none;
+}
+@keyframes hologramScan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== 赛博HUD扫描线 ===== */
+.hud-scanline {
+  position: relative;
+}
+.hud-scanline::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 2px;
+  background: var(--neon-cyan);
+  opacity: 0.6;
+  animation: hudScan 2s ease-in-out infinite;
+  pointer-events: none;
+  box-shadow: 0 0 10px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+}
+@keyframes hudScan {
+  0% { top: 0%; opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ===== 文字故障效果 (Glitch Text) ===== */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.8;
+}
+.glitch-text::before {
+  color: var(--neon-cyan);
+  animation: glitchShift 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+.glitch-text::after {
+  color: var(--neon-pink);
+  animation: glitchShift 2s infinite linear alternate;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+@keyframes glitchShift {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(-3px, 2px); }
+  50% { transform: translate(3px, -1px); }
+  75% { transform: translate(-2px, -2px); }
+}
+
+/* ===== 霓虹描边按钮 ===== */
+.neon-btn {
+  position: relative;
+  overflow: visible;
+  transition: all var(--effect-speed);
+}
+.neon-btn::before {
+  content: ''; position: absolute; inset: -3px; border-radius: inherit;
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+  background-size: 400% 400%;
+  animation: neonBorder 3s linear infinite;
+  z-index: -1; opacity: 0;
+  transition: opacity var(--effect-speed);
+}
+.neon-btn:hover::before {
+  opacity: 1;
+  filter: blur(4px);
+}
+@keyframes neonBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== 3D 卡片翻转 ===== */
+.card-3d {
+  perspective: 1000px;
+}
+.card-3d-inner {
+  position: relative; width: 100%; height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.card-3d:hover .card-3d-inner {
+  transform: rotateY(180deg);
+}
+.card-3d-front, .card-3d-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.card-3d-back {
+  transform: rotateY(180deg);
+}
+
+/* ===== 波纹扩散 ===== */
+.ripple-effect {
+  position: relative; overflow: hidden;
+}
+.ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(139, 92, 246, 0.3);
+  transform: scale(0);
+  animation: rippleSpread 0.8s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes rippleSpread {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ===== 水晶质感玻璃 ===== */
+.glass-crystal {
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 100%);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08),
+              inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.glass-crystal:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12),
+              inset 0 1px 0 rgba(255,255,255,0.3),
+              0 0 40px var(--accent-glow, rgba(99,102,241,0.15));
+}
+
+/* ===== 卡片悬停光影穿梭 ===== */
+.card-shimmer {
+  position: relative; overflow: hidden;
+}
+.card-shimmer::after {
+  content: ''; position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(139,92,246,0.15) 45%, rgba(34,211,238,0.15) 50%, transparent 55%);
+  animation: shimmerSlide 3s infinite;
+  pointer-events: none;
+}
+@keyframes shimmerSlide {
+  0% { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(100%) translateY(100%); }
+}
+
+/* ===== 脉冲光环 ===== */
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::before {
+  content: ''; position: absolute; inset: -6px; border-radius: inherit;
+  border: 2px solid var(--accent, #6366f1);
+  animation: pulseRing 2s infinite;
+  pointer-events: none;
+  opacity: 0;
+}
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.08); opacity: 0; }
+}
+
+/* ===== 能量波动 ===== */
+.energy-wave {
+  position: relative;
+}
+.energy-wave::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), var(--accent), transparent);
+  animation: energyFlow 2s linear infinite;
+  background-size: 200% 100%;
+}
+@keyframes energyFlow {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== 漂浮粒子 (CSS only颗粒) ===== */
+.float-particle {
+  position: fixed; pointer-events: none; z-index: 1;
+  animation: floatUp linear infinite;
+  border-radius: 50%;
+}
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+/* ===== 数字雨背景 (少量) ===== */
+.digital-rain {
+  position: absolute; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--neon-cyan), transparent);
+  animation: rainDrop 1.5s linear infinite;
+  opacity: 0.3; pointer-events: none;
+}
+@keyframes rainDrop {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* ===== 交错入场动画 ===== */
+.stagger-in > * {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: staggerReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes staggerReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 打字机效果 ===== */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent);
+  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+  width: fit-content;
+}
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--accent); } }
+
+/* ===== 重力拉扯标题 ===== */
+.gravity-title {
+  display: inline-block;
+  animation: gravityBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes gravityBounce {
+  0% { transform: translateY(-80px); opacity: 0; }
+  50% { transform: translateY(10px); }
+  60% { transform: translateY(-20px); }
+  75% { transform: translateY(5px); }
+  90% { transform: translateY(-5px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== 折叠展开 ===== */
+.collapse-content {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.collapse-content.open {
+  max-height: 2000px;
+}
+
+/* ===== 统计数字弹跳 ===== */
+.counter-up {
+  display: inline-block;
+  animation: counterPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes counterPop {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.3); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== 进度光带 ===== */
+.progress-glow {
+  position: relative;
+  overflow: hidden;
+}
+.progress-glow::after {
+  content: ''; position: absolute; top: 0; left: -30%; width: 30%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: progressShine 2s ease-in-out infinite;
+}
+@keyframes progressShine {
+  0% { left: -30%; }
+  50% { left: 130%; }
+  100% { left: -30%; }
+}
+
+/* ===== 视差图层 ===== */
+.parallax-layer {
+  will-change: transform;
+}
+
+/* ===== 图片发光边框悬停 ===== */
+.img-glow-hover {
+  transition: all 0.4s;
+  border: 2px solid transparent;
+}
+.img-glow-hover:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+  transform: scale(1.02);
+}
+
+/* ===== 磨砂玻璃面板全息增强 ===== */
+.panel-hologram {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.panel-hologram::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 200%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  animation: holoLine 4s linear infinite;
+}
+@keyframes holoLine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ===== 音波可视化模拟 ===== */
+.audio-bars {
+  display: flex; gap: 2px; align-items: flex-end; height: 40px;
+}
+.audio-bar {
+  width: 3px; border-radius: 2px;
+  background: var(--gradient-hero);
+  animation: audioBounce 0.6s ease-in-out infinite alternate;
+}
+@keyframes audioBounce {
+  from { height: 5px; }
+  to { height: 40px; }
+}
+
+/* ===== 打字输入光标 ===== */
+.input-glow:focus {
+  box-shadow: 0 0 0 3px var(--accent-glow), 0 0 30px var(--accent-glow);
+  border-color: var(--accent);
+}
+
+/* ===== 波纹按钮点击 ===== */
+.btn-ripple {
+  position: relative; overflow: hidden;
+}
+.btn-ripple .ripple-effect-inner {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  animation: btnRipple 0.6s linear;
+  pointer-events: none;
+}
+@keyframes btnRipple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ===== 数据闪烁标签 ===== */
+.tag-glow {
+  animation: tagGlow 2s ease-in-out infinite;
+}
+@keyframes tagGlow {
+  0%, 100% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
+}
+
+/* ===== 无限滚动跑马灯 ===== */
+.marquee-track {
+  display: flex; animation: marqueeScroll 20s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marqueeScroll {
+  to { transform: translateX(-50%); }
+}
+
+/* ===== 粒子爆炸 (click effect) ===== */
+.particle-burst {
+  position: fixed; pointer-events: none; z-index: 9999;
+}
+.explosion-particle {
+  position: absolute; border-radius: 50%;
+  animation: explodeOut 1s ease-out forwards;
+}
+@keyframes explodeOut {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* ===== 卡片堆叠效果 ===== */
+.card-stack {
+  position: relative;
+}
+.card-stack-item {
+  position: relative; transition: all 0.3s;
+}
+.card-stack-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  z-index: 10;
+}
+.card-stack-item:not(:last-child)::after {
+  content: ''; position: absolute; inset: 8px 0 -4px 0; border-radius: inherit;
+  background: var(--border, rgba(0,0,0,0.06));
+  z-index: -1;
+}
+
+/* ===== 斜线网格背景 ===== */
+.bg-grid-diagonal {
+  background-image: 
+    linear-gradient(45deg, var(--border, rgba(0,0,0,0.04)) 1px, transparent 1px),
+    linear-gradient(-45deg, var(--border, rgba(0,0,0,0.04)) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* ===== 六边形蜂巢网格 ===== */
+.bg-hex-grid {
+  background-image:
+    repeating-linear-gradient(60deg, var(--border, rgba(0,0,0,0.04)) 0px, var(--border, rgba(0,0,0,0.04)) 1px, transparent 1px, transparent 30px),
+    repeating-linear-gradient(-60deg, var(--border, rgba(0,0,0,0.04)) 0px, var(--border, rgba(0,0,0,0.04)) 1px, transparent 1px, transparent 30px),
+    repeating-linear-gradient(0deg, var(--border, rgba(0,0,0,0.04)) 0px, var(--border, rgba(0,0,0,0.04)) 1px, transparent 1px, transparent 30px);
+  background-size: 52px 30px, 52px 30px, 30px 30px;
+}
+
+/* ===== 圆形波纹背景 ===== */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, var(--border, rgba(0,0,0,0.06)) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ===== 倾斜卡片 ===== */
+.card-tilt {
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* ===== 滚动渐变遮罩 ===== */
+.scroll-fade-mask {
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* ===== 弹性列表项 ===== */
+.spring-list > * {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.spring-list > *:hover {
+  transform: scale(1.04);
+}
+
+/* ===== 龙奕品质卡片 ===== */
+.card-academy-premium {
+  background: linear-gradient(160deg, rgba(255,255,255,0.97) 0%, rgba(248,248,255,0.95) 100%);
+  border: 1px solid rgba(139,92,246,0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+.card-academy-premium::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2, #a78bfa), var(--accent-3, #f472b6));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-academy-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(99,102,241,0.12);
+  border-color: rgba(139,92,246,0.2);
+}
+.card-academy-premium:hover::before {
+  transform: scaleX(1);
+}
+
+/* ===== 磨砂输入组 ===== */
+.input-group-glass {
+  display: flex;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.input-group-glass:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow), 0 0 30px var(--accent-glow);
+}
+.input-group-glass input {
+  flex: 1; border: none; background: transparent;
+  padding: 12px 16px; font-size: 0.9rem;
+  outline: none; font-family: inherit; color: var(--text);
+}
+.input-group-glass button {
+  background: var(--gradient-btn, linear-gradient(135deg, #6366f1, #8b5cf6));
+  color: #fff; border: none; padding: 12px 24px;
+  font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: all 0.3s;
+}
+.input-group-glass button:hover {
+  filter: brightness(1.1);
+}
+
+/* ===== 标签云 ===== */
+.tag-cloud {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tag-cloud-item {
+  padding: 6px 18px; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+.tag-cloud-item:hover, .tag-cloud-item.active {
+  background: var(--accent); color: #fff;
+  border-color: var(--accent);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+/* ===== 3D 透视网格 ===== */
+.perspective-grid {
+  perspective: 800px;
+}
+.perspective-grid-item {
+  transition: transform 0.3s;
+}
+.perspective-grid-item:hover {
+  transform: rotateX(2deg) rotateY(-2deg) translateZ(10px);
+}
+
+/* ===== 动画增强: 渐显+上浮 ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ===== 滚动链接高亮线 ===== */
+.scroll-progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+  z-index: 10001; transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* ===== 模糊渐变球 ===== */
+.gradient-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.2; pointer-events: none;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.1); }
+  66% { transform: translate(-20px, 30px) scale(0.9); }
+}
+
+/* ===== 霓虹发光分割线 ===== */
+.divider-neon {
+  border: none; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2, #22d3ee), var(--accent), transparent);
+  margin: 2rem 0;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* ===== 旋转图标 ===== */
+.icon-spin {
+  display: inline-block;
+  transition: transform 0.5s;
+}
+.icon-spin:hover {
+  transform: rotate(360deg);
+}
+
+/* ===== 蛇形路径动画 ===== */
+.snake-path {
+  animation: snakeMove 10s linear infinite;
+}
+@keyframes snakeMove {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(100px, 40px) rotate(90deg); }
+  50% { transform: translate(200px, 0) rotate(180deg); }
+  75% { transform: translate(100px, -40px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* ===== 响应的入场错开 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== 流星动画 ===== */
+@keyframes shootingStar {
+  0% { opacity: 0; transform: rotate(var(--angle, -20deg)) translateX(0); }
+  10% { opacity: 1; }
+  90% { opacity: 0.3; }
+  100% { opacity: 0; transform: rotate(var(--angle, -20deg)) translateX(400px); }
+}
+
+/* ===== 磁吸悬停 ===== */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

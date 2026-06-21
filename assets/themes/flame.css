@@ -1,0 +1,32 @@
+/* ====== Flame 烈焰红莲 ====== */
+:root {
+  --bg-primary: #1a0a0a;
+  --bg-secondary: #2a1010;
+  --bg-card: rgba(42,16,16,0.85);
+  --text-primary: #ffe0d0;
+  --text-secondary: #cc8866;
+  --accent-1: #ff4444;
+  --accent-2: #ff8800;
+  --accent-3: #ffaa00;
+  --gradient-hero: linear-gradient(180deg, #1a0a0a 0%, #2a1010 50%, #1a1400 100%);
+  --gradient-accent: linear-gradient(135deg, #ff4444, #ff8800);
+  --gradient-btn: linear-gradient(135deg, #ff4444, #ff6600);
+  --border-color: rgba(255,68,68,0.3);
+  --border-glow: 0 0 25px rgba(255,68,68,0.5);
+  --shadow-card: 0 8px 32px rgba(255,68,68,0.12);
+  --shadow-glow: 0 0 40px rgba(255,136,0,0.3);
+  --font-display: 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', sans-serif;
+  --nav-bg: rgba(26,10,10,0.95);
+  --card-radius: 12px;
+  --particle-color-1: #ff4444;
+  --particle-color-2: #ff8800;
+  --particle-color-3: #ffaa00;
+}
+body { background: var(--bg-primary); color: var(--text-primary); }
+.nav { background: var(--nav-bg); border-bottom: 2px solid var(--border-color); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); }
+.btn-primary { background: var(--gradient-btn); border: none; color: #fff; padding: 12px 28px; border-radius: 6px; cursor: pointer; font-weight: 700; text-transform: uppercase; }
+.btn-primary:hover { box-shadow: var(--border-glow); transform: scale(1.05); }
+.glow-text { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }

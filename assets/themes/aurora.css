@@ -1,0 +1,32 @@
+/* ====== Aurora 极光幻境 ====== */
+:root {
+  --bg-primary: #0a1020;
+  --bg-secondary: #101830;
+  --bg-card: rgba(16,24,48,0.85);
+  --text-primary: #c8e0ff;
+  --text-secondary: #6a90c0;
+  --accent-1: #00e5ff;
+  --accent-2: #76ff03;
+  --accent-3: #e040fb;
+  --gradient-hero: linear-gradient(180deg, #0a1020 0%, #101830 30%, #0a2040 60%, #0a1020 100%);
+  --gradient-accent: linear-gradient(135deg, #00e5ff, #76ff03, #e040fb);
+  --gradient-btn: linear-gradient(135deg, #00e5ff, #e040fb);
+  --border-color: rgba(0,229,255,0.25);
+  --border-glow: 0 0 25px rgba(0,229,255,0.5);
+  --shadow-card: 0 8px 32px rgba(0,229,255,0.08);
+  --shadow-glow: 0 0 40px rgba(224,64,251,0.3);
+  --font-display: 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', sans-serif;
+  --nav-bg: rgba(10,16,32,0.97);
+  --card-radius: 18px;
+  --particle-color-1: #00e5ff;
+  --particle-color-2: #76ff03;
+  --particle-color-3: #e040fb;
+}
+body { background: var(--bg-primary); color: var(--text-primary); }
+.nav { background: var(--nav-bg); border-bottom: 1px solid var(--border-color); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); }
+.btn-primary { background: var(--gradient-btn); border: none; color: #fff; padding: 12px 28px; border-radius: 25px; cursor: pointer; font-weight: 700; }
+.btn-primary:hover { box-shadow: var(--border-glow); transform: translateY(-2px); }
+.glow-text { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }

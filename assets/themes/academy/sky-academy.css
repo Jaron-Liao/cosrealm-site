@@ -1,0 +1,27 @@
+/* ====== 龙奕学院 — 天空学院 Sky Academy ====== */
+:root {
+  --bg-primary: #f0f7ff;
+  --bg-card: rgba(255,255,255,0.92);
+  --bg-overlay: rgba(240,247,255,0.85);
+  --text: #2a3a50;
+  --text-secondary: #5a7a9a;
+  --text-muted: #90b0c8;
+  --accent: #4da6ff;
+  --accent2: #7dc4ff;
+  --accent-glow: rgba(77,166,255,0.4);
+  --border: rgba(77,166,255,0.2);
+  --shadow: 0 4px 20px rgba(77,166,255,0.15);
+  --shadow-lg: 0 8px 40px rgba(77,166,255,0.2);
+  --card-radius: 18px;
+  --btn-radius: 25px;
+  --font-display: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --font-body: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --particle-color-1: #4da6ff;
+  --particle-color-2: #a0d4ff;
+  --particle-color-3: #d0e8ff;
+  --gradient-hero: linear-gradient(135deg, #4da6ff 0%, #7dc4ff 30%, #a0d4ff 60%, #d0e8ff 100%);
+  --gradient-card: linear-gradient(145deg, rgba(77,166,255,0.08) 0%, rgba(125,196,255,0.04) 100%);
+  --gradient-btn: linear-gradient(135deg, #4da6ff, #7dc4ff);
+  --nav-bg: rgba(255,255,255,0.88);
+  --card-hover-scale: 1.03;
+}

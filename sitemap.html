@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙墟 CosRealm · 全站地图</title>
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="anime.html">🏠 番剧首页</a>
+<a href="pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/anime/player.html">▶ 播放器</a>
+<a href="pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="pages/anime/mad.html">🎬 MAD创作</a>
+<a href="pages/anime/library.html">📚 动画图书馆</a>
+<a href="pages/anime/live.html">📡 直播</a>
+<a href="pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="social.html">🏠 社交首页</a>
+<a href="pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="pages/social/create.html">✏️ 发布创作</a>
+<a href="pages/social/profile.html">👤 个人主页</a>
+<a href="pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="pages/social/messages.html">💬 私信</a>
+<a href="pages/social/club.html">🏛️ 社团圈子</a>
+<a href="pages/social/bbs.html">📋 论坛BBS</a>
+<a href="pages/social/match.html">💕 同好匹配</a>
+<a href="pages/social/live-room.html">📡 虚拟直播</a>
+<a href="pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="shop.html">🏠 商城首页</a>
+<a href="pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/shop/product.html">📦 商品详情</a>
+<a href="pages/shop/cart.html">🛒 购物车</a>
+<a href="pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="pages/shop/seller.html">🏪 卖家中心</a>
+<a href="pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="academy.html">🏠 书院首页</a>
+<a href="pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="pages/academy/course.html">📖 课程详情</a>
+<a href="pages/academy/player.html">▶ 课程播放</a>
+<a href="pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="pages/academy/creator.html">✏️ 创作中心</a>
+<a href="pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="creator.html">🏠 创作者首页</a>
+<a href="pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/creator/upload.html">📤 发布作品</a>
+<a href="pages/creator/studio.html">🎬 创作工作室</a>
+<a href="pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="pages/creator/monetize.html">💰 变现中心</a>
+<a href="pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="digital-human.html">🏠 数字人首页</a>
+<a href="pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="pages/digital-human/market.html">🏪 市场</a>
+<a href="pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="metaverse.html">🏠 元宇宙首页</a>
+<a href="pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/metaverse/land.html">🗺️ 土地</a>
+<a href="pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="pages/metaverse/explore.html">🔮 探索</a>
+<a href="pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="pages/events/index.html">🏠 活动首页</a>
+<a href="pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="pages/events/create.html">✏️ 发布活动</a>
+<a href="pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="pages/events/live.html">📡 直播活动</a>
+<a href="pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+<div class="container">
+  <h1>🏛️ 龙墟 CosRealm 全站地图</h1>
+  <p class="subtitle">全部页面链接一览 · 点击任意卡片跳转 · 共 189 个页面</p>
+  <div class="stats">
+    <div class="stat-card"><div class="num">189</div><div class="label">总页面数</div></div>
+    <div class="stat-card"><div class="num">16</div><div class="label">分类板块</div></div>
+    <div class="stat-card"><div class="num">9</div><div class="label">学院栏目</div></div>
+    <div class="stat-card"><div class="num">41</div><div class="label">扩展页面</div></div>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterAll()">全部</button>
+    <button class="filter-btn" onclick="filter('root')">🏠 根目录<br>核心入口</button>
+    <button class="filter-btn" onclick="filter('anime')">📺 番剧学院</button>
+    <button class="filter-btn" onclick="filter('social')">💬 羁绊学院</button>
+    <button class="filter-btn" onclick="filter('shop')">🛒 商贸学院</button>
+    <button class="filter-btn" onclick="filter('metaverse')">🌌 虚空学院</button>
+    <button class="filter-btn" onclick="filter('creator')">🎨 创作学院</button>
+    <button class="filter-btn" onclick="filter('digital-human')">🤖 幻影学院<br>数字人</button>
+    <button class="filter-btn" onclick="filter('academy')">🎓 研修学院</button>
+    <button class="filter-btn" onclick="filter('events')">🎉 祭典学院</button>
+    <button class="filter-btn" onclick="filter('wiki')">📚 百科书院</button>
+    <button class="filter-btn" onclick="filter('auth')">🔐 用户认证</button>
+    <button class="filter-btn" onclick="filter('company')">🏢 关于龙奕</button>
+    <button class="filter-btn" onclick="filter('help')">❓ 帮助中心</button>
+    <button class="filter-btn" onclick="filter('meta')">⚙️ 元信息</button>
+    <button class="filter-btn" onclick="filter('user')">👤 用户中心</button>
+    <button class="filter-btn" onclick="filter('extra')">🎨 扩展页面</button>
+  </div>
+  <div class="section" data-cat="root">
+    <div class="section-title"><span>🏠</span> 根目录 · 核心入口 <span class="count">10页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/academy.html" target="_blank"><div class="page-name">academy</div><div class="page-path">academy.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/anime.html" target="_blank"><div class="page-name">anime</div><div class="page-path">anime.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/creator.html" target="_blank"><div class="page-name">creator</div><div class="page-path">creator.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/digital-human.html" target="_blank"><div class="page-name">digital-human</div><div class="page-path">digital-human.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/events.html" target="_blank"><div class="page-name">events</div><div class="page-path">events.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/index.html" target="_blank"><div class="page-name">首页</div><div class="page-path">index.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/metaverse.html" target="_blank"><div class="page-name">metaverse</div><div class="page-path">metaverse.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/shop.html" target="_blank"><div class="page-name">shop</div><div class="page-path">shop.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/social.html" target="_blank"><div class="page-name">social</div><div class="page-path">social.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/wiki.html" target="_blank"><div class="page-name">wiki</div><div class="page-path">wiki.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="anime">
+    <div class="section-title"><span>📺</span> 番剧学院 <span class="count">19页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/bangumi.html" target="_blank"><div class="page-name">anime/bangumi</div><div class="page-path">pages/anime/bangumi.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-1.html" target="_blank"><div class="page-name">anime/detail-1</div><div class="page-path">pages/anime/detail-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-2.html" target="_blank"><div class="page-name">anime/detail-2</div><div class="page-path">pages/anime/detail-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-3.html" target="_blank"><div class="page-name">anime/detail-3</div><div class="page-path">pages/anime/detail-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-4.html" target="_blank"><div class="page-name">anime/detail-4</div><div class="page-path">pages/anime/detail-4.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-5.html" target="_blank"><div class="page-name">anime/detail-5</div><div class="page-path">pages/anime/detail-5.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-6.html" target="_blank"><div class="page-name">anime/detail-6</div><div class="page-path">pages/anime/detail-6.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-7.html" target="_blank"><div class="page-name">anime/detail-7</div><div class="page-path">pages/anime/detail-7.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/detail-8.html" target="_blank"><div class="page-name">anime/detail-8</div><div class="page-path">pages/anime/detail-8.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/index.html" target="_blank"><div class="page-name">anime/首页</div><div class="page-path">pages/anime/index.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/library.html" target="_blank"><div class="page-name">anime/library</div><div class="page-path">pages/anime/library.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/live.html" target="_blank"><div class="page-name">anime/live</div><div class="page-path">pages/anime/live.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/mad.html" target="_blank"><div class="page-name">anime/mad</div><div class="page-path">pages/anime/mad.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/news-1.html" target="_blank"><div class="page-name">anime/news-1</div><div class="page-path">pages/anime/news-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/news-2.html" target="_blank"><div class="page-name">anime/news-2</div><div class="page-path">pages/anime/news-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/news-3.html" target="_blank"><div class="page-name">anime/news-3</div><div class="page-path">pages/anime/news-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/player.html" target="_blank"><div class="page-name">anime/player</div><div class="page-path">pages/anime/player.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/ranking.html" target="_blank"><div class="page-name">anime/ranking</div><div class="page-path">pages/anime/ranking.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/anime/upload.html" target="_blank"><div class="page-name">anime/upload</div><div class="page-path">pages/anime/upload.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="social">
+    <div class="section-title"><span>💬</span> 羁绊学院 <span class="count">14页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/ai-identify.html" target="_blank"><div class="page-name">social/ai-identify</div><div class="page-path">pages/social/ai-identify.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/bbs.html" target="_blank"><div class="page-name">social/bbs</div><div class="page-path">pages/social/bbs.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/club.html" target="_blank"><div class="page-name">social/club</div><div class="page-path">pages/social/club.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/create.html" target="_blank"><div class="page-name">social/create</div><div class="page-path">pages/social/create.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/feed.html" target="_blank"><div class="page-name">social/feed</div><div class="page-path">pages/social/feed.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/gallery.html" target="_blank"><div class="page-name">social/gallery</div><div class="page-path">pages/social/gallery.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/live-room.html" target="_blank"><div class="page-name">social/live-room</div><div class="page-path">pages/social/live-room.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/match.html" target="_blank"><div class="page-name">social/match</div><div class="page-path">pages/social/match.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/messages.html" target="_blank"><div class="page-name">social/messages</div><div class="page-path">pages/social/messages.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/profile.html" target="_blank"><div class="page-name">social/profile</div><div class="page-path">pages/social/profile.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/topic-1.html" target="_blank"><div class="page-name">social/topic-1</div><div class="page-path">pages/social/topic-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/topic-2.html" target="_blank"><div class="page-name">social/topic-2</div><div class="page-path">pages/social/topic-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/topic-3.html" target="_blank"><div class="page-name">social/topic-3</div><div class="page-path">pages/social/topic-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/social/topic-4.html" target="_blank"><div class="page-name">social/topic-4</div><div class="page-path">pages/social/topic-4.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="shop">
+    <div class="section-title"><span>🛒</span> 商贸学院 <span class="count">19页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/browse.html" target="_blank"><div class="page-name">shop/browse</div><div class="page-path">pages/shop/browse.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/cart.html" target="_blank"><div class="page-name">shop/cart</div><div class="page-path">pages/shop/cart.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/custom.html" target="_blank"><div class="page-name">shop/custom</div><div class="page-path">pages/shop/custom.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/detail.html" target="_blank"><div class="page-name">shop/detail</div><div class="page-path">pages/shop/detail.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/flash.html" target="_blank"><div class="page-name">shop/flash</div><div class="page-path">pages/shop/flash.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/points.html" target="_blank"><div class="page-name">shop/points</div><div class="page-path">pages/shop/points.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/product-1.html" target="_blank"><div class="page-name">shop/product-1</div><div class="page-path">pages/shop/product-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/product-2.html" target="_blank"><div class="page-name">shop/product-2</div><div class="page-path">pages/shop/product-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/product-3.html" target="_blank"><div class="page-name">shop/product-3</div><div class="page-path">pages/shop/product-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/product-4.html" target="_blank"><div class="page-name">shop/product-4</div><div class="page-path">pages/shop/product-4.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/product-5.html" target="_blank"><div class="page-name">shop/product-5</div><div class="page-path">pages/shop/product-5.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/recommend.html" target="_blank"><div class="page-name">shop/recommend</div><div class="page-path">pages/shop/recommend.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/rental.html" target="_blank"><div class="page-name">shop/rental</div><div class="page-path">pages/shop/rental.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/secondhand.html" target="_blank"><div class="page-name">shop/secondhand</div><div class="page-path">pages/shop/secondhand.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/seller.html" target="_blank"><div class="page-name">shop/seller</div><div class="page-path">pages/shop/seller.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/store-1.html" target="_blank"><div class="page-name">shop/store-1</div><div class="page-path">pages/shop/store-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/store-2.html" target="_blank"><div class="page-name">shop/store-2</div><div class="page-path">pages/shop/store-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/store-3.html" target="_blank"><div class="page-name">shop/store-3</div><div class="page-path">pages/shop/store-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/shop/store-4.html" target="_blank"><div class="page-name">shop/store-4</div><div class="page-path">pages/shop/store-4.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="metaverse">
+    <div class="section-title"><span>🌌</span> 虚空学院 <span class="count">19页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/airship.html" target="_blank"><div class="page-name">metaverse/airship</div><div class="page-path">pages/metaverse/airship.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/avatar.html" target="_blank"><div class="page-name">metaverse/avatar</div><div class="page-path">pages/metaverse/avatar.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/builder.html" target="_blank"><div class="page-name">metaverse/builder</div><div class="page-path">pages/metaverse/builder.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/city.html" target="_blank"><div class="page-name">metaverse/city</div><div class="page-path">pages/metaverse/city.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/combat.html" target="_blank"><div class="page-name">metaverse/combat</div><div class="page-path">pages/metaverse/combat.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/explore.html" target="_blank"><div class="page-name">metaverse/explore</div><div class="page-path">pages/metaverse/explore.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/fashion.html" target="_blank"><div class="page-name">metaverse/fashion</div><div class="page-path">pages/metaverse/fashion.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/guild.html" target="_blank"><div class="page-name">metaverse/guild</div><div class="page-path">pages/metaverse/guild.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/live.html" target="_blank"><div class="page-name">metaverse/live</div><div class="page-path">pages/metaverse/live.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/pets.html" target="_blank"><div class="page-name">metaverse/pets</div><div class="page-path">pages/metaverse/pets.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/realm.html" target="_blank"><div class="page-name">metaverse/realm</div><div class="page-path">pages/metaverse/realm.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/social.html" target="_blank"><div class="page-name">metaverse/social</div><div class="page-path">pages/metaverse/social.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/trade.html" target="_blank"><div class="page-name">metaverse/trade</div><div class="page-path">pages/metaverse/trade.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/world-1.html" target="_blank"><div class="page-name">metaverse/world-1</div><div class="page-path">pages/metaverse/world-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/world-2.html" target="_blank"><div class="page-name">metaverse/world-2</div><div class="page-path">pages/metaverse/world-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/world-3.html" target="_blank"><div class="page-name">metaverse/world-3</div><div class="page-path">pages/metaverse/world-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/world-4.html" target="_blank"><div class="page-name">metaverse/world-4</div><div class="page-path">pages/metaverse/world-4.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/world-5.html" target="_blank"><div class="page-name">metaverse/world-5</div><div class="page-path">pages/metaverse/world-5.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/metaverse/worlds.html" target="_blank"><div class="page-name">metaverse/worlds</div><div class="page-path">pages/metaverse/worlds.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="creator">
+    <div class="section-title"><span>🎨</span> 创作学院 <span class="count">6页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/creator/collab.html" target="_blank"><div class="page-name">creator/collab</div><div class="page-path">pages/creator/collab.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/creator/dashboard.html" target="_blank"><div class="page-name">creator/dashboard</div><div class="page-path">pages/creator/dashboard.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/creator/fans.html" target="_blank"><div class="page-name">creator/fans</div><div class="page-path">pages/creator/fans.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/creator/income.html" target="_blank"><div class="page-name">creator/income</div><div class="page-path">pages/creator/income.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/creator/tools.html" target="_blank"><div class="page-name">creator/tools</div><div class="page-path">pages/creator/tools.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/creator/workshop.html" target="_blank"><div class="page-name">creator/workshop</div><div class="page-path">pages/creator/workshop.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="digital-human">
+    <div class="section-title"><span>🤖</span> 幻影学院 · 数字人 <span class="count">12页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/ai-chat.html" target="_blank"><div class="page-name">digital-human/ai-chat</div><div class="page-path">pages/digital-human/ai-chat.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/animate.html" target="_blank"><div class="page-name">digital-human/animate</div><div class="page-path">pages/digital-human/animate.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/clone.html" target="_blank"><div class="page-name">digital-human/clone</div><div class="page-path">pages/digital-human/clone.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/dressup.html" target="_blank"><div class="page-name">digital-human/dressup</div><div class="page-path">pages/digital-human/dressup.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/emotion.html" target="_blank"><div class="page-name">digital-human/emotion</div><div class="page-path">pages/digital-human/emotion.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/livecast.html" target="_blank"><div class="page-name">digital-human/livecast</div><div class="page-path">pages/digital-human/livecast.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/llm-interactive.html" target="_blank"><div class="page-name">digital-human/llm-interactive</div><div class="page-path">pages/digital-human/llm-interactive.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/motion.html" target="_blank"><div class="page-name">digital-human/motion</div><div class="page-path">pages/digital-human/motion.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/scene.html" target="_blank"><div class="page-name">digital-human/scene</div><div class="page-path">pages/digital-human/scene.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/showroom.html" target="_blank"><div class="page-name">digital-human/showroom</div><div class="page-path">pages/digital-human/showroom.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/studio.html" target="_blank"><div class="page-name">digital-human/studio</div><div class="page-path">pages/digital-human/studio.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/digital-human/voice.html" target="_blank"><div class="page-name">digital-human/voice</div><div class="page-path">pages/digital-human/voice.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="academy">
+    <div class="section-title"><span>🎓</span> 研修学院 <span class="count">10页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/cert.html" target="_blank"><div class="page-name">academy/cert</div><div class="page-path">pages/academy/cert.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/challenge.html" target="_blank"><div class="page-name">academy/challenge</div><div class="page-path">pages/academy/challenge.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/courses.html" target="_blank"><div class="page-name">academy/courses</div><div class="page-path">pages/academy/courses.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/exam.html" target="_blank"><div class="page-name">academy/exam</div><div class="page-path">pages/academy/exam.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/library.html" target="_blank"><div class="page-name">academy/library</div><div class="page-path">pages/academy/library.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/live-class.html" target="_blank"><div class="page-name">academy/live-class</div><div class="page-path">pages/academy/live-class.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/mentor.html" target="_blank"><div class="page-name">academy/mentor</div><div class="page-path">pages/academy/mentor.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/path.html" target="_blank"><div class="page-name">academy/path</div><div class="page-path">pages/academy/path.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/ranking.html" target="_blank"><div class="page-name">academy/ranking</div><div class="page-path">pages/academy/ranking.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/academy/videos.html" target="_blank"><div class="page-name">academy/videos</div><div class="page-path">pages/academy/videos.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="events">
+    <div class="section-title"><span>🎉</span> 祭典学院 <span class="count">9页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/award.html" target="_blank"><div class="page-name">events/award</div><div class="page-path">pages/events/award.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/calendar.html" target="_blank"><div class="page-name">events/calendar</div><div class="page-path">pages/events/calendar.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/" target="_blank"><div class="page-name">events/con</div><div class="page-path"></div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/contest.html" target="_blank"><div class="page-name">events/contest</div><div class="page-path">pages/events/contest.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/exhibition.html" target="_blank"><div class="page-name">events/exhibition</div><div class="page-path">pages/events/exhibition.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/festival.html" target="_blank"><div class="page-name">events/festival</div><div class="page-path">pages/events/festival.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/fireworks.html" target="_blank"><div class="page-name">events/fireworks</div><div class="page-path">pages/events/fireworks.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/live-show.html" target="_blank"><div class="page-name">events/live-show</div><div class="page-path">pages/events/live-show.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/events/meetup.html" target="_blank"><div class="page-name">events/meetup</div><div class="page-path">pages/events/meetup.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="wiki">
+    <div class="section-title"><span>📚</span> 百科书院 <span class="count">7页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/wiki/article.html" target="_blank"><div class="page-name">wiki/article</div><div class="page-path">pages/wiki/article.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/wiki/characters.html" target="_blank"><div class="page-name">wiki/characters</div><div class="page-path">pages/wiki/characters.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/wiki/glossary.html" target="_blank"><div class="page-name">wiki/glossary</div><div class="page-path">pages/wiki/glossary.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/wiki/index.html" target="_blank"><div class="page-name">wiki/首页</div><div class="page-path">pages/wiki/index.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/wiki/seiyuu.html" target="_blank"><div class="page-name">wiki/seiyuu</div><div class="page-path">pages/wiki/seiyuu.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/wiki/studios.html" target="_blank"><div class="page-name">wiki/studios</div><div class="page-path">pages/wiki/studios.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/wiki/timeline.html" target="_blank"><div class="page-name">wiki/timeline</div><div class="page-path">pages/wiki/timeline.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="auth">
+    <div class="section-title"><span>🔐</span> 用户认证 <span class="count">5页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/auth/login-v2.html" target="_blank"><div class="page-name">auth/login-v2</div><div class="page-path">pages/auth/login-v2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/auth/login.html" target="_blank"><div class="page-name">auth/login</div><div class="page-path">pages/auth/login.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/auth/register-v2.html" target="_blank"><div class="page-name">auth/register-v2</div><div class="page-path">pages/auth/register-v2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/auth/register.html" target="_blank"><div class="page-name">auth/register</div><div class="page-path">pages/auth/register.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/auth/welcome.html" target="_blank"><div class="page-name">auth/welcome</div><div class="page-path">pages/auth/welcome.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="company">
+    <div class="section-title"><span>🏢</span> 关于龙奕 <span class="count">10页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/about.html" target="_blank"><div class="page-name">company/about</div><div class="page-path">pages/company/about.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/business.html" target="_blank"><div class="page-name">company/business</div><div class="page-path">pages/company/business.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/founder-1.html" target="_blank"><div class="page-name">company/founder-1</div><div class="page-path">pages/company/founder-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/founder-2.html" target="_blank"><div class="page-name">company/founder-2</div><div class="page-path">pages/company/founder-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/founder-3.html" target="_blank"><div class="page-name">company/founder-3</div><div class="page-path">pages/company/founder-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/index.html" target="_blank"><div class="page-name">company/首页</div><div class="page-path">pages/company/index.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/invest.html" target="_blank"><div class="page-name">company/invest</div><div class="page-path">pages/company/invest.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/join.html" target="_blank"><div class="page-name">company/join</div><div class="page-path">pages/company/join.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/partners.html" target="_blank"><div class="page-name">company/partners</div><div class="page-path">pages/company/partners.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/company/technology.html" target="_blank"><div class="page-name">company/technology</div><div class="page-path">pages/company/technology.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="help">
+    <div class="section-title"><span>❓</span> 帮助中心 <span class="count">3页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/help/faq.html" target="_blank"><div class="page-name">help/faq</div><div class="page-path">pages/help/faq.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/help/feedback.html" target="_blank"><div class="page-name">help/feedback</div><div class="page-path">pages/help/feedback.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/help/guide.html" target="_blank"><div class="page-name">help/guide</div><div class="page-path">pages/help/guide.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="meta">
+    <div class="section-title"><span>⚙️</span> 元信息 <span class="count">4页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/meta/about.html" target="_blank"><div class="page-name">meta/about</div><div class="page-path">pages/meta/about.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/meta/join.html" target="_blank"><div class="page-name">meta/join</div><div class="page-path">pages/meta/join.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/meta/partners.html" target="_blank"><div class="page-name">meta/partners</div><div class="page-path">pages/meta/partners.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/meta/privacy.html" target="_blank"><div class="page-name">meta/privacy</div><div class="page-path">pages/meta/privacy.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="user">
+    <div class="section-title"><span>👤</span> 用户中心 <span class="count">1页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/user/settings.html" target="_blank"><div class="page-name">user/settings</div><div class="page-path">pages/user/settings.html</div></a></div>
+    </div>
+  </div>
+  <div class="section" data-cat="extra">
+    <div class="section-title"><span>🎨</span> 扩展页面 <span class="count">41页</span></div>
+    <div class="link-grid">
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-1.html" target="_blank"><div class="page-name">extra/extra-1</div><div class="page-path">pages/extra/extra-1.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-10.html" target="_blank"><div class="page-name">extra/extra-10</div><div class="page-path">pages/extra/extra-10.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-11.html" target="_blank"><div class="page-name">extra/extra-11</div><div class="page-path">pages/extra/extra-11.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-12.html" target="_blank"><div class="page-name">extra/extra-12</div><div class="page-path">pages/extra/extra-12.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-13.html" target="_blank"><div class="page-name">extra/extra-13</div><div class="page-path">pages/extra/extra-13.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-14.html" target="_blank"><div class="page-name">extra/extra-14</div><div class="page-path">pages/extra/extra-14.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-15.html" target="_blank"><div class="page-name">extra/extra-15</div><div class="page-path">pages/extra/extra-15.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-16.html" target="_blank"><div class="page-name">extra/extra-16</div><div class="page-path">pages/extra/extra-16.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-17.html" target="_blank"><div class="page-name">extra/extra-17</div><div class="page-path">pages/extra/extra-17.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-18.html" target="_blank"><div class="page-name">extra/extra-18</div><div class="page-path">pages/extra/extra-18.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-19.html" target="_blank"><div class="page-name">extra/extra-19</div><div class="page-path">pages/extra/extra-19.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-2.html" target="_blank"><div class="page-name">extra/extra-2</div><div class="page-path">pages/extra/extra-2.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-20.html" target="_blank"><div class="page-name">extra/extra-20</div><div class="page-path">pages/extra/extra-20.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-21.html" target="_blank"><div class="page-name">extra/extra-21</div><div class="page-path">pages/extra/extra-21.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-22.html" target="_blank"><div class="page-name">extra/extra-22</div><div class="page-path">pages/extra/extra-22.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-23.html" target="_blank"><div class="page-name">extra/extra-23</div><div class="page-path">pages/extra/extra-23.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-24.html" target="_blank"><div class="page-name">extra/extra-24</div><div class="page-path">pages/extra/extra-24.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-25.html" target="_blank"><div class="page-name">extra/extra-25</div><div class="page-path">pages/extra/extra-25.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-26.html" target="_blank"><div class="page-name">extra/extra-26</div><div class="page-path">pages/extra/extra-26.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-27.html" target="_blank"><div class="page-name">extra/extra-27</div><div class="page-path">pages/extra/extra-27.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-28.html" target="_blank"><div class="page-name">extra/extra-28</div><div class="page-path">pages/extra/extra-28.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-29.html" target="_blank"><div class="page-name">extra/extra-29</div><div class="page-path">pages/extra/extra-29.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-3.html" target="_blank"><div class="page-name">extra/extra-3</div><div class="page-path">pages/extra/extra-3.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-30.html" target="_blank"><div class="page-name">extra/extra-30</div><div class="page-path">pages/extra/extra-30.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-31.html" target="_blank"><div class="page-name">extra/extra-31</div><div class="page-path">pages/extra/extra-31.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-32.html" target="_blank"><div class="page-name">extra/extra-32</div><div class="page-path">pages/extra/extra-32.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-33.html" target="_blank"><div class="page-name">extra/extra-33</div><div class="page-path">pages/extra/extra-33.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-34.html" target="_blank"><div class="page-name">extra/extra-34</div><div class="page-path">pages/extra/extra-34.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-35.html" target="_blank"><div class="page-name">extra/extra-35</div><div class="page-path">pages/extra/extra-35.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-36.html" target="_blank"><div class="page-name">extra/extra-36</div><div class="page-path">pages/extra/extra-36.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-37.html" target="_blank"><div class="page-name">extra/extra-37</div><div class="page-path">pages/extra/extra-37.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-38.html" target="_blank"><div class="page-name">extra/extra-38</div><div class="page-path">pages/extra/extra-38.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-39.html" target="_blank"><div class="page-name">extra/extra-39</div><div class="page-path">pages/extra/extra-39.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-4.html" target="_blank"><div class="page-name">extra/extra-4</div><div class="page-path">pages/extra/extra-4.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-40.html" target="_blank"><div class="page-name">extra/extra-40</div><div class="page-path">pages/extra/extra-40.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-41.html" target="_blank"><div class="page-name">extra/extra-41</div><div class="page-path">pages/extra/extra-41.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-5.html" target="_blank"><div class="page-name">extra/extra-5</div><div class="page-path">pages/extra/extra-5.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-6.html" target="_blank"><div class="page-name">extra/extra-6</div><div class="page-path">pages/extra/extra-6.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-7.html" target="_blank"><div class="page-name">extra/extra-7</div><div class="page-path">pages/extra/extra-7.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-8.html" target="_blank"><div class="page-name">extra/extra-8</div><div class="page-path">pages/extra/extra-8.html</div></a></div>
+      <div class="link-item"><a href="https://dce5d6e6af3d4530be2051ec56d3b7f5.app.codebuddy.work/pages/extra/extra-9.html" target="_blank"><div class="page-name">extra/extra-9</div><div class="page-path">pages/extra/extra-9.html</div></a></div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>🐉 龙墟 CosRealm · 二次元Cosplay综合社区平台</p>
+    <p style="margin-top:8px">全站地图自动生成 · 2026/6/21 · 共 189 个页面</p>
+  </div>
+</div>
+<button class="theme-btn" onclick="toggleTheme()" title="切换日/夜间模式">🌓</button>
+<script>
+function filter(cat){
+  document.querySelectorAll('.section').forEach(s=>{
+    s.classList.toggle('hidden', cat!=='all' && s.dataset.cat!==cat);
+  });
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    b.classList.toggle('active', (cat==='all'&&b.textContent.trim()==='全部') || b.onclick?.toString().includes("'"+cat+"'"));
+  });
+}
+function filterAll(){filter('all');}
+function toggleTheme(){
+  const root=document.documentElement;
+  const d=root.classList.contains('theme-dark');
+  root.classList.remove(d?'theme-dark':'theme-light');
+  root.classList.add(d?'theme-light':'theme-dark');
+  localStorage.setItem('cosrealm-theme',d?'light':'dark');
+}
+(function(){const s=localStorage.getItem('cosrealm-theme')||'dark';document.documentElement.classList.add('theme-'+s);})();
+</script>
+    <script src="./assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

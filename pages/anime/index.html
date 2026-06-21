@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-3d="anime">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>番剧学院 | 龙奕学院 LongYi Academy</title>
+<meta name="description" content="番剧学院 — 龙奕学院动漫板块，新番时间表、番剧排行、MAD创作、动画图书馆全覆盖">
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../../assets/themes/academy/sakura-academy.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="../../index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../anime.html">🏠 番剧首页</a>
+<a href="../../pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/player.html">▶ 播放器</a>
+<a href="../../pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="../../pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/anime/mad.html">🎬 MAD创作</a>
+<a href="../../pages/anime/library.html">📚 动画图书馆</a>
+<a href="../../pages/anime/live.html">📡 直播</a>
+<a href="../../pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../social.html">🏠 社交首页</a>
+<a href="../../pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/create.html">✏️ 发布创作</a>
+<a href="../../pages/social/profile.html">👤 个人主页</a>
+<a href="../../pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/social/messages.html">💬 私信</a>
+<a href="../../pages/social/club.html">🏛️ 社团圈子</a>
+<a href="../../pages/social/bbs.html">📋 论坛BBS</a>
+<a href="../../pages/social/match.html">💕 同好匹配</a>
+<a href="../../pages/social/live-room.html">📡 虚拟直播</a>
+<a href="../../pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../shop.html">🏠 商城首页</a>
+<a href="../../pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/product.html">📦 商品详情</a>
+<a href="../../pages/shop/cart.html">🛒 购物车</a>
+<a href="../../pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/shop/seller.html">🏪 卖家中心</a>
+<a href="../../pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../academy.html">🏠 书院首页</a>
+<a href="../../pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/course.html">📖 课程详情</a>
+<a href="../../pages/academy/player.html">▶ 课程播放</a>
+<a href="../../pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/academy/creator.html">✏️ 创作中心</a>
+<a href="../../pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../creator.html">🏠 创作者首页</a>
+<a href="../../pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/upload.html">📤 发布作品</a>
+<a href="../../pages/creator/studio.html">🎬 创作工作室</a>
+<a href="../../pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/creator/monetize.html">💰 变现中心</a>
+<a href="../../pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../digital-human.html">🏠 数字人首页</a>
+<a href="../../pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="../../pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="../../pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/digital-human/market.html">🏪 市场</a>
+<a href="../../pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../metaverse.html">🏠 元宇宙首页</a>
+<a href="../../pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/land.html">🗺️ 土地</a>
+<a href="../../pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="../../pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/metaverse/explore.html">🔮 探索</a>
+<a href="../../pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="../../pages/events/index.html">🏠 活动首页</a>
+<a href="../../pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/create.html">✏️ 发布活动</a>
+<a href="../../pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="../../pages/events/live.html">📡 直播活动</a>
+<a href="../../pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="../../pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="../../pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+
+<section class="section" style="padding-top:.5rem;">
+  <div class="container">
+    <!-- Hero Banner -->
+    <div class="banner" id="heroBanner">
+      <div class="banner-poster">
+        <img id="bannerImg" src="" alt="" style="display:none" onerror="this.style.display='none'">
+      </div>
+      <div class="banner-info">
+        <span class="banner-tag" id="bannerTag">🔥 本周热播</span>
+        <h1 class="banner-title" id="bannerTitle">加载中...</h1>
+        <p class="banner-desc" id="bannerDesc"></p>
+        <div class="banner-meta" id="bannerMeta"></div>
+        <div class="banner-btns">
+          <a href="player.html" class="btn-kawaii" style="font-size:.95rem;padding:.7rem 1.8rem;">▶ 立即观看</a>
+          <a href="bangumi.html" class="btn-kawaii btn-outline" style="font-size:.95rem;padding:.7rem 1.8rem;">+ 追番</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" id="animeSearch" placeholder="🔍 搜索番剧...（支持中文/日文/英文）" onkeydown="if(event.key==='Enter')searchAnime()">
+      <button onclick="searchAnime()">搜索</button>
+    </div>
+    <!-- Genre Tags -->
+    <div class="tag-row" id="genreTags"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="anime-layout">
+      <div>
+        <!-- This Season -->
+        <div class="carousel-row">
+          <div class="carousel-header">
+            <h2 class="carousel-title">🌸 本季新番</h2>
+            <a href="bangumi.html" class="carousel-more">查看时间表 →</a>
+          </div>
+          <div class="anime-h-scroll" id="seasonalRow">
+            <div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div>
+          </div>
+        </div>
+
+        <!-- Top Anime -->
+        <div class="carousel-row">
+          <div class="carousel-header">
+            <h2 class="carousel-title">🏆 高分神作</h2>
+            <a href="ranking.html" class="carousel-more">完整排行 →</a>
+          </div>
+          <div class="anime-h-scroll" id="topRow">
+            <div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div>
+          </div>
+        </div>
+
+        <!-- Category Navigation -->
+        <div class="cat-grid">
+          <a href="bangumi.html" class="cat-card"><div class="icon">📅</div><div><h4>新番时间表</h4><p>每周更新，不错过任何一部</p></div></a>
+          <a href="ranking.html" class="cat-card"><div class="icon">🏆</div><div><h4>番剧排行</h4><p>人气/评分/播放量全方位排行</p></div></a>
+          <a href="library.html" class="cat-card"><div class="icon">📚</div><div><h4>动画图书馆</h4><p>按年份/类型分类浏览</p></div></a>
+          <a href="mad.html" class="cat-card"><div class="icon">✂️</div><div><h4>MAD·AMV创作</h4><p>剪辑大神们的创意工坊</p></div></a>
+          <a href="live.html" class="cat-card"><div class="icon">📡</div><div><h4>动画直播</h4><p>同步追番 + 弹幕互动</p></div></a>
+          <a href="upload.html" class="cat-card"><div class="icon">📤</div><div><h4>上传投稿</h4><p>分享你的二次元创作</p></div></a>
+        </div>
+
+        <!-- Danmaku Demo -->
+        <div class="danmaku-demo" id="danmaku-area">
+          <h3>💬 弹幕预览 · 龙奕学院独家弹幕引擎</h3>
+        </div>
+      </div>
+
+      <!-- Sidebar Ranking -->
+      <div class="rank-sidebar">
+        <h3>🏆 TOP 10</h3>
+        <div id="sidebarRanking">
+          <p style="color:var(--text-dim);text-align:center;padding:1rem">加载中...</p>
+        </div>
+        <a href="ranking.html" style="display:block;text-align:center;padding:.5rem;color:var(--accent);font-size:.85rem;text-decoration:none;margin-top:.5rem;">— 查看完整榜单 —</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-secondary);padding:2rem;">
+  <div class="container">
+    <div class="carousel-header" style="margin-bottom:1.5rem;">
+      <h2 class="carousel-title">📰 番剧资讯</h2>
+      <a href="#" class="carousel-more">更多资讯 →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+      <a href="news-1.html" style="background:var(--bg-card);border-radius:14px;padding:1.5rem;border:1px solid var(--border);text-decoration:none;color:inherit;transition:all .3s;display:block;">
+        <h3 style="font-size:1rem;margin-bottom:.5rem;">2025年7月新番前瞻：20部必看番剧推荐</h3>
+        <p style="font-size:.85rem;color:var(--text-dim);">番剧学院编辑部 · 12.3万次阅读</p>
+      </a>
+      <a href="news-2.html" style="background:var(--bg-card);border-radius:14px;padding:1.5rem;border:1px solid var(--border);text-decoration:none;color:inherit;transition:all .3s;display:block;">
+        <h3 style="font-size:1rem;margin-bottom:.5rem;">ufotable《鬼灭之刃》剧场版2026年上映确定</h3>
+        <p style="font-size:.85rem;color:var(--text-dim);">Anime News · 8.7万次阅读</p>
+      </a>
+      <a href="news-3.html" style="background:var(--bg-card);border-radius:14px;padding:1.5rem;border:1px solid var(--border);text-decoration:none;color:inherit;transition:all .3s;display:block;">
+        <h3 style="font-size:1rem;margin-bottom:.5rem;">MAPPA新作预告片播放量破千万</h3>
+        <p style="font-size:.85rem;color:var(--text-dim);">MAPPA News · 15.1万次阅读</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2024 龙奕学院 LongYi Academy · 广州龙奕无形科技文化有限公司 WoSTC</p>
+    <p style="font-size:.82rem;color:var(--text-dim);margin-top:.3rem;">
+      <a href="../../pages/company/index.html" style="color:var(--text-dim);">关于我们</a> ·
+      <a href="../../pages/meta/privacy.html" style="color:var(--text-dim);">隐私政策</a> ·
+      <a href="mailto:2876783663@qq.com" style="color:var(--text-dim);">联系我们</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+// ===== Jikan API Integration =====
+const JIKAN = 'https://api.jikan.moe/v4';
+let allAnime = [];
+
+const FALLBACK = [
+  {title:'葬送的芙莉莲',score:9.8,episodes:28,type:'TV',status:'Finished Airing',genres:[{name:'奇幻'},{name:'治愈'}],studios:[{name:'MADHOUSE'}],year:2023,rank:1,synopsis:'精灵魔法师芙莉莲在勇者辛美尔死后，踏上了了解人类的旅程。',icon:'🧙️',color:'#dd8613',mal_id:52991},
+  {title:'咒术回战',score:9.5,episodes:24,type:'TV',status:'Currently Airing',genres:[{name:'热血'},{name:'奇幻'}],studios:[{name:'MAPPA'}],year:2025,rank:2,synopsis:'虎杖悠仁吞下诅咒之王的手指后，进入了咒术高专。',icon:'⚔️',color:'#ff4444',mal_id:51009},
+  {title:'我推的孩子',score:9.3,episodes:13,type:'TV',status:'Finished Airing',genres:[{name:'娱乐圈'},{name:'悬疑'}],studios:[{name:'動画工房'}],year:2024,rank:3,synopsis:'妇产科医生转生为自己偶像的孩子。',icon:'🌟',color:'#c084fc',mal_id:52034},
+  {title:'进击的巨人',score:9.7,episodes:16,type:'TV',status:'Finished Airing',genres:[{name:'热血'},{name:'黑暗'}],studios:[{name:'MAPPA'}],year:2023,rank:4,synopsis:'人类与巨人的最终决战。',icon:'⚔️',color:'#4a3728',mal_id:48583},
+  {title:'鬼灭之刃',score:9.2,episodes:11,type:'TV',status:'Finished Airing',genres:[{name:'和风'},{name:'热血'}],studios:[{name:'ufotable'}],year:2023,rank:5,synopsis:'灶门炭治郎踏上为妹妹复仇的道路。',icon:'🗡️',color:'#06b6d4',mal_id:54595},
+  {title:'SPY×FAMILY',score:9.1,episodes:12,type:'TV',status:'Currently Airing',genres:[{name:'喜剧'},{name:'动作'}],studios:[{name:'WIT STUDIO'}],year:2022,rank:6,synopsis:'间谍、杀手、超能力者组成的临时家庭。',icon:'🕵️',color:'#fbbf24',mal_id:50265},
+  {title:'芙莉莲 第二季',score:9.6,episodes:0,type:'TV',status:'Not yet aired',genres:[{name:'奇幻'},{name:'治愈'}],studios:[{name:'MADHOUSE'}],year:2026,rank:7,synopsis:'芙莉莲的旅程继续。',icon:'📜',color:'#dd8613',mal_id:99999},
+  {title:'蜂蜜柠檬苏打',score:8.8,episodes:12,type:'TV',status:'Currently Airing',genres:[{name:'校园'},{name:'恋爱'}],studios:[{name:'J.C.STAFF'}],year:2025,rank:8,synopsis:'酸甜的青春恋爱故事。',icon:'🍋',color:'#fbbf24',mal_id:56789},
+  {title:'Re:Zero 第三季',score:9.4,episodes:16,type:'TV',status:'Currently Airing',genres:[{name:'异世界'},{name:'悬疑'}],studios:[{name:'WHITE FOX'}],year:2025,rank:9,synopsis:'菜月昴的异世界轮回继续。',icon:'🔄',color:'#00d2d3',mal_id:54857},
+  {title:'魔法少女毁灭者',score:8.5,episodes:12,type:'TV',status:'Finished Airing',genres:[{name:'魔法少女'},{name:'反套路'}],studios:[{name:'Bibury'}],year:2023,rank:10,synopsis:'御宅英雄与魔法少女的颠覆性故事。',icon:'💥',color:'#f472b6',mal_id:54321},
+  {title:'邻家天使',score:8.7,episodes:12,type:'TV',status:'Currently Airing',genres:[{name:'恋爱'},{name:'校园'}],studios:[{name:'project No.9'}],year:2025,rank:11,synopsis:'关于隔壁天使般的女孩。',icon:'👼',color:'#facc15',mal_id:53123},
+  {title:'咒术回战 0',score:9.0,episodes:1,type:'Movie',status:'Finished Airing',genres:[{name:'热血'},{name:'奇幻'}],studios:[{name:'MAPPA'}],year:2021,rank:12,synopsis:'乙骨忧太的咒术回战前传。',icon:'🎬',color:'#ff4444',mal_id:48561},
+];
+
+async function fetchAnime(endpoint) {
+  try {
+    const res = await fetch(JIKAN + endpoint);
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    return data.data.map(a => a);
+  } catch(e) {
+    console.log('Jikan API fallback for:', endpoint);
+    if (endpoint.includes('seasons/now')) return FALLBACK.filter(a => a.status === 'Currently Airing');
+    if (endpoint.includes('top')) return FALLBACK;
+    return FALLBACK;
+  }
+}
+
+function normAnime(a) {
+  return {
+    id: a.mal_id || a.id,
+    title: a.title || '未知',
+    title_jp: a.title_japanese || a.title,
+    score: a.score || 0,
+    episodes: a.episodes || 0,
+    type: a.type || 'TV',
+    status: a.status || 'unknown',
+    genres: (a.genres || []).map(g => typeof g === 'string' ? {name:g} : g),
+    studios: (a.studios || []).map(s => typeof s === 'string' ? {name:s} : s),
+    year: a.year || new Date().getFullYear(),
+    rank: a.rank || 99,
+    image: a.images?.jpg?.large_image_url || a.images?.jpg?.image_url || '',
+    synopsis: (a.synopsis || '').replace(/\[.*?\]/g, '').substring(0, 200),
+    icon: a.icon || '🎬',
+    color: a.color || '#6b8cff'
+  };
+}
+
+const colors = ['#dd8613','#ff4444','#c084fc','#4a3728','#06b6d4','#fbbf24','#dd8613','#fbbf24','#00d2d3','#f472b6','#facc15','#ff4444'];
+
+function cardHTML(a, i) {
+  const aid = a.id || i;
+  const badge = a.status === 'Currently Airing' ? '热播中' : a.status === 'Not yet aired' ? '待开播' : a.type === 'Movie' ? '剧场版' : '完结';
+  const ep = a.episodes > 0 ? a.episodes + '话' : a.type;
+  return `
+    <a href="detail-${(i%8)+1}.html" class="anime-h-card">
+      <div class="anime-h-thumb">
+        ${a.image ? '<img src="'+a.image+'" alt="'+a.title+'" loading="lazy" onerror="this.style.display=\'none\'">' : ''}
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,'+(a.color||colors[i%12])+'22,'+(a.color||colors[i%12])+'44)" class="gradient-bg">'+(a.icon||'🎬')+'</div>
+        <span class="anime-h-badge">'+badge+'</span>
+        <span class="anime-h-score">⭐ '+(a.score||'?.?')+'</span>
+      </div>
+      <div class="anime-h-info">
+        <div class="anime-h-title">'+a.title+'</div>
+        <div class="anime-h-meta"><span>'+(a.genres[0]?.name||'')+'</span><span>'+(a.studios[0]?.name||'')+'</span></div>
+      </div>
+    </a>`;
+}
+
+function rankHTML(a, i) {
+  const rc = i<3?['t1','t2','t3'][i]:'tn';
+  return `
+    <a href="detail-'+(i%8+1)+'.html" class="rank-s-item">
+      <span class="rank-s-num '+rc+'">'+(i+1)+'</span>
+      <div class="rank-s-info">
+        <div class="rank-s-title">'+a.title+'</div>
+        <div class="rank-s-score">⭐ '+a.score+' · '+(a.episodes||a.type)+'</div>
+      </div>
+    </a>`;
+}
+
+async function loadAll() {
+  // Fetch seasonal and top anime
+  const [seasonal, top] = await Promise.all([
+    fetchAnime('/seasons/now?limit=15'),
+    fetchAnime('/top/anime?limit=15&filter=bypopularity')
+  ]);
+
+  const seasonalNorm = seasonal.map(normAnime);
+  const topNorm = top.map(normAnime);
+  allAnime = [...new Map([...seasonalNorm, ...topNorm].map(a => [a.id, a])).values()];
+
+  // Render seasonal
+  document.getElementById('seasonalRow').innerHTML = seasonalNorm.slice(0,12).map(cardHTML).join('');
+
+  // Render top
+  document.getElementById('topRow').innerHTML = topNorm.slice(0,12).map(cardHTML).join('');
+
+  // Sidebar ranking
+  const ranked = [...topNorm].sort((a,b) => (b.score||0)-(a.score||0));
+  document.getElementById('sidebarRanking').innerHTML = ranked.slice(0,10).map(rankHTML).join('');
+
+  // Hero banner with top anime
+  if (topNorm.length > 0) {
+    const hero = topNorm[0];
+    document.getElementById('bannerTitle').textContent = hero.title;
+    document.getElementById('bannerDesc').textContent = hero.synopsis || '暂无简介';
+    document.getElementById('bannerMeta').innerHTML = '<span>⭐ '+hero.score+'</span><span>📺 '+(hero.episodes||hero.type)+'</span><span>🎙️ '+(hero.studios[0]?.name||'未知')+'</span><span>📅 '+hero.year+'</span>';
+    if (hero.image) {
+      const img = document.getElementById('bannerImg');
+      img.src = hero.image;
+      img.style.display = '';
+    }
+  }
+
+  // Genre tags
+  const allGenres = [...new Set(allAnime.flatMap(a => a.genres.map(g => g.name)))].slice(0,15);
+  document.getElementById('genreTags').innerHTML = allGenres.map(g => '<span class="tag-pill" onclick="filterGenre(\''+g+'\',this)">'+g+'</span>').join('');
+}
+
+window.filterGenre = function(genre, el) {
+  document.querySelectorAll('#genreTags .tag-pill').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const filtered = allAnime.filter(a => a.genres.some(g => g.name === genre));
+  if (filtered.length === 0) return;
+  document.getElementById('topRow').innerHTML = filtered.map(cardHTML).join('');
+};
+
+window.searchAnime = async function() {
+  // Simple client-side filter of loaded anime
+  const q = (document.getElementById('animeSearch')?.value || '').trim().toLowerCase();
+  if (!q) { loadAll(); return; }
+  const filtered = allAnime.filter(a => a.title.toLowerCase().includes(q) || (a.title_jp||'').includes(q));
+  if (filtered.length > 0) {
+    document.getElementById('topRow').innerHTML = filtered.map(cardHTML).join('');
+    document.getElementById('seasonalRow').innerHTML = '';
+  } else {
+    // Try Jikan search
+    try {
+      const res = await fetch(JIKAN+'/anime?q='+encodeURIComponent(q)+'&limit=12');
+      const data = await res.json();
+      const results = data.data.map(normAnime);
+      document.getElementById('topRow').innerHTML = results.map(cardHTML).join('');
+    } catch(e) {
+      document.getElementById('topRow').innerHTML = '<p style="color:var(--text-dim);padding:1rem">未找到相关番剧</p>';
+    }
+  }
+};
+
+// Danmaku simulation
+const dmTexts = ['芙莉莲真的太好哭了😭','辛美尔...','每一集都在哭','精灵的旅程就是人生','制作画质炸裂！','MAPPA加油！','我推的孩子也超好看','这季度番剧质量高','龙奕学院弹幕功能绝了','今年最爱的一部','背景美术美到窒息','海塔真的是好人','前方高能预警！','awsl🙏','名场面打卡','经费在燃烧🔥','承包这个笑容','进度条撑住啊！','二刷走起','BGM绝了'];
+const dmColors = ['#fff','#ff6b9d','#6b8cff','#ff9f43','#facc15','#00d2d3','#a855f7'];
+const area = document.getElementById('danmaku-area');
+
+function sendDM() {
+  const d = document.createElement('div');
+  d.className = 'dm-line';
+  d.textContent = dmTexts[Math.floor(Math.random()*dmTexts.length)];
+  d.style.color = dmColors[Math.floor(Math.random()*dmColors.length)];
+  d.style.top = (50 + Math.random()*100) + 'px';
+  d.style.animationDuration = (6 + Math.random()*4) + 's';
+  d.style.fontSize = (.75 + Math.random()*.5) + 'rem';
+  area.appendChild(d);
+  setTimeout(() => d.remove(), 12000);
+}
+setInterval(sendDM, 1000);
+for(let i=0;i<5;i++) setTimeout(()=>sendDM(), i*300);
+
+// Init
+loadAll();
+
+// Check URL params for search
+const urlParams = new URLSearchParams(window.location.search);
+const q = urlParams.get('q');
+if (q) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('animeSearch');
+    if (input) { input.value = q; searchAnime(); }
+  });
+}
+</script>
+<script src="../../assets/theme-toggle.js"></script>
+
+<script src="../../assets/effects-runtime.js"></script>
+    <script src="../assets/quantum-bg.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

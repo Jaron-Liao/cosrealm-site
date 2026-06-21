@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-3d="academy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙奕学院 LongYi Academy — 二次元Cosplay综合社区</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/themes/academy/sakura-academy.css">
+
+<style id="lynav-css">
+/* === LongYi Nav v8 — 纯CSS下拉，零JS === */
+.lyn-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 99999; }
+.lyn-bar {
+  background: rgba(10,10,26,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,53,0.3); box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.lyn-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; height: 50px; }
+.lyn-brand { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.lyn-brand-icon { font-size: 1.3rem; }
+.lyn-brand-text { color: #FF6B35; font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; }
+.lyn-brand-sub { color: #555; font-size: 0.6rem; margin-left: 3px; }
+.lyn-menu { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; overflow-x: auto; }
+.lyn-menu::-webkit-scrollbar { display: none; }
+/* 下拉容器 */
+.lyn-dd { position: relative; }
+.lyn-dd-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 11px; border-radius: 8px;
+  color: #ccc; font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: all 0.2s;
+  user-select: none; border: none; background: transparent; font-family: inherit;
+}
+.lyn-dd-btn:hover { color: #FF6B35; background: rgba(255,107,53,0.12); }
+.lyn-dd:hover > .lyn-dd-btn { color: #FF6B35; }
+/* 下拉菜单 —— 纯 CSS hover 显示 */
+.lyn-dd-menu {
+  display: none;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  min-width: 195px; background: rgba(14,14,35,0.99);
+  border: 1px solid rgba(255,107,53,0.25); border-radius: 12px;
+  padding: 7px; margin-top: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255,107,53,0.08);
+  z-index: 100000;
+}
+/* 核心：hover 显示下拉 */
+.lyn-dd:hover > .lyn-dd-menu { display: block; animation: lynFadeIn 0.15s ease; }
+@keyframes lynFadeIn { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.lyn-dd-menu a {
+  display: block; padding: 8px 13px; border-radius: 8px;
+  color: #aaa; text-decoration: none; font-size: 0.81rem; transition: all 0.15s; white-space: nowrap;
+}
+.lyn-dd-menu a:hover { background: rgba(255,107,53,0.15); color: #FF6B35; padding-left: 17px; }
+.lyn-dd-menu a.lyn-cur { color: #FF6B35; background: rgba(255,107,53,0.08); font-weight: 600; }
+.lyn-sep { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+/* 右侧 */
+.lyn-actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.lyn-btn { padding: 5px 10px; border-radius: 8px; font-size: 0.78rem; color: #ccc; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.2s; }
+.lyn-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+.lyn-tbtn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.lyn-tbtn:hover { background: rgba(255,107,53,0.2); color: #FF6B35; }
+.lyn-spacer { height: 50px; }
+/* 汉堡菜单按钮 */
+.lyn-ham { display: none; background: none; border: none; color: #ccc; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+/* 移动端 */
+@media(max-width:880px){
+  .lyn-menu { display: none; position: fixed; top: 50px; left: 0; right: 0; flex-direction: column; background: rgba(10,10,26,0.995); border-bottom: 1px solid rgba(255,107,53,0.2); padding: 10px; gap: 2px; z-index: 99998; max-height: calc(100vh - 50px); overflow-y: auto; }
+  .lyn-menu.lyn-open { display: flex; }
+  .lyn-dd-menu { position: static; transform: none; display: none !important; box-shadow: none; border: none; background: rgba(255,255,255,0.03); margin-top: 0; padding-left: 14px; border-radius: 0; }
+  .lyn-dd.lyn-open > .lyn-dd-menu { display: block !important; }
+  .lyn-ham { display: block; }
+}
+@media(min-width:881px){ .lyn-ham { display: none; } }
+</style>
+</head>
+<body>
+<div class="lyn-wrap"><nav class="lyn-bar" id="mainNav">
+<div class="lyn-inner">
+<a href="index.html" class="lyn-brand">
+<span class="lyn-brand-icon">🐉</span><span class="lyn-brand-text">龙墟</span><span class="lyn-brand-sub">CosRealm</span>
+</a>
+<button class="lyn-ham" onclick="document.getElementById('lynMenu').classList.toggle('lyn-open')">☰</button>
+<div class="lyn-menu" id="lynMenu">
+
+<!-- 番剧 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">📺 番剧 ▾</button>
+<div class="lyn-dd-menu">
+<a href="anime.html">🏠 番剧首页</a>
+<a href="pages/anime/index.html">番剧大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/anime/player.html">▶ 播放器</a>
+<a href="pages/anime/bangumi.html">📅 新番时间表</a>
+<a href="pages/anime/ranking.html">🏆 排行榜</a>
+<div class="lyn-sep"></div>
+<a href="pages/anime/mad.html">🎬 MAD创作</a>
+<a href="pages/anime/library.html">📚 动画图书馆</a>
+<a href="pages/anime/live.html">📡 直播</a>
+<a href="pages/anime/upload.html">📤 投稿上传</a>
+</div></div>
+
+<!-- 羁绊 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">💬 羁绊 ▾</button>
+<div class="lyn-dd-menu">
+<a href="social.html">🏠 社交首页</a>
+<a href="pages/social/feed.html">📰 社区动态</a>
+<div class="lyn-sep"></div>
+<a href="pages/social/create.html">✏️ 发布创作</a>
+<a href="pages/social/profile.html">👤 个人主页</a>
+<a href="pages/social/gallery.html">🖼️ Cos画廊</a>
+<div class="lyn-sep"></div>
+<a href="pages/social/messages.html">💬 私信</a>
+<a href="pages/social/club.html">🏛️ 社团圈子</a>
+<a href="pages/social/bbs.html">📋 论坛BBS</a>
+<a href="pages/social/match.html">💕 同好匹配</a>
+<a href="pages/social/live-room.html">📡 虚拟直播</a>
+<a href="pages/social/ai-identify.html">🔍 AI识图</a>
+</div></div>
+
+<!-- 商贸 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🛒 商贸 ▾</button>
+<div class="lyn-dd-menu">
+<a href="shop.html">🏠 商城首页</a>
+<a href="pages/shop/index.html">商品大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/shop/product.html">📦 商品详情</a>
+<a href="pages/shop/cart.html">🛒 购物车</a>
+<a href="pages/shop/checkout.html">💳 结算</a>
+<div class="lyn-sep"></div>
+<a href="pages/shop/seller.html">🏪 卖家中心</a>
+<a href="pages/shop/order.html">📋 我的订单</a>
+</div></div>
+
+<!-- 书院 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🏛️ 书院 ▾</button>
+<div class="lyn-dd-menu">
+<a href="academy.html">🏠 书院首页</a>
+<a href="pages/academy/index.html">全部课程</a>
+<div class="lyn-sep"></div>
+<a href="pages/academy/course.html">📖 课程详情</a>
+<a href="pages/academy/player.html">▶ 课程播放</a>
+<a href="pages/academy/exercise.html">📝 练习</a>
+<div class="lyn-sep"></div>
+<a href="pages/academy/creator.html">✏️ 创作中心</a>
+<a href="pages/academy/dashboard.html">📊 学习仪表盘</a>
+</div></div>
+
+<!-- 创作者 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎨 创作者 ▾</button>
+<div class="lyn-dd-menu">
+<a href="creator.html">🏠 创作者首页</a>
+<a href="pages/creator/index.html">作品大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/creator/upload.html">📤 发布作品</a>
+<a href="pages/creator/studio.html">🎬 创作工作室</a>
+<a href="pages/creator/collaborate.html">🤝 协同创作</a>
+<div class="lyn-sep"></div>
+<a href="pages/creator/monetize.html">💰 变现中心</a>
+<a href="pages/creator/analytics.html">📊 数据分析</a>
+</div></div>
+
+<!-- 数字人 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🤖 数字人 ▾</button>
+<div class="lyn-dd-menu">
+<a href="digital-human.html">🏠 数字人首页</a>
+<a href="pages/digital-human/index.html">全息大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/digital-human/create.html">✨ 创造数字人</a>
+<a href="pages/digital-human/wardrobe.html">👗 衣橱</a>
+<a href="pages/digital-human/interact.html">💬 交互</a>
+<div class="lyn-sep"></div>
+<a href="pages/digital-human/market.html">🏪 市场</a>
+<a href="pages/digital-human/ai.html">🧠 AI核心</a>
+</div></div>
+
+<!-- 元宇宙 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🌐 元宇宙 ▾</button>
+<div class="lyn-dd-menu">
+<a href="metaverse.html">🏠 元宇宙首页</a>
+<a href="pages/metaverse/index.html">世界大厅</a>
+<div class="lyn-sep"></div>
+<a href="pages/metaverse/land.html">🗺️ 土地</a>
+<a href="pages/metaverse/avatar.html">🧑 虚拟形象</a>
+<a href="pages/metaverse/nft.html">🖼️ NFT画廊</a>
+<div class="lyn-sep"></div>
+<a href="pages/metaverse/explore.html">🔮 探索</a>
+<a href="pages/metaverse/asset.html">📦 资产</a>
+</div></div>
+
+<!-- 活动 -->
+<div class="lyn-dd">
+<button class="lyn-dd-btn">🎉 活动 ▾</button>
+<div class="lyn-dd-menu">
+<a href="pages/events/index.html">🏠 活动首页</a>
+<a href="pages/events/detail.html">📋 活动详情</a>
+<div class="lyn-sep"></div>
+<a href="pages/events/create.html">✏️ 发布活动</a>
+<a href="pages/events/signup.html">📝 报名</a>
+<div class="lyn-sep"></div>
+<a href="pages/events/live.html">📡 直播活动</a>
+<a href="pages/events/plugin.html">🔌 插件</a>
+</div></div>
+
+</div><!-- /lyn-menu -->
+<div class="lyn-actions">
+<button class="lyn-tbtn" title="切换主题">🎨</button>
+<a href="pages/auth/login.html" class="lyn-btn">登录</a>
+<a href="pages/auth/register.html" class="lyn-btn" style="border-color:#FF6B35;color:#FF6B35;">注册</a>
+</div>
+</div><!-- /lyn-inner -->
+</nav></div>
+<div class="lyn-spacer"></div>
+
+
+<div class="ly-spacer"></div>
+<canvas id="particles-canvas"></canvas>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="logo-icon">🐉</span>
+    <span>龙奕学院 LongYi Academy</span>
+  </a>
+  <div class="nav-links">
+    <a href="social.html">社交广场</a>
+    <a href="shop.html">服装商城</a>
+    <a href="metaverse.html">元宇宙龙奕学院</a>
+    <a href="digital-human.html">数字人工坊</a>
+    <a href="academy.html">新手学院</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn btn-ghost btn-sm" onclick="openModal('login-modal')">登录</button>
+    <button class="btn btn-primary btn-sm" onclick="openModal('register-modal')">注册</button>
+    <button class="menu-toggle">☰</button>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content anim-fade-up">
+      <div class="hero-badge"><span class="dot"></span>广州龙奕无形科技文化有限公司 出品</div>
+      <h1>龙奕学院 LongYi Academy<span>进入二次元Cosplay的数字奇点</span></h1>
+      <p class="hero-desc">AI角色识别 · 智能服装匹配 · 数字人创建 · 元宇宙社区<br>从0基础新手到资深Coser，一站式Cosplay平台</p>
+      <div class="hero-btns">
+        <a href="social.html" class="btn btn-primary btn-lg">🚀 进入社区</a>
+        <a href="academy.html" class="btn btn-outline btn-lg">📚 新手入门</a>
+        <a href="shop.html" class="btn btn-gold btn-lg">🛒 逛商城</a>
+      </div>
+      <div class="stats-bar anim-fade-up anim-delay-2">
+        <div class="stat-item"><div class="stat-num" data-count="52380">0</div><div class="stat-label">注册Coser</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="186000">0</div><div class="stat-label">识别角色数</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="9800">0</div><div class="stat-label">在线商品</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="1050">0</div><div class="stat-label">入驻卖家</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2 class="anim-fade-up">🏗️ 核心功能模块</h2>
+    <div class="feature-grid">
+      <a href="social.html" class="feature-card anim-fade-up anim-delay-1">
+        <span class="fc-icon">🤖</span>
+        <div class="fc-title">AI智能识别</div>
+        <div class="fc-desc">上传Cosplay照片，AI自动识别角色、作品来源和服装细节。CLIP视觉模型 + 腾讯云OCR双引擎驱动，Top-1准确率85%+</div>
+        <div class="fc-tags">
+          <span class="tag tag-purple">CLIP ViT</span>
+          <span class="tag tag-cyan">腾讯云OCR</span>
+          <span class="tag tag-pink">实时识别</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <a href="shop.html" class="feature-card anim-fade-up anim-delay-2">
+        <span class="fc-icon">👘</span>
+        <div class="fc-title">智能服装商城</div>
+        <div class="fc-desc">平台直销 + 卖家入驻双模式。AI根据角色自动匹配推荐服装，DeepFM排序算法精准推送，一站式Cosplay装备采购</div>
+        <div class="fc-tags">
+          <span class="tag tag-gold">双模式</span>
+          <span class="tag tag-purple">AI推荐</span>
+          <span class="tag tag-cyan">品质保证</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <a href="metaverse.html" class="feature-card anim-fade-up anim-delay-3">
+        <span class="fc-icon">🌐</span>
+        <div class="fc-title">元宇宙龙奕学院社区</div>
+        <div class="fc-desc">3D虚拟展览厅、数字分身社交、实时语音互动。基于Three.js + WebGL构建，支持VR设备接入。龙奕学院 — 属于Coser的虚拟世界</div>
+        <div class="fc-tags">
+          <span class="tag tag-cyan">WebGL</span>
+          <span class="tag tag-purple">3D空间</span>
+          <span class="tag tag-pink">VR Ready</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <a href="digital-human.html" class="feature-card anim-fade-up anim-delay-4">
+        <span class="fc-icon">💎</span>
+        <div class="fc-title">数字人工坊</div>
+        <div class="fc-desc">创建你的专属数字人形象。Stable Diffusion + ControlNet生成，支持表情捕捉和动作驱动。让你的虚拟分身活起来</div>
+        <div class="fc-tags">
+          <span class="tag tag-purple">SD生成</span>
+          <span class="tag tag-cyan">动作捕捉</span>
+          <span class="tag tag-gold">实时驱动</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <a href="academy.html" class="feature-card anim-fade-up anim-delay-1">
+        <span class="fc-icon">🎓</span>
+        <div class="fc-title">0基础入门学院</div>
+        <div class="fc-desc">从化妆到摄影，从选角到后期，系统化Cosplay教程。AI辅助推荐最适合新手的入门角色和服装，快速融入圈子</div>
+        <div class="fc-tags">
+          <span class="tag tag-gold">新手友好</span>
+          <span class="tag tag-cyan">AI辅助</span>
+          <span class="tag tag-purple">系统教程</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <a href="social.html" class="feature-card anim-fade-up anim-delay-2">
+        <span class="fc-icon">💬</span>
+        <div class="fc-title">社交互动系统</div>
+        <div class="fc-desc">动态发布、角色圈层、点赞评论收藏、话题广场。基于协同过滤 + DeepFM的智能推荐，让同好触手可及</div>
+        <div class="fc-tags">
+          <span class="tag tag-pink">协同过滤</span>
+          <span class="tag tag-purple">DeepFM</span>
+          <span class="tag tag-cyan">实时互动</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2 class="anim-fade-up">准备好进入龙奕学院了吗？</h2>
+    <p>无论你是资深Coser还是刚入坑的新手，龙奕学院龙奕学院都能帮你找到归属</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="social.html" class="btn btn-primary btn-lg">🔥 立即探索社区</a>
+      <a href="shop.html" class="btn btn-gold btn-lg">💰 开启你的Cos之旅</a>
+    </div>
+  </section>
+
+  <div class="company-bar">
+    <span class="name"><strong>广州龙奕无形科技文化有限公司</strong> · 版权所有 © 2026 · 龙奕学院 LongYi Academy v1.0</span>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <strong>龙奕学院 LongYi Academy</strong><br>
+      广州龙奕无形科技文化有限公司 出品<br>
+      跨平台二次元Cosplay综合社区
+    </div>
+    <div class="footer-links">
+      <a href="social.html">社交广场</a>
+      <a href="shop.html">服装商城</a>
+      <a href="metaverse.html">元宇宙</a>
+      <a href="digital-human.html">数字人</a>
+      <a href="academy.html">新手学院</a>
+      <a href="#">关于我们</a>
+      <a href="#">隐私政策</a>
+      <a href="#">用户协议</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Login Modal -->
+<div class="modal-overlay" id="login-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login-modal')">✕</button>
+    <h2>🔑 登录龙奕学院</h2>
+    <div class="form-group">
+      <label>手机号/邮箱</label>
+      <input class="form-input" type="text" placeholder="请输入手机号或邮箱">
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <input class="form-input" type="password" placeholder="请输入密码">
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;" onclick="closeModal('login-modal');showToast('登录成功！欢迎来到龙奕学院 🐉','success')">登 录</button>
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin-top:14px;">
+      还没有账号？<a href="#" style="color:var(--accent2)" onclick="closeModal('login-modal');openModal('register-modal')">立即注册</a>
+    </p>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal-overlay" id="register-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('register-modal')">✕</button>
+    <h2>🐉 注册龙奕学院账号</h2>
+    <div class="form-group">
+      <label>昵称</label>
+      <input class="form-input" type="text" placeholder="给自己起个酷炫的名字">
+    </div>
+    <div class="form-group">
+      <label>手机号</label>
+      <input class="form-input" type="text" placeholder="请输入手机号">
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <input class="form-input" type="password" placeholder="至少8位密码">
+    </div>
+    <div class="form-group">
+      <label>验证码</label>
+      <div style="display:flex;gap:10px;">
+        <input class="form-input" type="text" placeholder="验证码" style="flex:1;">
+        <button class="btn btn-outline btn-sm" style="white-space:nowrap;">获取验证码</button>
+      </div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;" onclick="closeModal('register-modal');showToast('注册成功！欢迎来到龙奕学院 🎉','success')">注 册</button>
+    <p style="text-align:center;color:var(--text-dim);font-size:0.78rem;margin-top:10px;">
+      注册即表示同意《用户协议》和《隐私政策》
+    </p>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+
+<script src="../../assets/three-engine-v3.js"></script>
+
+<script src="assets/theme-toggle.js"></script>
+<script src="assets/dynamic-bg.js"></script>
+<script src="assets/effects-runtime.js"></script>
+<script id="lynav-js">
+(function(){
+  if(window.innerWidth > 880) return;
+  document.querySelectorAll('.lyn-dd-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dd = this.parentElement;
+      document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ if(d!==dd) d.classList.remove('lyn-open'); });
+      dd.classList.toggle('lyn-open');
+    });
+  });
+  // 点击其他地方关闭
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.lyn-dd')) document.querySelectorAll('.lyn-dd.lyn-open').forEach(function(d){ d.classList.remove('lyn-open'); });
+  });
+})();
+</script>
+</body>
+</html>

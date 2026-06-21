@@ -1,0 +1,27 @@
+/* ====== 龙奕学院 — 珊瑚学院 Coral Academy ====== */
+:root {
+  --bg-primary: #fff5f5;
+  --bg-card: rgba(255,255,255,0.92);
+  --bg-overlay: rgba(255,245,245,0.85);
+  --text: #402020;
+  --text-secondary: #805050;
+  --text-muted: #b88080;
+  --accent: #f472b6;
+  --accent2: #f9a8d4;
+  --accent-glow: rgba(244,114,182,0.4);
+  --border: rgba(244,114,182,0.2);
+  --shadow: 0 4px 20px rgba(244,114,182,0.15);
+  --shadow-lg: 0 8px 40px rgba(244,114,182,0.2);
+  --card-radius: 18px;
+  --btn-radius: 25px;
+  --font-display: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --font-body: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --particle-color-1: #f472b6;
+  --particle-color-2: #fbcfe8;
+  --particle-color-3: #fce7f3;
+  --gradient-hero: linear-gradient(135deg, #f472b6 0%, #f9a8d4 30%, #fbcfe8 60%, #fce7f3 100%);
+  --gradient-card: linear-gradient(145deg, rgba(244,114,182,0.08) 0%, rgba(249,168,212,0.04) 100%);
+  --gradient-btn: linear-gradient(135deg, #f472b6, #f9a8d4);
+  --nav-bg: rgba(255,255,255,0.88);
+  --card-hover-scale: 1.03;
+}

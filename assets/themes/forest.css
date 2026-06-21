@@ -1,0 +1,32 @@
+/* ====== Forest 森之秘境 ====== */
+:root {
+  --bg-primary: #0d1a0d;
+  --bg-secondary: #142614;
+  --bg-card: rgba(20,38,20,0.85);
+  --text-primary: #c8e6c9;
+  --text-secondary: #81c784;
+  --accent-1: #69f0ae;
+  --accent-2: #00e676;
+  --accent-3: #b9f6ca;
+  --gradient-hero: linear-gradient(180deg, #0d1a0d 0%, #142614 50%, #0d240d 100%);
+  --gradient-accent: linear-gradient(135deg, #69f0ae, #00e676);
+  --gradient-btn: linear-gradient(135deg, #00c853, #69f0ae);
+  --border-color: rgba(105,240,174,0.25);
+  --border-glow: 0 0 18px rgba(105,240,174,0.35);
+  --shadow-card: 0 8px 32px rgba(0,200,83,0.1);
+  --shadow-glow: 0 0 30px rgba(105,240,174,0.25);
+  --font-display: 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', sans-serif;
+  --nav-bg: rgba(13,26,13,0.97);
+  --card-radius: 14px;
+  --particle-color-1: #69f0ae;
+  --particle-color-2: #00e676;
+  --particle-color-3: #b9f6ca;
+}
+body { background: var(--bg-primary); color: var(--text-primary); }
+.nav { background: var(--nav-bg); border-bottom: 1px solid var(--border-color); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); }
+.btn-primary { background: var(--gradient-btn); border: none; color: #0d1a0d; padding: 12px 28px; border-radius: 20px; cursor: pointer; font-weight: 700; }
+.btn-primary:hover { box-shadow: var(--border-glow); transform: translateY(-2px); }
+.glow-text { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }

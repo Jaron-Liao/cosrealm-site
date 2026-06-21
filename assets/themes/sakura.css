@@ -1,0 +1,46 @@
+/* ====== Sakura 樱吹雪 ====== */
+:root {
+  --bg-primary: #fdf6f0;
+  --bg-secondary: #fff0e6;
+  --bg-card: rgba(255,255,255,0.9);
+  --text-primary: #5c3d4e;
+  --text-secondary: #8c6d7e;
+  --accent-1: #f06292;
+  --accent-2: #ffc1cc;
+  --accent-3: #e8a0bf;
+  --gradient-hero: linear-gradient(180deg, #fff0e6 0%, #fdf6f0 50%, #ffe0ec 100%);
+  --gradient-accent: linear-gradient(135deg, #f06292, #ffc1cc);
+  --gradient-btn: linear-gradient(135deg, #f06292, #e8a0bf);
+  --border-color: rgba(240,98,146,0.25);
+  --border-glow: 0 0 20px rgba(240,98,146,0.25);
+  --shadow-card: 0 6px 24px rgba(240,98,146,0.1);
+  --shadow-glow: 0 0 30px rgba(255,193,204,0.3);
+  --font-display: 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', sans-serif;
+  --nav-bg: rgba(253,246,240,0.95);
+  --card-radius: 24px;
+  --particle-color-1: #ffc1cc;
+  --particle-color-2: #f06292;
+  --particle-color-3: #e8a0bf;
+}
+body { 
+  background: var(--bg-primary); 
+  color: var(--text-primary);
+  position: relative;
+}
+body::before {
+  content: '🌸';
+  position: fixed;
+  font-size: 200px;
+  opacity: 0.04;
+  top: -50px;
+  right: -30px;
+  z-index: 0;
+  pointer-events: none;
+}
+.nav { background: var(--nav-bg); border-bottom: 1px solid var(--border-color); }
+.card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); box-shadow: var(--shadow-card); }
+.btn-primary { background: var(--gradient-btn); border: none; color: #fff; padding: 12px 28px; border-radius: 25px; cursor: pointer; font-weight: 600; }
+.btn-primary:hover { box-shadow: var(--border-glow); transform: translateY(-2px); }
+.glow-text { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.particle-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
